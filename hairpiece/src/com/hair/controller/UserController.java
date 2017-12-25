@@ -94,7 +94,8 @@ public class UserController {
 			}
 	}
 	
+	@RequestMapping("/addInit")
 	public  String addInit() {
-		return "jsp/user/user_";
+		return "user/user_add";
 	}
 }
