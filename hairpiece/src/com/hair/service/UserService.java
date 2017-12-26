@@ -45,4 +45,15 @@ public class UserService {
 		return userDao.queryTotal(user);
 	}
 
+	public User selectByPrimaryKey(int id ) {
+		return dao.selectByPrimaryKey(id);
+	}
+
+	public void updateUser(User user) {
+		dao.updateByPrimaryKey(user);
+	}
+
+	public void deleteUserById(int id) {
+		dao.deleteByPrimaryKey(id);
+	}
 }

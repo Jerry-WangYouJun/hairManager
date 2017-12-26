@@ -2,15 +2,11 @@ package com.hair.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,37 +18,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
+import com.hair.model.Dictionary;
 import com.hair.model.Grid;
 import com.hair.model.Pagination;
-import com.hair.model.User;
-import com.hair.service.UserService;
+import com.hair.service.DictionaryService;
 
-@RequestMapping("/user")
+import net.sf.json.JSONObject;
+
+@RequestMapping("/dic")
 @Controller
-public class UserController {
+public class DictionaryController {
 
 	@Autowired
-	UserService service;
-
-	@RequestMapping("/checkUser")
-	public String checkUser(User user, HttpServletRequest request,
-			HttpSession session) {
-		user = service.checkUser(user);
-		if (user != null) {
-			session.setAttribute("user", user.getUserName());
-			session.setAttribute("roleid", user.getRoleId());
-			return "index";
-		} else {
-			request.setAttribute("msg", "用户名或者密码错误");
-			return "login";
-		}
-	}
+	DictionaryService service;
 
 	@RequestMapping(value = "/checkUnique")
-	public void checkUnique(HttpServletResponse response, String userNo) {
+	public void checkUnique(HttpServletResponse response, String dicNo) {
 		PrintWriter out;
 		try {
-			Long sum = service.checkUnique(userNo);
+			Long sum = service.checkUnique(dicNo);
 			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
 			JSONObject json = new JSONObject();
@@ -71,40 +55,21 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-
-	@RequestMapping("/register")
-	public String register() {
-		return "register";
-	}
-
-	@RequestMapping("/loginOut")
-	public String logout(HttpSession session) {
-		session.removeAttribute("agentcode");
-		session.removeAttribute("user");
-		return "login";
-	}
-
 	@RequestMapping("/instVip")
-	public String insertCustomer(User user, HttpServletRequest request) {
-		user.setRoleId("2");
-		service.insertCustomer(user);
+	public String insertCustomer(Dictionary dic, HttpServletRequest request) {
+		service.insertCustomer(dic);
 		return "login";
 	}
 
-	
 	@RequestMapping("/instVipAjax")
-	public void instVipAjax(User user, HttpServletRequest request , HttpServletResponse response) {
+	public void instVipAjax(Dictionary dic, HttpServletRequest request , HttpServletResponse response) {
 		PrintWriter out;
 		try {
 			
-			if(user.getId() != null) {
-				service.updateUser(user);
+			if(dic.getId() != null) {
+				service.updateDictionary(dic);
 			}else {
-				service.insertCustomer(user);
+				service.insertCustomer(dic);
 			}
 			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
@@ -118,20 +83,20 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	@RequestMapping("/user_query")
+	@RequestMapping("/dic_query")
 	public void queryTest(HttpServletResponse response,
 			HttpServletRequest request, HttpSession session) {
-		String userName = request.getParameter("userName");
+		String dicCode = request.getParameter("code");
 		String pageNo = request.getParameter("pageNo");
 		String pageSize = request.getParameter("pageSize");
-		// System.out.println(userName);
+		// System.out.println(dicName);
 		Grid grid = new Grid();
-		User user = new User();
-		user.setUserName(userName);
+		Dictionary dic = new Dictionary();
+		dic.setCode(dicCode);
 		Pagination page = new Pagination(pageNo, pageSize);
 		CodeUtil.initPagination(page);
-		List<User> list = service.queryList(user, page);
-		grid.setTotal(Long.valueOf(service.queryListCount(user)));
+		List<Dictionary> list = service.queryList(dic, page);
+		grid.setTotal(Long.valueOf(service.queryListCount(dic)));
 		grid.setRows(list);
 		PrintWriter out;
 		try {
@@ -149,24 +114,24 @@ public class UserController {
 
 	@RequestMapping("/addInit")
 	public String addInit(Model model) {
-		model.addAttribute("user", new User());
-		return "user/user_add";
+		model.addAttribute("dic", new Dictionary());
+		return "user/dictionary_add";
 	}
 	
 	@RequestMapping("/updateInit/{id}")
 	public ModelAndView  updateInit(@PathVariable("id")int id ) {
-		ModelAndView mv = new ModelAndView("user/user_add");
-		User user = service.selectByPrimaryKey(id);
-		mv.addObject("user" , user);
+		ModelAndView mv = new ModelAndView("user/dic_add");
+		Dictionary dic = service.selectByPrimaryKey(id);
+		mv.addObject("dic" , dic);
 		 return mv ;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/user_delete/{id}",method=RequestMethod.DELETE)
-	public void deleteUser(@PathVariable("id") int id , HttpServletResponse response){
+	@RequestMapping(value="/dic_delete/{id}",method=RequestMethod.DELETE)
+	public void deleteDictionary(@PathVariable("id") int id , HttpServletResponse response){
 		PrintWriter out;
 		try {
-			service.deleteUserById(id);
+			service.deleteDictionaryById(id);
 			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
 			JSONObject json = new JSONObject();

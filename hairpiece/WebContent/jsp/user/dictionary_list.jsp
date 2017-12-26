@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>用户管理</title>
+    <title>字典管理</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -17,8 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <body id="mainpanel" >
  	<div id="tb" region="north" title="查询条件区" class="easyui-panel"  iconCls="icon-search"  style="padding:5px; height:60px; width: 80%;margin-bottom: 3px "  >
-		<span>用户名:</span>
-		<input id="search-userNo" name="userNo"/>
+		<span>字典代码:</span>
+		<input id="search-code" name="code"/>
 		<a  href="javascript:void(0)"
 			class="easyui-linkbutton" plain="true" iconCls="icon-search"
 			onclick="doSearch()">查询</a> 
@@ -32,51 +32,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript">
     	$(function(){
 			$('#data_table').datagrid({
-				url:'${basePath}/user/user_query',
+				url:'${basePath}/dic/dic_query',
 				rownumbers : true,
 				pagination: true,
 				fitColumns: true,
 				singleSelect: true,
 				columns:[[
 					{field:'id', align : 'center',halign:'center',checkbox : true}, 
-					{field:'userName',title:'用户姓名',align:'center'},
-					{field:'userNo',title:'登录名',align:'center'},
-					{field:'roleId',title:'角色',align:'center',formatter:function(value,rowData,rowIndex){
-			    		if(value == "1"){
-			    			return "管理员";
-			    		}else if(value == "2"){
-			    			return "普通用户";
-			    		}else{
-			    			return "";
-			    		}
-			    }},
-					{field : 'sex',title : '性别',halign:'center',formatter:function(value,rowData,rowIndex){
-			    		if(value == "1"){
-			    			return "女";
-			    		}else if(value == "0"){
-			    			return "男";
-			    		}else{
-			    			return "";
-			    		}
-			    }},
-					{field:'email',title:'电子邮件',align:'center'},
-					{field:'telphone',title:'电话',align:'center'},
-					{field:'position',title:'地址',align:'center'},				
+					{field:'code',title:'代码',align:'center'},
+					{field:'name',title:'名称',align:'center'},
 					{field:'remark',title:'备注',align:'center'}
 				]],
 				toolbar: [
 				{
 					text:'添加',
 					iconCls: 'icon-add',
-					handler: function(){addUser();}
+					handler: function(){addDic();}
 				},'-',{
 					text:'修改',
 					iconCls: 'icon-edit',
-					handler: function(){updateUser();}
+					handler: function(){updateDic();}
 				},'-',{
 					text:'删除',
 					iconCls: 'icon-remove',
-					handler: function(){deleteUser();}
+					handler: function(){deleteDic();}
 				}]
 			});
 	    	$('#data_table').datagrid('getPager').pagination({  
@@ -95,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		});
 	    	
 	    	$('#dlg-frame').dialog( {
-				title : '用户管理',
+				title : '字典管理',
 				width :  700,
 				height : 500,
 				top:50,
@@ -124,34 +103,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	function doSearch(){
 	    		var pageNo = $(".pagination-num").val(); 
 			var pageSize = $(".pagination-page-list").val();
-	    		var userName = $("#search-userNo").val();
+	    		var dicName = $("#search-dicNo").val();
 		    $('#data_table').datagrid('reload',{
-		    		userName : userName,pageNo:pageNo,pageSize:pageSize
+		    		dicName : dicName,pageNo:pageNo,pageSize:pageSize
 			} );
 		 }
-	    	function addUser() {
-	    		var path = "${basePath}/user/addInit";
+	    	function addDic() {
+	    		var path = "${basePath}/dic/addInit";
 	    		document.getElementById('frameContent').src = path;
 	    		$('#dlg-frame').dialog('open');
 	    	}
 
-	    	function updateUser() {
+	    	function updateDic() {
 	    		var id = getChecked();
 	    		if (id > 0) {
-	    			var path = "${basePath}/user/updateInit/" + id;
+	    			var path = "${basePath}/dic/updateInit/" + id;
 	    			document.getElementById('frameContent').src = path;
 	    			$('#dlg-frame').dialog('open');
 	    		}
 	    	}
 
-	    	function deleteUser() {
+	    	function deleteDic() {
 	    		var del = confirm("确认删除？");
 	    		if (!del) {
 	    			return false;
 	    		}
 	    		var id = getChecked();
 	    		if (id > 0) {
-	    			var url = "${basePath}/user/user_delete/" + id;
+	    			var url = "${basePath}/dic/dic_delete/" + id;
 	    			$.ajax({
 	    				url : url,
 	    				type : 'delete',

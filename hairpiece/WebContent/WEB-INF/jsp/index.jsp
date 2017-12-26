@@ -34,9 +34,9 @@
 						url:"${basePath}/jsp/user/user_list.jsp"
 					}
 				},{
-					text:"类别管理",
+					text:"字典管理",
 					attributes:{
-						url:"${basePath}/init/airway_list"
+						url:"${basePath}/jsp/user/dictionary_list.jsp"
 					}
 				},{
 					text:"产品信息管理",
