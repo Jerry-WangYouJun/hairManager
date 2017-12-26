@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	$('#dlg-frame').dialog( {
 				title : '用户管理',
 				width :  700,
-				height : 320,
+				height : 500,
 				top:50,
 				left:100,
 				closed : true,

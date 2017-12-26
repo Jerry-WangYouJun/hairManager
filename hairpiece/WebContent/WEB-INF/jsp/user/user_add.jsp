@@ -20,7 +20,7 @@ textarea {
 	function doServlet() {
 		if (checkInfo()) {
 			$.ajax({
-				url : "${basePath}/user/instVip",
+				url : "${basePath}/user/instVipAjax",
 				type : 'post',
 				data : $("#userForm").serialize(),
 				dataType : 'json',
@@ -50,7 +50,7 @@ textarea {
 			$.messager.alert("提示", "密码不能为空!", "error");
 			return false;
 		}
-		if ($("#pwd2").val() == "") {
+		if ($("#confirm").val() == "") {
 			$.messager.alert("提示", "确认密码不能为空!", "error");
 			return false;
 		}
@@ -62,32 +62,31 @@ textarea {
 
 	function checkPwd() {
 		var pwd = $("#pwd").val();
-		var pwd2 = $("#pwd2").val();
-		if (pwd != "" && pwd2 != "") {
-			if (pwd != pwd2) {
+		var confirm = $("#confirm").val();
+		if (pwd != "" && confirm != "") {
+			if (pwd != confirm) {
 				$.messager.alert("提示", "两次输入的密码不一致!", "error");
 				return '1';
 			}
 		}
 	}
 
-	function checkAgent() {
-		var userName = $("#userName").val();
-		if (userName == "") {
+	function checkUnique() {
+		var userNo = $("#userNo").val();
+		if (userNo == "") {
 			return false;
 		}
 		$.ajax({
-			url : "${basePath}/user/checkAgent",
+			url : "${basePath}/user/checkUnique",
 			type : 'post',
 			data : {
-				"userName" : userName
+				"userNo" : userNo
 			},
 			dataType : 'json',
 			success : function(data) {
-				if (data.success == true) {
-					$("#userId").val(data.userid);
-				} else {
-					$.messager.alert('提示', "输入的代理商有误,请确认!", "error");
+				if(data.success != true){
+			   	   $.messager.alert('提示', data.msg , "error");
+			   	$("#userNo").val("");
 				}
 			},
 			error : function(transport) {
@@ -95,6 +94,7 @@ textarea {
 			}
 		});
 	}
+	
 </script>
 </head>
 <body>
@@ -108,7 +108,7 @@ textarea {
 					class=" form-control"></td>
 				<td>登录账号：</td>
 				<td style="padding: 20px"><input name="userNo" id="userNo"
-					class=" form-control"></td>
+					class=" form-control" onchange="checkUnique();"></td>
 			</tr>
 			<tr>
 				<td>密码：</td>
@@ -137,13 +137,11 @@ textarea {
 					></td>
 			</tr>
 			<tr>
-				<td>备注：</td>
+				<td>备注：<input id="id" name="id" style="display: none;" /></td>
 				<td style="padding: 20px"><textarea name="remark" class=" form-control" rows="4"
 						></textarea></td>
 			</tr>
 			<tr>
-				<td style="width: 100px;height: 20px"><input type="submit" value="提交"style="width: 100px;height: 20px" >
-				<td><input id="id" name="id" style="display: none;" /></td>
 			</tr>
 		</table>
 	</form>

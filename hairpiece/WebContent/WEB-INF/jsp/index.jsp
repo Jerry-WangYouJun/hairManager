@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>假发售卖信息管理系统</title>
+    <title>信息管理系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -131,7 +131,7 @@
 		<table width="100%">
 			<tr>
 				<td align="center" style="padding-top: 20px;"> 
-					<font color="white" style="font-family: STHupo;font-size: 80px">假发售卖后台管理系统</font>
+					<font color="white" style="font-family: STHupo;font-size: 80px">后台管理系统</font>
 				</td>
 			</tr>
 			<tr>
@@ -158,7 +158,7 @@
 	<div region="center" class="easyui-tabs" fit="true" border="false" id="tabs">
 		<div title="首页" >
 			<div align="center"  style="padding-top: 100px;"><font color="red" size="10">
-					假发售卖后台管理系统</font>
+					台管理系统</font>
 		    </div>		
 		</div>
 	</div>

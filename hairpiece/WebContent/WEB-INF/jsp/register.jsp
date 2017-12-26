@@ -1,18 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/common/taglibs.jsp"%>
+<%@include file="/common/common.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+		function checkUser(){
+			var userNo = $("#userNo").val();
+			var pwd = $("#pwd").val();
+			//var vcode = $("#vcode").val();
+			if(userNo == ""){
+				alert("用户名不能为空!");
+				return;
+			}
+			if(pwd == ""){
+				alert("密码不能为空!");
+				return;
+			}
+			//if(vcode == ""){
+				//alert("验证码不能为空!");
+				//return;
+			//}
+			document.forms[0].submit();
+		}
+	  
+</script>
 </head>
 <body>
 
 		<form id="company_form" action="${basePath }/user/instVip" style="padding-left: 30%;padding-top:50px;width:30%;">
 			<div class="form-group col-md-12">
 				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">用户名称：</label>
+					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">昵称：</label>
 				<input name="userName" class=" form-control"
 					style="display: inline-block; width: 70%">
 			</div>

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,84 +20,124 @@ import com.hair.model.Pagination;
 import com.hair.model.User;
 import com.hair.service.UserService;
 
-import net.sf.json.JSONObject;
-
-
 @RequestMapping("/user")
 @Controller
 public class UserController {
-	 
+
 	@Autowired
-	UserService service ;
-	
-	
+	UserService service;
+
 	@RequestMapping("/checkUser")
-	public String checkUser(User user , HttpServletRequest request , HttpSession session){
+	public String checkUser(User user, HttpServletRequest request,
+			HttpSession session) {
 		user = service.checkUser(user);
-		if(user != null ){
+		if (user != null) {
 			session.setAttribute("user", user.getUserName());
 			session.setAttribute("roleid", user.getRoleId());
-				return "index" ;
-		}else{
+			return "index";
+		} else {
 			request.setAttribute("msg", "用户名或者密码错误");
-			return "login" ;
+			return "login";
 		}
 	}
-	
+
+	@RequestMapping(value = "/checkUnique")
+	public void checkUnique(HttpServletResponse response, String userNo) {
+		PrintWriter out;
+		try {
+			Long sum = service.checkUnique(userNo);
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+			JSONObject json = new JSONObject();
+			if(sum > 0){
+				json.put("success", false);
+				json.put("msg", "登录名不可用！");
+			}else{
+				json.put("success", true);
+				json.put("msg", "登录名可用");
+			}
+			out.println(json);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@RequestMapping("/login")
-	public String login(){
+	public String login() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/register")
-	public String register(){
+	public String register() {
 		return "register";
 	}
 
 	@RequestMapping("/loginOut")
-	public String logout(HttpSession session){
+	public String logout(HttpSession session) {
 		session.removeAttribute("agentcode");
 		session.removeAttribute("user");
 		return "login";
 	}
-	
+
 	@RequestMapping("/instVip")
-	public String insertCustomer(User user , HttpServletRequest request ) {
+	public String insertCustomer(User user, HttpServletRequest request) {
 		user.setRoleId("2");
 		service.insertCustomer(user);
 		return "login";
 	}
+
 	
+	@RequestMapping("/instVipAjax")
+	public void instVipAjax(User user, HttpServletRequest request , HttpServletResponse response) {
+		PrintWriter out;
+		try {
+			user.setRoleId("2");
+			service.insertCustomer(user);
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+			JSONObject json = new JSONObject();
+			json.put("success", true);
+			json.put("msg", "操作成功");
+			out.println(json);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	@RequestMapping("/user_query")
-	public void queryTest( HttpServletResponse response, HttpServletRequest request  ,HttpSession session ) {
+	public void queryTest(HttpServletResponse response,
+			HttpServletRequest request, HttpSession session) {
 		String userName = request.getParameter("userName");
 		String pageNo = request.getParameter("pageNo");
 		String pageSize = request.getParameter("pageSize");
-		//System.out.println(userName);
+		// System.out.println(userName);
 		Grid grid = new Grid();
-	    User user = new User();
-	    user.setUserName(userName);
-		Pagination page =  new Pagination(pageNo, pageSize) ;
-	    CodeUtil.initPagination(page);
-		List<User> list = service.queryList(user , page );
+		User user = new User();
+		user.setUserName(userName);
+		Pagination page = new Pagination(pageNo, pageSize);
+		CodeUtil.initPagination(page);
+		List<User> list = service.queryList(user, page);
 		grid.setTotal(Long.valueOf(service.queryListCount(user)));
 		grid.setRows(list);
 		PrintWriter out;
-			try {
-				response.setContentType("text/html;charset=UTF-8");
-				out = response.getWriter();
-				JSONObject json = new JSONObject();
-				json = JSONObject.fromObject(grid);
-				out.println(json);
-				out.flush();
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		try {
+			response.setContentType("text/html;charset=UTF-8");
+			out = response.getWriter();
+			JSONObject json = new JSONObject();
+			json = JSONObject.fromObject(grid);
+			out.println(json);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	@RequestMapping("/addInit")
-	public  String addInit() {
+	public String addInit() {
 		return "user/user_add";
 	}
 }
