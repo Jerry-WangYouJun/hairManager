@@ -67,11 +67,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	}
 	    });
 	    	
-	    	$("input:checkbox:not(input:checkbox[name])").click(function(){
-	    			      $("input:checkbox").each(function(){
-	    			    	   	     $(this).attr("checked","checked");
-	    			      })
-	    		});
 	    	
 	    	$('#dlg-frame').dialog( {
 				title : '字典管理',
@@ -100,12 +95,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 	 });
     	
-	    	function doSearch(){
+    	function doSearch(){
 	    		var pageNo = $(".pagination-num").val(); 
 			var pageSize = $(".pagination-page-list").val();
-	    		var dicName = $("#search-dicNo").val();
+	    		var dicName = $("#search-code").val();
 		    $('#data_table').datagrid('reload',{
-		    		dicName : dicName,pageNo:pageNo,pageSize:pageSize
+		    		code : code,pageNo:pageNo,pageSize:pageSize
 			} );
 		 }
 	    	function addDic() {
@@ -156,12 +151,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var id;
 				var checkTotal = 0;
 				$("input[type=checkbox]").each(function() {
-					if (this.checked) {
+					if (this.checked && $(this).val() != "on" ) {
 						id = $(this).val();
 						checkTotal++;
 					}
 				});
-				console.info(checkTotal);
 				if (checkTotal == 0) {
 					$.messager.alert('提示', "请先选中一行(只允许单行操作)", 'error');
 					return 0;

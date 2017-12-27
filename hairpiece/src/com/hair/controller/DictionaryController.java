@@ -33,10 +33,10 @@ public class DictionaryController {
 	DictionaryService service;
 
 	@RequestMapping(value = "/checkUnique")
-	public void checkUnique(HttpServletResponse response, String dicNo) {
+	public void checkUnique(HttpServletResponse response, String code) {
 		PrintWriter out;
 		try {
-			Long sum = service.checkUnique(dicNo);
+			Long sum = service.checkUnique(code);
 			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
 			JSONObject json = new JSONObject();
@@ -120,7 +120,7 @@ public class DictionaryController {
 	
 	@RequestMapping("/updateInit/{id}")
 	public ModelAndView  updateInit(@PathVariable("id")int id ) {
-		ModelAndView mv = new ModelAndView("user/dic_add");
+		ModelAndView mv = new ModelAndView("user/dictionary_add");
 		Dictionary dic = service.selectByPrimaryKey(id);
 		mv.addObject("dic" , dic);
 		 return mv ;

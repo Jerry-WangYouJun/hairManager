@@ -32,7 +32,7 @@ public class DictionaryService {
 	
 	public Long checkUnique(String dicNo) {
 		Map map = new HashMap();
-		map.put("dicNo", dicNo);
+		map.put("code", dicNo);
 		return dao.selectDictionaryCountByWhere(map);
 		
 	}
