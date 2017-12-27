@@ -1,36 +1,53 @@
 /*
- Navicat MySQL Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : localhost
- Source Server Type    : MySQL
- Source Server Version : 50719
- Source Host           : localhost
- Source Database       : hair
+Source Server         : 127.0.0.1
+Source Server Version : 50528
+Source Host           : localhost:3306
+Source Database       : hair
 
- Target Server Type    : MySQL
- Target Server Version : 50719
- File Encoding         : utf-8
+Target Server Type    : MYSQL
+Target Server Version : 50528
+File Encoding         : 65001
 
- Date: 12/25/2017 13:02:49 PM
+Date: 2017-12-27 17:13:16
 */
 
-SET NAMES utf8;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
---  Table structure for `t_dictionary`
+-- Table structure for t_dictionary
 -- ----------------------------
 DROP TABLE IF EXISTS `t_dictionary`;
 CREATE TABLE `t_dictionary` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(20) DEFAULT NULL,
   `name` varchar(20) DEFAULT NULL,
   `parent` int(11) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_dictionary
+-- ----------------------------
+INSERT INTO `t_dictionary` VALUES ('3', 'dddd', '123', null, '123');
+
+-- ----------------------------
+-- Table structure for t_product
+-- ----------------------------
+DROP TABLE IF EXISTS `t_product`;
+CREATE TABLE `t_product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `t_user`
+-- Records of t_product
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_user
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
@@ -45,13 +62,12 @@ CREATE TABLE `t_user` (
   `telphone` varchar(20) DEFAULT NULL,
   `remark` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Records of `t_user`
+-- Records of t_user
 -- ----------------------------
-BEGIN;
-INSERT INTO `t_user` VALUES ('1', 'admin', 'admin', 'admin', '1', null, null, null, null, null), ('2', '11', '1111', '111', '2', '0', '111,', '111', '1111', '111');
-COMMIT;
-
-SET FOREIGN_KEY_CHECKS = 1;
+INSERT INTO `t_user` VALUES ('1', 'admin', 'admin', 'admin', '1', null, null, null, null, null);
+INSERT INTO `t_user` VALUES ('2', '11', '1111', '111', '2', '0', '111,', '111', '1111', '111');
+INSERT INTO `t_user` VALUES ('5', '111', '111', '111', '2', '0', '', '', '', '');
+INSERT INTO `t_user` VALUES ('6', '123', '11', '111', '2', '0', '', '', '', '');
