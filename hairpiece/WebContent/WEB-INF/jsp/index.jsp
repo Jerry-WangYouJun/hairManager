@@ -41,7 +41,7 @@
 				},{
 					text:"产品信息管理",
 					attributes:{
-						url:"${basePath}/init/status_list"
+						url:"${basePath}/jsp/user/product_list.jsp"
 					}
 				},{
 					text:"基本信息修改",

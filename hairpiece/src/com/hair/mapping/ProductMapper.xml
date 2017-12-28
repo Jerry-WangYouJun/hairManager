@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hair.mapping.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.hair.model.Product" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="subType" property="subType" jdbcType="VARCHAR" />
+     <result column="hairType" property="hairType" jdbcType="VARCHAR" />
+    <result column="permed" property="permed" jdbcType="VARCHAR" />
+     <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="texture" property="texture" jdbcType="VARCHAR" />
+    <result column="unit" property="unit" jdbcType="DOUBLE" />
+    <result column="items" property="items" jdbcType="DOUBLE" />
+    <result column="hairLen" property="hairLen" jdbcType="DOUBLE" />
+    <result column="hairColor" property="hairColor" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, subType, type, hairType, grade, permed, texture, unit,  items,hairLen , hairColor ,remark 
+    
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByProductNoAndPwd" resultMap="BaseResultMap" parameterType="com.hair.model.Product" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where type = #{type}
+    and hairType = #{hairType}
+  </select>
+  
+  <select id="selectProductByWhere" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where 1=1
+       <if test="type != null and type != ''" >
+        and type like #{type}
+      </if>
+      <if test="subType != null and subType != ''" >
+        and subType like #{subType}
+      </if>
+  </select>
+  
+    <select id="selectProductCountByWhere" resultType="java.lang.Long" parameterType="com.hair.model.Product" >
+    select 
+    	count(*) 
+    from t_product
+    where 1=1
+       <if test="type != null and type != ''" >
+        and type like #{type}
+      </if>
+      <if test="subType != null and subType != ''" >
+        and subType like #{subType}
+      </if>
+  </select> 
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_product
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hair.model.Product" >
+    insert into t_product (ID,  texture, 
+      unit, hairType, 
+      remark, permed, items, 
+      subType, type , grade , hairLen , hairColor)
+    values (#{id,jdbcType=VARCHAR}, #{texture,jdbcType=VARCHAR}, 
+       #{unit,jdbcType=VARCHAR}, #{hairType,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{permed,jdbcType=VARCHAR}, #{items,jdbcType=VARCHAR}, 
+      #{subType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR} , #{grade ,jdbcType=VARCHAR} , 
+      #{hairLen,jdbcType=DOUBLE} , #{hairColor ,jdbcType=DOUBLE} 
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hair.model.Product" >
+    insert into t_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="texture != null" >
+        texture,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="hairType != null" >
+        hairType,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="permed != null" >
+        permed,
+      </if>
+      <if test="items != null" >
+        items,
+      </if>
+      <if test="subType != null" >
+        subType,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="type != null" >
+        hairLen,
+      </if>
+      <if test="grade != null" >
+        hairColor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="texture != null" >
+        #{texture,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="hairType != null" >
+        #{hairType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="permed != null" >
+        #{permed,jdbcType=VARCHAR},
+      </if>
+      <if test="items != null" >
+        #{items,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null" >
+        #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="hairLen != null and hairLen>=0" >
+        #{hairLen,jdbcType=DOUBLE},
+      </if>
+      <if test="hairColor != null and hairColor>=0" >
+        #{hairColor,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hair.model.Product" >
+    update t_product
+    <set >
+      <if test="texture != null" >
+        texture = #{texture,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="hairType != null" >
+        hairType = #{hairType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="permed != null" >
+        permed = #{permed,jdbcType=VARCHAR},
+      </if>
+      <if test="items != null" >
+        items = #{items,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null" >
+        subType = #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="hairLen != null and hairLen>=0" >
+        type = #{hairLen,jdbcType=DOUBLE},
+      </if>
+      <if test="hairColor != null and hairColor>=0" >
+        grade = #{hairColor,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hair.model.Product" >
+    update t_product
+    set 
+      texture = #{texture,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      hairType = #{hairType,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      permed = #{permed,jdbcType=VARCHAR},
+      items = #{items,jdbcType=VARCHAR},
+      subType = #{subType,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      grade = #{grade , jdbcType=VARCHAR},
+       hairLen = #{hairLen,jdbcType=DOUBLE},
+      hairColor = #{hairColor , jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

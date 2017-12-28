@@ -22,7 +22,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    public User selectByUserNoAndPwd(User user);
+    public User selectByUserNoAndPwd(User record);
 
 	public List<User> selectUserByWhere(Map params);
 
