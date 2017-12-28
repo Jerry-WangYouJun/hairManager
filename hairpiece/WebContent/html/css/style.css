@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0; padding:0; font-size:12px; color:#000;  font-family:Arial, Helvetica, sans-serif;}
+ul,li,p,h1,h2,h3,h4,dl,dt,dd,img,input{margin:0; padding:0; border:0; list-style:none;}
+a:link,a:visited{color:#FFF; text-decoration:none;}
+a:hover{color:#000 ;}
+.fLeft{float:left}
+.fright{float:right}
+.clear{ clear:both}
+/*header*/
+.logo{
+    width:150px;
+    height: 70px;
+    margin-top:30px;
+    background: url(../images/logo.png);
+    margin-left:-150px;
+}
+.tel{
+    width:180px;
+    height:75px;
+    margin-top:30px;
+    margin-right:-150px;
+}
+.tel p,.tel img {
+    line-height: 32px;
+    float: left;
+    margin-right:5px;
+    margin-bottom: 3px;
+}
+.autoHeight{overflow: hidden;}
+#top_wrap{margin:0 auto; background:#d53950;}
+#header{width:1024px; height:150px; margin:0 auto; font-size:14px;position: relative;}
+#header ul{clear: both;}
+#header ul li{float:left;line-height:29px; line-height:20px;width:170px;}
+#header ul li a{height:40px;display: block;line-height: 40px;}
+#header ul li a.li_1{color:#FFF;  margin-left:0px; font-size:16px; font-weight:bold; }
+#header ul li a.li_1:hover{color:#FC0;}
+#header ul li a.current_navigation { color:#FC0;  margin-left:0px; font-size:16px; font-weight:bold; }
+.li_3_content { }
+.li_3_content dd{  margin:0 auto;background: #c42e54 ;display: none;padding-left:10px;}
+.li_3_content dd a.li_3_content_a{ font-weight:normal; font-size:14px;line-height:20px;}
+#top_space{position: absolute;width:1024px;height:140px;top:110px;}
+/*content*/
+#content{ margin:0 auto;  background: #FFF url(../images/bg_commen.jpg) no-repeat top center;padding: 0;-moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box; }
+#content_body{ width:1000px; margin:0 auto; padding:5px inherit; }
+#content_body_main{ width:1000px; margin:0 auto; position: relative;}
+.content_body_main_l{width:165px;float: left;border:1px solid #e76175;margin-top: 10px;z-index: 998;position: absolute;top:0;left:0;}
+.content_body_main_l li{font-size: 16px;color:#fff;height: 40px;width: 165px;background: #dd7383;line-height: 40px;}
+.content_body_main_l li a{color:#fff;height: 40px;width: 165px;display: block;padding-left:10px;-moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box; }
+.content_body_main_l>ul>.on{background: #BB0F56;}
+.content_body_main_l .hov{background: #fabdc7;}
+
+.content_body_main_r{width:820px; float: right;}
+.conL{width:834px; float:left; margin-bottom:5px;position:relative;}
+ul{ list-style:none}
+img,a img{ border:0}
+.three{height:200px;width:1000px;margin:50px auto;}
+.three li{float: left;width:320px;margin:0 6px;height: 200px;}
+.three p{text-align: center;color: #666;font-size: 16px;}
+#ad{width:834px; height:457px}
+#ad2{width:834px; height:221px}
+.banner{ z-index:99; width:834px; height:457px; _width:834px}
+.bannerImg{ position: relative; margin:0; width: 834px;padding:0; float:left}
+.bannerImg .bannerPage{ position: absolute; top: 290px; right:10px}
+.bannerImg .bannerPage a{ margin-right:2px}
+.bannerImg .bannerPage a img{ vertical-align:middle}
+.slides_container {position: relative; width:834px; overflow: hidden}
+.pagination { margin:26px auto 0}
+.pagination li { margin:0 1px; float:left}
+.pagination li a { background:url("../images/pagination.png") 0px 0; float:left; height:0; overflow:hidden; padding-top:18px; display:block; width:18px}
+.pagination li.current a { background-position:0 -18px}
+.conR{width:166px; float:left;}
+#menu{width:166px; background-color:#000;line-height:23px;font-size:12px;}
+#menu span{height:15px;line-height:15px;padding-left:10px;display:block;background:url("open.gif") no-repeat 5px 3px;cursor:pointer; color:#e0bf70;}
+
+
+
+/*bottom*/
+#bottom_wrap{margin:0 auto; background-color: #d53950;height:115px;}
+#bottom{width: 1000px;/*height: 70px;*/margin: 0 auto;background-color: #d53950;padding-top: 3px;padding-left: 10px;padding-right: 10px; font-size:12px;}
+#bottom p{text-align:center; height:14px; line-height:14px; padding-bottom:15px; color:#FFF; margin:15px auto; }
+/*#bottom .bot{width:405px; height:30px; margin:0 auto; background:url("../images/bottom.jpg") no-repeat left center;}*/
+.bottom_a a{ font-size:16px; color:#FFF  }
+.bottom_a a:hover{ font-size:16px; color:#000  }
+
+
+/*图片列表[简约]*/
+.picture_list li { float:left; text-align:center; padding:4px; margin:5px;}
+.picture_list_img_wrap{width:145px; height:127px;}
+.picture_list_img_wrap img { padding:4px; border:1px solid #CCC; width:135px; height:117px;}
+.picture_list_img_wrap1 img { padding:3px; border:1px solid #CCC; width:100px; height:75px;}
+.picture_list li a { line-height:22px; color:#000; }
+.picture_list li a:hover img { border:1px solid #cc0000; }
+
+
+/*分页样式*/
+.page_ct { width:1000px; margin:0 auto;   }
+.page_turner { float:right; padding-right:320px}
+.page_turner a, .page_turner span { background:#C36; float:left; display:block; border:1px solid #D3D1D1; padding:2px 5px; margin-left:4px; line-height:16px; }
+.page_turner a:link, .page_turner a:visited { text-decoration:none; }
+.page_turner a:hover, .page_turner a.c { background:#CC0001; color:#FFF; }
+#total { color:#000; }
+
+
+
+/*信息详情页*/
+#left { float:left; width:370px;height:620px; }
+#right { float:right; width:620px; background:#FFF; }
+#info_bpic { padding:10px; text-align:center; }
+#info_bpic a img { width:355px; height:460px; }
+#info_name { padding:10px 0;font-size:20px; font-weight:bolder; text-align:left; line-height:30px; color:#000 }
+#info_intro { padding:10px 0; text-align:left; color:#000;  line-height:30px;  font-weight:bolder; font-size:16px;}
+#info_intro a { color:#999; }
+#info_scontent { padding:10px; background:#EFF3D9; border:1px solid #A6CC93; margin-top:10px; }
+#info_content { padding:10px 0; font-size:14px; color:#000  }
+#info_bcontent { padding:10px 0; font-size:14px; }
+#info_extra { padding:10px 0; }
+#info_pic { width:240px; }
+
+#info_bpic img { max-width:600px; padding:5px; border:1px solid #CCC; }
+#info_around { padding:5px; background:#EFF3D9; border:1px solid #A6CC93; }
+#info_comment { text-align:left; padding:10px 0; font-weight:bold; color:#000  }
+
+
+
+/*Yu add*/
+.article_title { font-size:20px; font-weight:bolder; text-align:center; line-height:30px; padding:10px;}
+.article_body { padding:20px;}
+
+
+.aa  a{color:#000;}
+ 
