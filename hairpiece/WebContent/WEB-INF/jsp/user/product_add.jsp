@@ -94,10 +94,45 @@ textarea {
 	
 	
 	$(function(){
+		if("${pro.type}" != ""){
+			   $("#type").val("${pro.type}")
+					addItems("${pro.type}");
+		 }
+		if("${pro.subType}" != ""){
+				 $("#subType").val("${pro.subType}");
+	  	}
 		  if("${pro.remark}" != ""){
 			   $("#remark").val("${pro.remark}")
 		  }
 	})
+	
+	
+	//动态绑定下拉框项  
+        function addItems(opt) {  
+            $.ajax({  
+                url: "${basePath}/pro/getSubType?type=" + opt,    //后台webservice里的方法名称  
+                type: "post",  
+                dataType: "json",  
+                contentType: "application/json",  
+                traditional: true,  
+                success: function (data) {  
+                	  console.info(data.list);
+                        var jsonObj =data.list;  
+                        var optionstring = "";  
+                        for (var j = 0; j < jsonObj.length; j++) {
+                        	if("${pro.subType}" != "" && "${pro.subType}" ==  jsonObj[j].name){
+                        		optionstring += "<option selected='selected' value=\"" + jsonObj[j].name + "\" >" + jsonObj[j].name  + "</option>";  
+               	  			}else{
+                           	   optionstring += "<option value=\"" + jsonObj[j].name + "\" >" + jsonObj[j].name  + "</option>";  
+               	  			}
+                        }  
+                        $("#subType").html("<option value='请选择'>请选择...</option> "+optionstring);  
+                },  
+                error: function (msg) {  
+                    alert("出错了！");  
+                }  
+            });            
+        }; 
 </script>
 </head>
 <body>
@@ -107,9 +142,20 @@ textarea {
 		<table width="100%">
 			<tr>
 				<td>大类：</td>
-				<td style="padding: 20px"><input name="type" value="${pro.type }"></td>
+				<td style="padding: 20px">
+					  <select name = "type" id="type" onchange="addItems(this.value)">
+						  <option >-请选择-</option>
+					      <option value="Wigs">Wigs</option>
+					      <option value="Hair extensions">Hair extensions</option>
+					      <option value="Hair pieces">Hair pieces</option>
+					      <option value="Eyelashs">Eyelashs</option>
+					  </select>
 				<td>小类：</td>
-				<td style="padding: 20px"><input name="subType" id="subType" value="${pro.subType }"></td>
+				<td style="padding: 20px">
+							<select name = "subType" id="subType" >
+									<option >-请选择-</option>
+							</select>
+				</td>
 			</tr>
 			<tr>
 				<td>hairType：</td>
@@ -144,5 +190,7 @@ textarea {
 			</tr>
 		</table>
 	</form>
+	
+	
 </body>
 </html>

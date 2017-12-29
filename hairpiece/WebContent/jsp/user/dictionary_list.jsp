@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	function doSearch(){
 	    		var pageNo = $(".pagination-num").val(); 
 			var pageSize = $(".pagination-page-list").val();
-	    		var dicName = $("#search-code").val();
+	    		var code = $("#search-code").val();
 		    $('#data_table').datagrid('reload',{
 		    		code : code,pageNo:pageNo,pageSize:pageSize
 			} );

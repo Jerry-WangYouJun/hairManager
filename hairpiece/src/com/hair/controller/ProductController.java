@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,19 +20,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
-import com.hair.model.Product;
+import com.hair.model.Dictionary;
 import com.hair.model.Grid;
 import com.hair.model.Pagination;
+import com.hair.model.Product;
+import com.hair.service.DictionaryService;
 import com.hair.service.ProductService;
-
-import net.sf.json.JSONObject;
 
 @RequestMapping("/pro")
 @Controller
 public class ProductController {
 
 	@Autowired
-	ProductService service;
+	ProductService service; 
+	
+	@Autowired
+	DictionaryService dicService;
 
 	@RequestMapping(value = "/checkUnique")
 	public void checkUnique(HttpServletResponse response, String code) {
@@ -135,6 +140,24 @@ public class ProductController {
 			JSONObject json = new JSONObject();
 			json.put("success", true);
 			json.put("msg", "操作成功");
+			out.println(json);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getSubType")
+	public void deleteProduct(String type  , HttpServletResponse response){
+		PrintWriter out;
+		try {
+			List<Dictionary> list = dicService.selectDicByWhere(type);
+			response.setCharacterEncoding("UTF-8");
+			out = response.getWriter();
+			JSONObject json = new JSONObject();
+			json.put("list", list);
 			out.println(json);
 			out.flush();
 			out.close();

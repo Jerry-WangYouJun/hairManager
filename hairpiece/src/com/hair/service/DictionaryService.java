@@ -56,4 +56,10 @@ public class DictionaryService {
 	public void deleteDictionaryById(int id) {
 		dao.deleteByPrimaryKey(id);
 	}
+	
+	public List<Dictionary> selectDicByWhere(String type){
+		Map params = new HashMap<>();
+		params.put("code" , type );
+		return dao.selectDictionaryByWhere(params);
+	}
 }
