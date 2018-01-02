@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.WebUtils;
 
 import com.hair.common.CodeUtil;
 import com.hair.model.Dictionary;
@@ -75,17 +73,17 @@ public class ProductController {
 	public void  instVipAjax(Product pro, HttpServletRequest request , HttpServletResponse response) {
 		PrintWriter out;
 		try {
-			 // 检测是否为上传请求
-		    String contentType = request.getContentType();
 		        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		        MultipartFile pic = multipartRequest.getFile("upfile");   
 		        if (!pic.isEmpty()) {
 		        	String osName =  System.getProperty("os.name");
 		        	String path =  System.getProperty("user.dir")  ;
 		        	if(osName.toUpperCase().startsWith("MAC")) {
-		        		int  splitIndex = System.getProperty("user.dir").lastIndexOf(System.getProperty("file.separator"));
-		        		path = System.getProperty("user.dir").substring(0, splitIndex);
+//		        		int  splitIndex = System.getProperty("user.dir").lastIndexOf(System.getProperty("file.separator"));
+//		        		path = System.getProperty("user.dir").substring(0, splitIndex);
 		        		path="/Users/wangyoujun/Desktop/smd/WebContent/image";
+		        	}else{
+		        		path="D:\\image";
 		        	}
 		        	String originalFileName = pic.getOriginalFilename();
 		        	// 新的图片

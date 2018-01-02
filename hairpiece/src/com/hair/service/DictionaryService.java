@@ -59,7 +59,7 @@ public class DictionaryService {
 	
 	public List<Dictionary> selectDicByWhere(String type){
 		Map params = new HashMap<>();
-		params.put("code" , type );
+		params.put("code" , "%" + type + "%" );
 		return dao.selectDictionaryByWhere(params);
 	}
 }

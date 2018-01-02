@@ -3,6 +3,7 @@
 <mapper namespace="com.hair.mapping.ProductMapper" >
   <resultMap id="BaseResultMap" type="com.hair.model.Product" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="proName" property="proName" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="subType" property="subType" jdbcType="VARCHAR" />
      <result column="hairType" property="hairType" jdbcType="VARCHAR" />
@@ -16,7 +17,7 @@
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, subType, type, hairType, grade, permed, texture, unit,  items,hairLen , hairColor ,remark 
+    ID,proName, subType, type, hairType, grade, permed, texture, unit,  items,hairLen , hairColor ,remark 
     
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -34,7 +35,7 @@
     and hairType = #{hairType}
   </select>
   
-  <select id="selectProductByWhere" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectProductByWhere" resultMap="BaseResultMap" parameterType="com.hair.model.Product" >
     select 
     <include refid="Base_Column_List" />
     from t_product
@@ -44,6 +45,9 @@
       </if>
       <if test="subType != null and subType != ''" >
         and subType like #{subType}
+      </if>
+      <if test="proName != null and proName != ''" >
+        and  proName like  #{proName}
       </if>
   </select>
   
@@ -58,6 +62,9 @@
       <if test="subType != null and subType != ''" >
         and subType like #{subType}
       </if>
+      <if test="proName != null and proName != ''" >
+        and  proName like  #{proName}
+      </if>
   </select> 
   
   
@@ -66,11 +73,11 @@
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.hair.model.Product" >
-    insert into t_product (ID,  texture, 
+    insert into t_product (ID, proName, texture, 
       unit, hairType, 
       remark, permed, items, 
       subType, type , grade , hairLen , hairColor)
-    values (#{id,jdbcType=VARCHAR}, #{texture,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR},#{proName,jdbcType=VARCHAR},  #{texture,jdbcType=VARCHAR}, 
        #{unit,jdbcType=VARCHAR}, #{hairType,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{permed,jdbcType=VARCHAR}, #{items,jdbcType=VARCHAR}, 
       #{subType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR} , #{grade ,jdbcType=VARCHAR} , 
@@ -82,6 +89,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
+      </if>
+      <if test="proName != null" >
+        proName,
       </if>
       <if test="texture != null" >
         texture,
@@ -121,6 +131,9 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="proName != null" >
+        #{proName,jdbcType=VARCHAR},
+      </if>
       <if test="texture != null" >
         #{texture,jdbcType=VARCHAR},
       </if>
@@ -159,6 +172,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hair.model.Product" >
     update t_product
     <set >
+      <if test="proName != null" >
+        proName = #{proName,jdbcType=VARCHAR},
+      </if>
       <if test="texture != null" >
         texture = #{texture,jdbcType=VARCHAR},
       </if>
@@ -198,6 +214,7 @@
   <update id="updateByPrimaryKey" parameterType="com.hair.model.Product" >
     update t_product
     set 
+      proName = #{proName,jdbcType=VARCHAR},
       texture = #{texture,jdbcType=VARCHAR},
       unit = #{unit,jdbcType=VARCHAR},
       hairType = #{hairType,jdbcType=VARCHAR},

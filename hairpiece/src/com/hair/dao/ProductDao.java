@@ -27,6 +27,7 @@ public class ProductDao {
 		jdbcTemplate.query(sql, new RowMapper() {
 			public Object mapRow(ResultSet rs, int arg1) throws SQLException {
 					pro.setId(rs.getInt("id"));
+					pro.setProName(rs.getString("proName"));
 					pro.setGrade(rs.getString("grade"));
 					pro.setHairColor(rs.getString("hariColor"));
 					pro.setHairLen(rs.getDouble("hairLen"));
@@ -54,6 +55,7 @@ public class ProductDao {
 			public Object mapRow(ResultSet rs, int arg1) throws SQLException {
 					Product  pro = new Product(); 
 					pro.setId(rs.getInt("id"));
+					pro.setProName(rs.getString("proName"));
 					pro.setGrade(rs.getString("grade"));
 					pro.setHairColor(rs.getString("hairColor"));
 					pro.setHairLen(rs.getDouble("hairLen"));

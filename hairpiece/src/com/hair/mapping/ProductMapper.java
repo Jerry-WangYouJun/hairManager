@@ -24,7 +24,7 @@ public interface ProductMapper {
      */
     public Product selectByProductNoAndPwd(Product record );
 
-	public List<Product> selectProductByWhere(Map params);
+	public List<Product> selectProductByWhere(Product pro);
 
 	public Long selectProductCountByWhere(Product record);
 }

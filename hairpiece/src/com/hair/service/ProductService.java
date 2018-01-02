@@ -1,6 +1,8 @@
 package com.hair.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +54,9 @@ public class ProductService {
 
 	public void deleteProductById(int id) {
 		dao.deleteByPrimaryKey(id);
+	}
+
+	public List<Product> selectProByWhere(Product pro) {
+		return dao.selectProductByWhere(pro);
 	}
 }

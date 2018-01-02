@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2017-12-27 17:13:16
+Date: 2018-01-02 15:11:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,12 +26,17 @@ CREATE TABLE `t_dictionary` (
   `parent` int(11) DEFAULT NULL,
   `remark` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_dictionary
 -- ----------------------------
 INSERT INTO `t_dictionary` VALUES ('3', 'dddd', '123', null, '123');
+INSERT INTO `t_dictionary` VALUES ('4', 'Wigs', 'Wigs123', null, 'WigsWigs');
+INSERT INTO `t_dictionary` VALUES ('5', 'Wigs', 'Wigs12333', null, 'WigsWigs');
+INSERT INTO `t_dictionary` VALUES ('6', 'Hair extensions', 'Hair extensions', null, 'Hair extensions');
+INSERT INTO `t_dictionary` VALUES ('7', 'Hair pieces', 'Hair pieces', null, 'Hair pieces');
+INSERT INTO `t_dictionary` VALUES ('8', 'Eyelashs', 'Eyelashs', null, 'Eyelashs');
 
 -- ----------------------------
 -- Table structure for t_product
@@ -39,12 +44,28 @@ INSERT INTO `t_dictionary` VALUES ('3', 'dddd', '123', null, '123');
 DROP TABLE IF EXISTS `t_product`;
 CREATE TABLE `t_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `proName` varchar(50) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `subType` varchar(50) DEFAULT NULL,
+  `hairType` varchar(50) DEFAULT NULL,
+  `permed` varchar(10) DEFAULT NULL,
+  `grade` varchar(50) DEFAULT NULL,
+  `texture` varchar(50) DEFAULT NULL,
+  `unit` double(10,2) DEFAULT NULL,
+  `items` double(10,2) DEFAULT NULL,
+  `hairLen` double(10,0) DEFAULT NULL,
+  `hairColor` varchar(15) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_product
 -- ----------------------------
+INSERT INTO `t_product` VALUES ('1', '123', '1', '1', '1', '1', '2', '2', '1.00', '1.00', '2', '2', '1');
+INSERT INTO `t_product` VALUES ('2', '123', 'Hair extensions', 'Hair extensions', '1', '1', '1', '1', '1.00', '1.00', '1', '1', '11111');
+INSERT INTO `t_product` VALUES ('3', '31', 'Eyelashs', 'Eyelashs', '1', '1', '1', '1', '1.00', '1.00', '1', '1', '11');
+INSERT INTO `t_product` VALUES ('4', '123', 'Hair extensions', 'Hair extensions', '1', '1', '', '123', '3.00', '2312.00', '31', '231', '123');
 
 -- ----------------------------
 -- Table structure for t_user
