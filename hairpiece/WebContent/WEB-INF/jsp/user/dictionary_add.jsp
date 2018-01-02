@@ -98,12 +98,12 @@ textarea {
 		<input type="hidden" name="id" id="id" value="${dic.id }" />
 		<table width="100%">
 			<tr>
+				<td>字典代码：</td>
+				<td style="padding: 20px"><input name="code" id="code" value="${dic.code }"
+					 ></td>
 				<td>字典名称：</td>
 				<td style="padding: 20px"><input name="name" id= "name" value="${dic.name }"
 					></td>
-				<td>字典代码：</td>
-				<td style="padding: 20px"><input name="code" id="code" value="${dic.code }"
-					 onchange="checkUnique();"></td>
 			</tr>
 			<tr>
 				<td>备注：</td>

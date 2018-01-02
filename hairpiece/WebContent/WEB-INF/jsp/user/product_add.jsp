@@ -5,7 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="multipart/form-data;  charset=UTF-8">
+<script type="text/javascript" src="${basePath}/js/jquery.form.js"></script>
 <title>产品添加页面</title>
 <style type="text/css">
 table {
@@ -17,13 +18,12 @@ textarea {
 }
 </style>
 <script type="text/javascript">
-	function doServlet() {
-		if (checkInfo()) {
-			$.ajax({
+	function doServlet() { 
+			$("#proForm").ajaxSubmit({
 				url : "${basePath}/pro/instVipAjax",
 				type : 'post',
-				data : $("#proForm").serialize(),
 				dataType : 'json',
+				//contentType :'multipart/form-data',
 				success : function(data) {
 					parent.$.messager.alert('提示', data.msg);
 					if (data.success == true) {
@@ -35,37 +35,9 @@ textarea {
 					$.messager.alert('提示', "系统产生错误,请联系管理员!", "error");
 				}
 			});
-		}
 	}
 	function checkInfo() {
-		if ($("#subType").val() == "") {
-			$.messager.alert("提示", "用户名不能为空!", "error");
-			return false;
-		}
-		if ($("#type").val() == "") {
-			$.messager.alert("提示", "所属代理商不能为空!", "error");
-			return false;
-		}
-		if ($("#hairType").val() == "") {
-			$.messager.alert("提示", "密码不能为空!", "error");
-			return false;
-		}
-		if ($("#confirm").val() == "") {
-			$.messager.alert("提示", "确认密码不能为空!", "error");
-			return false;
-		}
 		return true;
-	}
-
-	function checkPwd() {
-		var hairType = $("#hairType").val();
-		var confirm = $("#confirm").val();
-		if (hairType != "" && confirm != "") {
-			if (hairType != confirm) {
-				$.messager.alert("提示", "两次输入的密码不一致!", "error");
-				return '1';
-			}
-		}
 	}
 
 	function checkUnique() {
@@ -137,7 +109,7 @@ textarea {
 </head>
 <body>
 
-	<form id="proForm" action="${basePath }/pro/instVip">
+	<form id="proForm" action="${basePath }/pro/instVipAjax" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" id="id" value="${pro.id }" />
 		<table width="100%">
 			<tr>
@@ -185,8 +157,13 @@ textarea {
 				<td style="padding: 20px"><input name="hairColor" value="${pro.hairColor }" ></td>
 			</tr>
 			<tr>
+				<td>图片</td>
+				<td><input type="file"  name="upfile" id="upfile"></td>
 				<td>备注：</td>
 				<td style="padding: 20px"><textarea name="remark" id="remark"  rows="4"></textarea></td>
+			</tr>
+			<tr>
+				 <td><input type="submit" value = "提交表单"></td>
 			</tr>
 		</table>
 	</form>
