@@ -2,6 +2,7 @@ package com.hair.model;
 
 public class Product {
 	  private  Integer id ; 
+	  private String proName;
 	  private String type ; 
 	  private String subType ; 
 	  private String hairType ;
@@ -85,5 +86,10 @@ public class Product {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
 }
