@@ -20,6 +20,10 @@
 		<div class="tel fright">
 			<p><img src="${basePath}/jsp/pages/images/tel.png">15865645616</p>
 			<p><img src="${basePath}/jsp/pages/images/msg.png">apple@hotmail.com</p>
+			<p><img src="${basePath}/jsp/pages/images/msg.png">
+				 <a href="${basePath}/user/register">sign in</a> / 
+				 <a href="${basePath}/user/signuo">sign up</a>
+			</p>
 		</div>
 		<div id="top_space">
 			<ul>

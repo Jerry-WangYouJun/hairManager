@@ -50,14 +50,14 @@
 					}
 				}]
 			},{
-				text:"机场服务",	
+				text:"图片信息管理",	
 				children:[{
-					text:"机场巴士",
+					text:"主页轮播图片",
 					attributes:{
 						url:"${basePath}/init/bus_list"
 					}
 				},{
-					text:"VIP乘客",
+					text:"产品图片",
 					attributes:{
 						url:"${basePath}/init/passenger_list"
 					}
