@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-01-02 15:11:22
+Date: 2018-01-03 17:19:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,6 +37,28 @@ INSERT INTO `t_dictionary` VALUES ('5', 'Wigs', 'Wigs12333', null, 'WigsWigs');
 INSERT INTO `t_dictionary` VALUES ('6', 'Hair extensions', 'Hair extensions', null, 'Hair extensions');
 INSERT INTO `t_dictionary` VALUES ('7', 'Hair pieces', 'Hair pieces', null, 'Hair pieces');
 INSERT INTO `t_dictionary` VALUES ('8', 'Eyelashs', 'Eyelashs', null, 'Eyelashs');
+
+-- ----------------------------
+-- Table structure for t_image
+-- ----------------------------
+DROP TABLE IF EXISTS `t_image`;
+CREATE TABLE `t_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ipath` varchar(100) DEFAULT NULL COMMENT '路径',
+  `iname` varchar(50) DEFAULT NULL COMMENT '名字',
+  `type` int(11) DEFAULT NULL COMMENT '图片类型',
+  `contect` varchar(100) DEFAULT NULL COMMENT '图片关联关系',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_image
+-- ----------------------------
+INSERT INTO `t_image` VALUES ('7', 'D:\\image', 'IMG_2754.JPG', '2', null);
+INSERT INTO `t_image` VALUES ('11', 'D:\\image', 'java学习路线图.png', '1', 'HAIR EXTENSIONS');
+INSERT INTO `t_image` VALUES ('14', 'D:\\image', 'java学习路线图.png', '2', 'HAIR EXTENSIONS');
+INSERT INTO `t_image` VALUES ('15', 'D:\\image', 'sql注入.jpg', '1', null);
+INSERT INTO `t_image` VALUES ('16', 'D:\\image', '个税.png', '1', null);
 
 -- ----------------------------
 -- Table structure for t_product
