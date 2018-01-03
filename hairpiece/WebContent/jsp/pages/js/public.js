@@ -15,9 +15,9 @@ $(function(){
 		//首页导航
         $(function(){
             $("#top_space>ul>li").hover(function(){
-                $(this).children().next().children().stop().fadeIn().parents().css("z-index","999");
+                $(this).children().next().children().stop().css("display","block").parents().css("z-index","999");
             },function(){
-                $(this).children().next().children().stop().fadeOut().parents().css("z-index","0");
+                $(this).children().next().children().stop().css("display","none").parents().css("z-index","0");
             });
         })
 
