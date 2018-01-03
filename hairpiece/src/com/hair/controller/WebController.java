@@ -26,6 +26,13 @@ public class WebController {
 	DictionaryService dicService;
 
 
+	@RequestMapping("/main")
+	public ModelAndView test(ModelAndView model,HttpServletRequest request) {
+		getListData(model);
+		model.setViewName("forward:/index.jsp");
+		return model;
+	}
+	
 	@RequestMapping("/index")
 	public ModelAndView getIndex(ModelAndView model,HttpServletRequest request) {
 		List<Product> productList = proService.selectProByWhere(new Product() );

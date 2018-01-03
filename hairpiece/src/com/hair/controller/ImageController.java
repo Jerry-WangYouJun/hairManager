@@ -16,28 +16,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
-import com.hair.model.Dictionary;
+import com.hair.common.ContextString;
 import com.hair.model.Grid;
+import com.hair.model.Image;
 import com.hair.model.Pagination;
-import com.hair.model.Product;
-import com.hair.service.DictionaryService;
-import com.hair.service.ProductService;
+import com.hair.service.ImageService;
 
-@RequestMapping("/pro")
+@RequestMapping("/image")
 @Controller
-public class ProductController {
+public class ImageController {
 
 	@Autowired
-	ProductService service; 
-	
-	@Autowired
-	DictionaryService dicService;
+	ImageService service;
 
 	@RequestMapping(value = "/checkUnique")
 	public void checkUnique(HttpServletResponse response, String code) {
@@ -62,28 +58,21 @@ public class ProductController {
 		}
 	}
 
-	@RequestMapping("/instVip")
-	public String insertCustomer(Product pro, HttpServletRequest request) {
-		service.insertCustomer(pro);
-		return "login";
-	}
-
-	@RequestMapping("/instVipAjax")
-	public void  instVipAjax(Product pro, HttpServletRequest request , HttpServletResponse response) {
+	@RequestMapping("/insert")
+	public void instVipAjax(Image image, HttpServletRequest request , HttpServletResponse response ,
+			@RequestParam("file") MultipartFile[] files) {
 		PrintWriter out;
 		try {
-		        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		        MultipartFile pic = multipartRequest.getFile("upfile");   
-		        if (!pic.isEmpty()) {
-		        	// 将内存中的数据写入磁盘
-		        CodeUtil.SaveFileFromInputStream(pic);
-		        }
-			if(pro.getId() != null) {
-				service.updateProduct(pro);
-			}else {
-				service.insertCustomer(pro);
+			for(MultipartFile file:files){
+				CodeUtil.SaveFileFromInputStream(file ,image);
+				image.setType(image.getType());
+				if(image.getId() != null) {
+					service.updateImage(image);
+				}else {
+					service.insert(image);
+				}
 			}
-			response.setContentType("text/html;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
 			JSONObject json = new JSONObject();
 			json.put("success", true);
@@ -95,18 +84,17 @@ public class ProductController {
 			e.printStackTrace();
 		}
 	}
-	@RequestMapping("/pro_query")
+	@RequestMapping("/image_query")
 	public void queryTest(HttpServletResponse response,
-			HttpServletRequest request, HttpSession session) {
+			HttpServletRequest request, HttpSession session , Image image) {
 		String pageNo = request.getParameter("pageNo");
 		String pageSize = request.getParameter("pageSize");
-		// System.out.println(proName);
+		// System.out.println(imageName);
 		Grid grid = new Grid();
-		Product pro = new Product();
 		Pagination page = new Pagination(pageNo, pageSize);
 		CodeUtil.initPagination(page);
-		List<Product> list = service.queryList(pro, page);
-		grid.setTotal(Long.valueOf(service.queryListCount(pro)));
+		List<Image> list = service.queryList(image, page);
+		grid.setTotal(Long.valueOf(service.queryListCount(image)));
 		grid.setRows(list);
 		PrintWriter out;
 		try {
@@ -124,47 +112,36 @@ public class ProductController {
 
 	@RequestMapping("/addInit")
 	public String addInit(Model model) {
-		model.addAttribute("pro", new Product());
-		return "user/product_add";
+		model.addAttribute("image", new Image());
+		return "user/image_add";
+	}
+	
+	
+	@RequestMapping("/addProInit")
+	public String addProInit(Model model) {
+		model.addAttribute("image", new Image());
+		return "user/proimage_add";
 	}
 	
 	@RequestMapping("/updateInit/{id}")
 	public ModelAndView  updateInit(@PathVariable("id")int id ) {
-		ModelAndView mv = new ModelAndView("user/product_add");
-		Product pro = service.selectByPrimaryKey(id);
-		mv.addObject("pro" , pro);
+		ModelAndView mv = new ModelAndView("user/imagetionary_add");
+		Image image = service.selectByPrimaryKey(id);
+		mv.addObject("image" , image);
 		 return mv ;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/pro_delete/{id}",method=RequestMethod.DELETE)
-	public void deleteProduct(@PathVariable("id") int id , HttpServletResponse response){
+	@RequestMapping(value="/image_delete/{id}",method=RequestMethod.DELETE)
+	public void deleteImage(@PathVariable("id") int id , HttpServletResponse response){
 		PrintWriter out;
 		try {
-			service.deleteProductById(id);
+			service.deleteImageById(id);
 			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
 			JSONObject json = new JSONObject();
 			json.put("success", true);
 			json.put("msg", "操作成功");
-			out.println(json);
-			out.flush();
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/getSubType")
-	public void deleteProduct(String type  , HttpServletResponse response){
-		PrintWriter out;
-		try {
-			List<Dictionary> list = dicService.selectDicByWhere(type);
-			response.setCharacterEncoding("UTF-8");
-			out = response.getWriter();
-			JSONObject json = new JSONObject();
-			json.put("list", list);
 			out.println(json);
 			out.flush();
 			out.close();

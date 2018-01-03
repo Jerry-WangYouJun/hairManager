@@ -72,7 +72,7 @@
 		<div style="clear:both;"></div>
 	</div>
 </div>
-<div id="content" >
+<div id="content" >；
            
 <script type="text/javascript">
 $(document).ready(function(){
@@ -123,23 +123,24 @@ $(document).ready(function(){
 			<!--循环开始-->
 			<c:forEach items="${productList }" var = "pro">
 				<li>
-					<div class="picture_list_img_wrap"><a href="${basePath}/web/query?subType=${pro.subType}" target="_self"><img src="${basePath}/jsp/pages/images/hear.jpg" title="${pro.proName }" alt="${pro.proName }"/></a></div>
-					<p><a style="" href="${basePath}/web/query?proName=${pro.proName}" target="_self" title="${pro.proName}">${pro.proName }</a></p>
+					<div class="picture_list_img_wrap">
+						<a href="${basePath}/web/query?subType=${pro.subType}" target="_self">
+							<img src="${basePath}/jsp/pages/images/hear.jpg" title="${pro.proName }" alt="${pro.proName }"/>
+						</a>
+					</div>
+					<p>
+						<a style="" href="${basePath}/web/query?proName=${pro.proName}" target="_self" title="${pro.proName}">${pro.proName }
+						</a>
+					</p>
 				</li>
 			</c:forEach>
 			<!--循环结束-->
 		</ul>
 		<div class="clear"></div>
-
 	</div>
-
-
-
-
     <div id="bottom_wrap">
 		<div id="bottom">
 			<div style="width:1000px;height:100px;" class="fLeft">
-
 				<p>
 					<span class="bottom_a"><a  href="/?channel-36.html">About Us</a></span>
 					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-37.html">Wholesale</a></span>
@@ -152,8 +153,7 @@ $(document).ready(function(){
 						Phone:0086-532-67703178        Email:sales@dreamlacewig.com</font></p><br />
 			</div>
 		</div>
- 
- 
+	</div>
 </div>
 </body>
 </html>

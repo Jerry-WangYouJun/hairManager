@@ -46,7 +46,7 @@
 				},{
 					text:"基本信息修改",
 					attributes:{
-						url:"${basePath}/init/status_list"
+						url:"${basePath}/jsp/status_list"
 					}
 				}]
 			},{
@@ -54,12 +54,12 @@
 				children:[{
 					text:"主页轮播图片",
 					attributes:{
-						url:"${basePath}/init/bus_list"
+						url:"${basePath}/jsp/image/image_list.jsp"
 					}
 				},{
 					text:"产品图片",
 					attributes:{
-						url:"${basePath}/init/passenger_list"
+						url:"${basePath}/jsp/image/proimage_list.jsp"
 					}
 				},{
 					text:"机场酒店",

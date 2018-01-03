@@ -162,12 +162,7 @@ textarea {
 				<td>备注：</td>
 				<td style="padding: 20px"><textarea name="remark" id="remark"  rows="4"></textarea></td>
 			</tr>
-			<tr>
-				 <td><input type="submit" value = "提交表单"></td>
-			</tr>
 		</table>
 	</form>
-	
-	
 </body>
 </html>
