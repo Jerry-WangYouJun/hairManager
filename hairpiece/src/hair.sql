@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-01-03 17:19:20
+Date: 2018-01-04 17:29:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,7 +49,7 @@ CREATE TABLE `t_image` (
   `type` int(11) DEFAULT NULL COMMENT '图片类型',
   `contect` varchar(100) DEFAULT NULL COMMENT '图片关联关系',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_image
@@ -59,6 +59,8 @@ INSERT INTO `t_image` VALUES ('11', 'D:\\image', 'java学习路线图.png', '1',
 INSERT INTO `t_image` VALUES ('14', 'D:\\image', 'java学习路线图.png', '2', 'HAIR EXTENSIONS');
 INSERT INTO `t_image` VALUES ('15', 'D:\\image', 'sql注入.jpg', '1', null);
 INSERT INTO `t_image` VALUES ('16', 'D:\\image', '个税.png', '1', null);
+INSERT INTO `t_image` VALUES ('17', 'D:\\image', 'java学习路线图.png', '3', '5');
+INSERT INTO `t_image` VALUES ('18', 'D:\\image', '201801041020155_sql注入.jpg', '3', '6');
 
 -- ----------------------------
 -- Table structure for t_product
@@ -79,7 +81,7 @@ CREATE TABLE `t_product` (
   `hairColor` varchar(15) DEFAULT NULL,
   `remark` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_product
@@ -88,6 +90,8 @@ INSERT INTO `t_product` VALUES ('1', '123', '1', '1', '1', '1', '2', '2', '1.00'
 INSERT INTO `t_product` VALUES ('2', '123', 'Hair extensions', 'Hair extensions', '1', '1', '1', '1', '1.00', '1.00', '1', '1', '11111');
 INSERT INTO `t_product` VALUES ('3', '31', 'Eyelashs', 'Eyelashs', '1', '1', '1', '1', '1.00', '1.00', '1', '1', '11');
 INSERT INTO `t_product` VALUES ('4', '123', 'Hair extensions', 'Hair extensions', '1', '1', '', '123', '3.00', '2312.00', '31', '231', '123');
+INSERT INTO `t_product` VALUES ('5', 'aaaaaa', 'Hair extensions', 'Hair extensions', '123', '1', '123', '123', '123.00', '12.00', '123', '23', '');
+INSERT INTO `t_product` VALUES ('6', '1111', 'Hair pieces', 'Hair pieces', '11', '1', '23', '123', '123.00', '123.00', '123', '123', '');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -105,7 +109,7 @@ CREATE TABLE `t_user` (
   `telphone` varchar(20) DEFAULT NULL,
   `remark` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
@@ -114,3 +118,7 @@ INSERT INTO `t_user` VALUES ('1', 'admin', 'admin', 'admin', '1', null, null, nu
 INSERT INTO `t_user` VALUES ('2', '11', '1111', '111', '2', '0', '111,', '111', '1111', '111');
 INSERT INTO `t_user` VALUES ('5', '111', '111', '111', '2', '0', '', '', '', '');
 INSERT INTO `t_user` VALUES ('6', '123', '11', '111', '2', '0', '', '', '', '');
+INSERT INTO `t_user` VALUES ('9', '111', '123', '111', '2', '0', '123', null, '123', '123');
+INSERT INTO `t_user` VALUES ('10', 'a', '啊啊啊', '1', '2', '0', '11', null, '11', '11');
+INSERT INTO `t_user` VALUES ('20', '', '1', '1', '2', '0', '1', '', '', '');
+INSERT INTO `t_user` VALUES ('19', '1', '123', '1admin', '2', '0', '', '', '', '');
