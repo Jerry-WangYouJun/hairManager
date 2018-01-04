@@ -83,12 +83,18 @@ public class UserController {
 	public String signup() {
 		return "signup";
 	}
+	
+	@RequestMapping("/signin")
+	public ModelAndView signin(ModelAndView model,HttpServletRequest request, HttpSession session) {
+		session.setAttribute("user", "test");
+		model.setViewName("forward:/web/index");
+		return model;
+	}
 
 	@RequestMapping("/loginOut")
 	public String logout(HttpSession session) {
-		session.removeAttribute("agentcode");
 		session.removeAttribute("user");
-		return "login";
+		return "forward:/web/index";
 	}
 
 	@RequestMapping("/instVip")

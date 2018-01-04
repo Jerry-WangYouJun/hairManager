@@ -27,9 +27,11 @@ public class WebController {
 
 
 	@RequestMapping("/main")
-	public ModelAndView test(ModelAndView model,HttpServletRequest request) {
+	public ModelAndView getMain(ModelAndView model,HttpServletRequest request, Product pro) {
 		getListData(model);
-		model.setViewName("forward:/index.jsp");
+		List<Product> productList = proService.selectProByWhere(pro);
+		model.addObject("productList", productList);
+		model.setViewName("forward:/jsp/pages/main.jsp");
 		return model;
 	}
 	

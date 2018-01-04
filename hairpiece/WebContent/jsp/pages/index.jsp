@@ -12,47 +12,66 @@
 <script type="text/javascript" src="${basePath}/jsp/pages/js/common.js"></script>
 <link rel="stylesheet" href="${basePath}/jsp/pages/css/css.css" type="text/css" />
 <script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
-</head>
+<script type="text/javascript">
+	 function msg(){
+		  
+	 }
+     
+
+</script>
+
 <body>
 <div id="top_wrap">
 	<div id="header">
 		<div class="logo fLeft"></div>
 		<div class="tel fright">
-			<p><img src="${basePath}/jsp/pages/images/tel.png">15865645616</p>
-			<p><img src="${basePath}/jsp/pages/images/msg.png">apple@hotmail.com</p>
+		<c:if test="${  empty  user}">
 			<p><img src="${basePath}/jsp/pages/images/msg.png">
 				 <a href="${basePath}/user/register">register</a>  /
 				 <a href="${basePath}/user/signup">sign in</a>
 			</p>
+		</c:if>
+		<c:if test="${ not empty user }">
+			<p><img src="${basePath}/jsp/pages/images/msg.png">Welcome: ${user }</p>
+			<p><img src="${basePath}/jsp/pages/images/msg.png">
+				<a href="${basePath}/user/loginOut">sign out</a>
+			</p>
+			
+			<p><img src="${basePath}/jsp/pages/images/msg.png">
+				<a href="#" onclick="msg()">message</a>
+				<input type="text" id="tx" /><button value="留言" id="bt" >留言</button>  
+        			<div id="ly"></div>  
+			</p>
+		</c:if>
 		</div>
 		<div id="top_space">
 			<ul>
 				<li><a class="current_navigation" href="${basePath}/web/index" style=""><img src="${basePath}/jsp/pages/images/121.png">HOME</a></li>
-				<li><a class="li_1" href="main.html" target="_self">Wigs</a>
+				<li><a class="li_1" href="${basePath}/web/main?type=Wigs" target="_self">Wigs</a>
 					<dl class="li_3_content">
 						<c:forEach items="${Wigs}" var = "wig">
-							<dd><a class="li_3_content_a" href="${basePath}/web/query?subType=${wig}" target="_self">${wig}</a></dd>
+							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${wig}" target="_self">${wig}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>
-				<li><a class="li_1" href="main.html" target="_self">Hair extensions</a>
+				<li><a class="li_1" href="${basePath}/web/main?type=Hair extensions" target="_self">Hair extensions</a>
 					<dl class="li_3_content">
 						<c:forEach items="${extensions}" var = "extension">
-							<dd><a class="li_3_content_a" href="${basePath}/web/query?subType=${extension}" target="_self">${extension}</a></dd>
+							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${extension}" target="_self">${extension}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>
-				<li><a class="li_1" href="main.html" target="_self">Hair pieces</a>
+				<li><a class="li_1" href="${basePath}/web/main?type=Hair pieces" target="_self">Hair pieces</a>
 					<dl class="li_3_content">
 						<c:forEach items="${pieces}" var = "piece">
-							<dd><a class="li_3_content_a" href="${basePath}/web/query?subType=${piece}" target="_self">${piece}</a></dd>
+							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${piece}" target="_self">${piece}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>
 				<li><a class="li_1" href="main.html" target="_self">Eyelashs</a>
 					<dl class="li_3_content">
 						<c:forEach items="${Eyelashs}" var = "Eyelash">
-							<dd><a class="li_3_content_a" href="${basePath}/web/query?subType=${Eyelash}" target="_self">${Eyelash}</a></dd>
+							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${Eyelash}" target="_self">${Eyelash}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>
@@ -72,7 +91,7 @@
 		<div style="clear:both;"></div>
 	</div>
 </div>
-<div id="content" >；
+<div id="content" >
            
 <script type="text/javascript">
 $(document).ready(function(){
