@@ -1,7 +1,6 @@
 package com.hair.mapping;
 
 import java.util.List;
-import java.util.Map;
 
 import com.hair.model.Product;
 

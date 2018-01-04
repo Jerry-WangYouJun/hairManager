@@ -72,7 +72,10 @@
     delete from t_product
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.hair.model.Product" >
+  <insert id="insert" parameterType="com.hair.model.Product"   keyProperty="id" >
+  	 <selectKey keyProperty='id' resultType='int' order='AFTER'  >  
+        select LAST_INSERT_ID();  
+    </selectKey>  
     insert into t_product (ID, proName, texture, 
       unit, hairType, 
       remark, permed, items, 

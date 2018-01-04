@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
-import com.hair.common.ContextString;
 import com.hair.model.Grid;
 import com.hair.model.Image;
 import com.hair.model.Pagination;

@@ -16,17 +16,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
+import com.hair.common.ContextString;
 import com.hair.model.Dictionary;
 import com.hair.model.Grid;
+import com.hair.model.Image;
 import com.hair.model.Pagination;
 import com.hair.model.Product;
 import com.hair.service.DictionaryService;
+import com.hair.service.ImageService;
 import com.hair.service.ProductService;
 
 @RequestMapping("/pro")
@@ -38,6 +41,9 @@ public class ProductController {
 	
 	@Autowired
 	DictionaryService dicService;
+	
+	@Autowired
+	ImageService imageService;
 
 	@RequestMapping(value = "/checkUnique")
 	public void checkUnique(HttpServletResponse response, String code) {
@@ -69,19 +75,22 @@ public class ProductController {
 	}
 
 	@RequestMapping("/instVipAjax")
-	public void  instVipAjax(Product pro, HttpServletRequest request , HttpServletResponse response) {
+	public void  instVipAjax(Product pro, HttpServletRequest request , HttpServletResponse response 
+			,@RequestParam("upfile") MultipartFile[] files) {
 		PrintWriter out;
 		try {
-		        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		        MultipartFile pic = multipartRequest.getFile("upfile");   
-		        if (!pic.isEmpty()) {
-		        	// 将内存中的数据写入磁盘
-		        CodeUtil.SaveFileFromInputStream(pic);
-		        }
 			if(pro.getId() != null) {
 				service.updateProduct(pro);
 			}else {
 				service.insertCustomer(pro);
+			}
+			for(MultipartFile file:files){
+				Image image = new Image();
+				image.setType(ContextString.IMAGE_TYPE_PRODUCTDETAIL);
+				image.setContect(pro.getId() + "");
+				CodeUtil.SaveFileFromInputStream(file ,image);
+				image.setType(image.getType());
+				imageService.insert(image);
 			}
 			response.setContentType("text/html;charset=UTF-8");
 			out = response.getWriter();

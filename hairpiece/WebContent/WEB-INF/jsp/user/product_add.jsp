@@ -104,14 +104,25 @@ textarea {
                     alert("出错了！");  
                 }  
             });            
-        }; 
+        };
+        
+        function addColumn(){
+      	  var str = $("<tr><td>图片</td><td><input type='file' name='upfile'/></td></tr>");  
+      	  $("#tb").append(str); //将动态创建的str元素追加到ul下面  
+        }
 </script>
 </head>
 <body>
 
 	<form id="proForm" action="${basePath }/pro/instVipAjax" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" id="id" value="${pro.id }" />
-		<table width="100%">
+		<table width="100%" id = "tb">
+			<tr>
+				<td>product：</td>
+				<td style="padding: 20px"> <input name="proName" id="proName"  value="${pro.proName }" ></td>
+				<td>hairType：</td>
+				<td style="padding: 20px"> <input name="hairType" id="hairType"  value="${pro.hairType }" ></td>
+			</tr>
 			<tr>
 				<td>大类：</td>
 				<td style="padding: 20px">
@@ -122,6 +133,7 @@ textarea {
 					      <option value="Hair pieces">Hair pieces</option>
 					      <option value="Eyelashs">Eyelashs</option>
 					  </select>
+			     </td>
 				<td>小类：</td>
 				<td style="padding: 20px">
 							<select name = "subType" id="subType" >
@@ -130,37 +142,36 @@ textarea {
 				</td>
 			</tr>
 			<tr>
-				<td>hairType：</td>
-				<td style="padding: 20px"> <input name="hairType" id="hairType"  value="${pro.hairType }" ></td>
 				<td>permed：</td>
 				<td style="padding: 20px"><select name="permed" id="permed" >
 						<option value="1">YES</option>
 						<option value="2">NO</option>
 				</select></td>
-			</tr>
-			<tr>
 				<td>grade：</td>
 				<td style="padding: 20px"><input name="grade" id="grade" value="${pro.grade }" ></td>
+			</tr>
+			<tr>
 				<td>texture：</td>
 				<td style="padding: 20px"><input name="texture" value="${pro.texture }" ></td>
-			</tr>
-			<tr>
 				<td>unit(g/pc)：</td>
 				<td style="padding: 20px"><input  name="unit" id="unit"  value="${pro.unit }" ></td>
-				<td>items：</td>
-				<td style="padding: 20px"><input name="items" value="${pro.items }" ></td>
 			</tr>
 			<tr>
+				<td>items：</td>
+				<td style="padding: 20px"><input name="items" value="${pro.items }" ></td>
 				<td>hairLen：</td>
 				<td style="padding: 20px"><input name="hairLen" value="${pro.hairLen }" ></td>
+			</tr>
+			<tr>
 				<td>hairColor：</td>
 				<td style="padding: 20px"><input name="hairColor" value="${pro.hairColor }" ></td>
+				<td>备注：</td>
+				<td style="padding: 20px"><textarea name="remark" id="remark"  rows="4"></textarea></td>
 			</tr>
 			<tr>
 				<td>图片</td>
 				<td><input type="file"  name="upfile" id="upfile"></td>
-				<td>备注：</td>
-				<td style="padding: 20px"><textarea name="remark" id="remark"  rows="4"></textarea></td>
+				<td><input type="button" value="添加图片" onclick="addColumn()"></td>
 			</tr>
 		</table>
 	</form>

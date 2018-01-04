@@ -6,97 +6,114 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="${basePath }/css/bootstrap.min.css">
+	<script src="${basePath }/js/jquery-3.1.1.min.js"></script>
+	<script src="${basePath }/js/bootstrap.min.js"></script>
+	<script src="${basePath }/js/jquery.validate.js"></script>
+	<script src="${basePath }/js/jquery.metadata.js"></script>
 <script type="text/javascript">
-		function checkUser(){
-			var userNo = $("#userNo").val();
-			var pwd = $("#pwd").val();
-			//var vcode = $("#vcode").val();
-			if(userNo == ""){
-				alert("用户名不能为空!");
-				return;
-			}
-			if(pwd == ""){
-				alert("密码不能为空!");
-				return;
-			}
-			//if(vcode == ""){
-				//alert("验证码不能为空!");
-				//return;
-			//}
-			document.forms[0].submit();
-		}
-	  
+		$(function(){
+			//在submit 按钮的onclick事件中添加验证   
+			$("#smt").click(function(){
+				$("#signinForm").validate(
+						{rules:{
+							confirm: {
+							    required: true,
+							    equalTo: "#pwd"
+							   }
+						}}
+						); 
+			});
+		});
+		
 </script>
+<style type="text/css">
+	body {
+		background: #ffecec !important;
+	}
+</style>
 </head>
 <body>
 
-		<form id="company_form" action="${basePath }/user/instVip" style="padding-left: 30%;padding-top:50px;width:30%;">
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">昵称：</label>
-				<input name="userName" class=" form-control"
-					style="display: inline-block; width: 70%">
+   <form class="form-horizontal" style="width:600px;margin:50px auto;"
+		  id="signinForm" action="${basePath }/user/instVip" >
+		  <input id="id" name="id" style="display: none;" />
+		<fieldset>
+			<legend>注册账号</legend>
+		</fieldset>
+	
+		<div class="form-group">
+			<label for="account" class="col-sm-4 control-label">昵称：</label>
+			<div class="col-sm-5">
+				<input type="text"  name="userName" class="form-control required" id="account" />
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">登录账号：</label>
-				<input name="userNo" id="userNo" class=" form-control"
-					style="display: inline-block; width: 70%">
+		</div>
+	
+		<div class="form-group">
+			<label for="userNo" class="col-sm-4 control-label">登录账户：</label>
+			<div class="col-sm-5">
+				<input type="text" name="userNo" id="userNo" class="form-control required">
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">密码：</label>
-				<input name="pwd" id="pwd" class=" form-control"
-					style="display: inline-block; width: 70%">
-			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">确认密码：</label>
-				<input name="confirm"  id = "confirm" class=" form-control"
-					style="display: inline-block; width: 70%">
-			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">邮箱：</label>
-				<input name="email" class=" form-control" 
-					style="display: inline-block; width: 70%">
-			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">性别：</label>
-				<select name="sex" id="roleId" 
-                    		class="form-control select2 easyui-combobox" style="width: 70%;height: 86%" editable="false">
-                	<option value="0">男</option>
-                	<option value="1">女</option>
-                </select>
-			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">地址：</label>
-				<input name="position" class=" form-control" 
-					style="display: inline-block; width: 70%">
-			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">电话：</label>
-				<input name="telphone" class=" form-control"
-					style="display: inline-block; width: 70%">
-			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; height: 34px; line-height: 34px; text-align: left; width: 30%">备注：</label>
-				<textarea name="remark" class=" form-control" rows="4"
-					style="display: inline-block; width: 70%"></textarea>
+		</div>
+	
+		<div class="form-group">
+			<label for="pwd" class="col-sm-4 control-label">密码：</label>
+			<div class="col-sm-5">
+				<input type="password" class="form-control required"  name="pwd" id="pwd" >
 			</div>
 			
-			<div class="form-group col-md-12">
-				<label class="col-md-4"
-					style="display: inline-block; text-align: left; width: 30%">备注：</label>
+		</div>
+	
+		<div class="form-group">
+			<label for="confirm" class="col-sm-4 control-label">确认密码：</label>
+			<div class="col-sm-5">
+				<input type="password" class="form-control required" name="confirm"  id = "confirm">
 			</div>
-			<div>
-				<input type="submit"  value = "提交">
+		</div>
+	
+		<div class="form-group">
+			<label for="email" class="col-sm-4 control-label">邮箱：</label>
+			<div class="col-sm-5">
+				<input type="text" class="form-control required email" name="email" >
 			</div>
-			<input id="id" name="id" style="display: none;" />
-		</form>
+		</div>
+	
+		<div class="form-group">
+			<label for="sex" class="col-sm-4 control-label">性别：</label>
+			<div class="col-sm-5">
+				 	<select name="sex" id="sex" 
+	                    		class="form-control" >
+	                	<option value="0">男</option>
+	                	<option value="1">女</option>
+	                </select>
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label for="position" class="col-sm-4 control-label">地址：</label>
+			<div class="col-sm-5">
+				<input type="text" class="form-control required" name="position" >
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label for="telphone" class="col-sm-4 control-label">电话：</label>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" name="telphone">
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label for="remark" class="col-sm-4 control-label">备注：</label>
+			<div class="col-sm-5">
+				<textarea rows="5" cols="30" name="remark"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-5"><input type="submit" id="smt"  class="submit" value = "提交"></div>
+		</div>
+	</form>
+
 </body>
 </html>

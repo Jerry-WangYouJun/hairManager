@@ -78,6 +78,11 @@ public class UserController {
 	public String register() {
 		return "register";
 	}
+	
+	@RequestMapping("/signup")
+	public String signup() {
+		return "signup";
+	}
 
 	@RequestMapping("/loginOut")
 	public String logout(HttpSession session) {

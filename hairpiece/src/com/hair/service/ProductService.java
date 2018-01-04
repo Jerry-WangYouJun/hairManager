@@ -26,8 +26,8 @@ public class ProductService {
 		return dao.selectByProductNoAndPwd(pro);
 	}
 
-	public void insertCustomer(Product pro) {
-		dao.insert(pro);
+	public int insertCustomer(Product pro) {
+		return dao.insert(pro);
 	}
 	
 	public Long checkUnique(String proNo) {

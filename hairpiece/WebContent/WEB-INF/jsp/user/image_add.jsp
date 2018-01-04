@@ -28,7 +28,7 @@ function doServlet() {
 }
   
   function addColumn(){
-	  var str = $("<tr><td>文件一</td><td><input type='file' name='file'/></td></tr>");  
+	  var str = $("<tr><td>图片</td><td><input type='file' name='file'/></td></tr>");  
 	  $("#tb").append(str); //将动态创建的str元素追加到ul下面  
   }
 	  
