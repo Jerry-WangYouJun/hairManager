@@ -9,8 +9,12 @@ public class ContextString {
 	  * 轮播类型
 	  */
 	 static public final Integer IMAGE_TYPE_CAROUSEL  = 1 ; 
-	 /*
+	 /**
 	  * 产品分类图片
 	  */
 	 static public final Integer IMAGE_TYPE_PRODUCT  = 2 ; 
+	 /**
+	  * 产品详情图片
+	  */
+	 static public final Integer IMAGE_TYPE_PRODUCTDETAIL  = 3 ; 
 }

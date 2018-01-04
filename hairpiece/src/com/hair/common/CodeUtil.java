@@ -81,7 +81,7 @@ public class CodeUtil {
         		path="D:\\image";
         	}
         	InputStream stream = file.getInputStream();
-        	String name =    new String(file.getOriginalFilename().getBytes("ISO-8859-1"),"UTF-8");
+        	String name = DateUtils.getDate14() + "_" + new String(file.getOriginalFilename().getBytes("ISO-8859-1"),"UTF-8");
         	image.setIname(name);
         	image.setIpath(path);
 	        FileOutputStream fs=new FileOutputStream( path + "/"+ name);
