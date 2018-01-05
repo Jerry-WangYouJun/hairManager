@@ -10,9 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hair.common.ContextString;
 import com.hair.model.Dictionary;
+import com.hair.model.Image;
 import com.hair.model.Product;
 import com.hair.service.DictionaryService;
+import com.hair.service.ImageService;
 import com.hair.service.ProductService;
 
 @Controller
@@ -25,19 +28,22 @@ public class WebController {
 	@Autowired
 	DictionaryService dicService;
 
+	@Autowired
+	ImageService imageService;
 
 	@RequestMapping("/main")
-	public ModelAndView getMain(ModelAndView model,HttpServletRequest request, Product pro) {
+	public ModelAndView getMain(ModelAndView model, HttpServletRequest request,
+			Product pro) {
 		getListData(model);
 		List<Product> productList = proService.selectProByWhere(pro);
 		model.addObject("productList", productList);
 		model.setViewName("forward:/jsp/pages/main.jsp");
 		return model;
 	}
-	
+
 	@RequestMapping("/index")
-	public ModelAndView getIndex(ModelAndView model,HttpServletRequest request) {
-		List<Product> productList = proService.selectProByWhere(new Product() );
+	public ModelAndView getIndex(ModelAndView model, HttpServletRequest request) {
+		List<Product> productList = proService.selectProByWhere(new Product());
 		getListData(model);
 		model.addObject("productList", productList);
 		model.setViewName("forward:/jsp/pages/index.jsp");
@@ -46,15 +52,15 @@ public class WebController {
 
 	@RequestMapping("/query")
 	public ModelAndView queryProIndex(ModelAndView model,
-			HttpServletRequest request, Product pro ) {
+			HttpServletRequest request, Product pro) {
 		List<Product> productList = proService.selectProByWhere(pro);
 		getListData(model);
 		model.addObject("productList", productList);
 		model.setViewName("forward:/jsp/pages/index.jsp");
 		return model;
 	}
-	
-	public void getListData(ModelAndView model){
+
+	public void getListData(ModelAndView model) {
 		List<Dictionary> dicList = dicService.selectDicByWhere("");
 		List<String> wigsList = new ArrayList<>();
 		List<String> extensList = new ArrayList<>();
@@ -82,8 +88,23 @@ public class WebController {
 		model.addObject("extensions", extensList);
 		model.addObject("pieces", pieceList);
 		model.addObject("Eyelashs", eylashsList);
-		infoList.add("test");
-		model.addObject("info", infoList);
+		List<String> areaList = new ArrayList<>();
+		List<Image> imageList = imageService.selectDicByWhere("");
+		List<Image> carouselList = new ArrayList<>();// 轮播图片集合
+		List<Image> productList = new ArrayList<>();// 产品分类集合
+		for (Image image : imageList) {
+			switch (image.getType()) {
+			case 1:
+				carouselList.add(image);
+				break;
+			case 2:
+				productList.add(image);
+				break;
+			}
+			model.addObject("carouselList", carouselList);
+			model.addObject("productList", productList);
+			infoList.add("test");
+			model.addObject("info", infoList);
+		}
 	}
-
 }

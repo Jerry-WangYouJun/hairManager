@@ -163,20 +163,33 @@
 		</script>
 
 		<div class="area">
-			<a id=prev class="prevBtn qq" href="javascript:void(0)"></a> <a
-				id=next class="nextBtn qq" href="javascript:void(0)"></a>
+			<a id=prev class="prevBtn qq" href="javascript:void(0)"></a> 
+			<a id=next class="nextBtn qq" href="javascript:void(0)"></a>
 			<div id=js class="js">
 				<div class="box01">
-					<img onClick="location.href=''" alt="dream lace wig"
-						src="${basePath}/jsp/pages/images_banner/01.jpg"> <img
-						onClick="location.href=''" alt="products of dream lace wig"
-						style="DISPLAY: none"
-						src="${basePath}/jsp/pages/images_banner/02.jpg">
+					<c:forEach items="${carouselList }" var = "carousel"  varStatus="sta">
+						<c:choose>
+							 <c:when test="${sta.index eq 0 }">
+									 <img src="http://localhost:8888/upload/${carousel.iname}" alt="${carousel.iname }" >
+							 </c:when>
+							 <c:otherwise>
+							  		<img src="http://localhost:8888/upload/${carousel.iname}" alt="${carousel.iname }" style="DISPLAY: none" >
+							 </c:otherwise>
+						</c:choose>
+					</c:forEach>
 				</div>
 				<!--<div class="bg"></div>-->
 				<div id=jsNav class=jsNav>
-					<a class="trigger imgSelected" href="javascript:void(0)">1</a> <a
-						class="trigger" href="javascript:void(0)">2</a>
+						<c:forEach items="${carouselList }" var = "carousel"  varStatus="sta">
+							<c:choose>
+								 <c:when test="${sta.index eq 0 }">
+										 <a class="trigger imgSelected" href="javascript:void(0)">${sta.count }</a>
+								 </c:when>
+								 <c:otherwise>
+								  		 <a class="trigger" href="javascript:void(0)">${sta.count }</a>
+								 </c:otherwise>
+							</c:choose>
+						</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -186,12 +199,10 @@
 	<div style="margin-top: 20px;">
 		<div class="three">
 			<ul>
-				<li><img src="${basePath}/jsp/pages/images/chanpin.png">
+			<c:forEach items="${carouselList }" var = "carousel">
+				 <li><img src="http://localhost:8888/upload/${carousel.iname}" style="width:300px;height: 180px;">
 					<p>产品介绍</p></li>
-				<li><img src="${basePath}/jsp/pages/images/chanpin.png">
-					<p>产品介绍</p></li>
-				<li><img src="${basePath}/jsp/pages/images/chanpin.png">
-					<p>产品介绍</p></li>
+			</c:forEach>
 			</ul>
 		</div>
 		<div id="content_body">

@@ -12,6 +12,42 @@
 <script type="text/javascript" src="${basePath}/jsp/pages/js/common.js"></script>
 <link rel="stylesheet" href="${basePath}/jsp/pages/css/css.css" type="text/css" />
 <script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
+<script type="text/javascript">
+	function msg() {
+		var path = "${basePath}/msg/msgInit?role=2";
+		document.getElementById('frameContent').src = path;
+		$('#dlg-frame').dialog('open');
+	}
+	$(function(){
+		$('#dlg-frame').dialog( {
+			title : '用户管理',
+			width :  300,
+			height : 500,
+			top: 100,
+			right: 100,
+			closed : true,
+			cache : false,
+			modal : true
+		});
+	});
+</script>
+<style type="text/css">
+#test{
+    width:300px;
+    height:200px;
+    margin-top:100px;
+    background-color:#09C;
+}
+#xianshi{
+    width:100px;
+    height:100px;
+    position:fixed;
+    bottom:200px;
+    left:600px;
+    background-color:#36C;
+    display:none;
+}
+</style>
 </head>
 <body>
 <div id="top_wrap">
@@ -185,5 +221,9 @@
 </div>
  
 </div>
+ <div id="dlg-frame">
+			<iframe width="99%" height="98%" name="frameContent" id="frameContent"
+				frameborder="0"></iframe>
+	</div>
 </body>
 </html>
