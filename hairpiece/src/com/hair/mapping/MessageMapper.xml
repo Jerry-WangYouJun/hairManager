@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hair.mapping.MessageMapper" >
+  <resultMap id="BaseResultMap" type="com.hair.model.Message" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="msg" property="msg" jdbcType="VARCHAR" />
+     <result column="contect" property="contect" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, msg, name, contect ,status ,time
+    
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_msg
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="selectMessageByWhere" resultMap="BaseResultMap" parameterType="com.hair.model.Message" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_msg
+    where 1=1
+       <if test="name != null and name != ''" >
+        and name like #{name}
+      </if>
+      <if test="msg != null and msg != ''" >
+        and msg like #{msg}
+      </if>
+      <if test="id != null and id != ''" >
+        and id = #{msg}
+      </if>
+     <if test="contect != null and contect != 0 " >
+        and contect = #{contect}
+      </if>
+  </select>
+  
+    <select id="selectMessageCountByWhere" resultType="java.lang.Long" parameterType="java.util.HashMap" >
+    select 
+    	count(*) 
+    from t_msg
+    where 1=1
+       <if test="name != null and name != ''" >
+        and name like #{name}
+      </if>
+      <if test="msg != null and msg != ''" >
+        and msg like #{msg}
+      </if>
+  </select> 
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_msg
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hair.model.Message" >
+    insert into t_msg (ID,  status, msg, name , contect ,time)
+    values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{msg,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR} , #{contect ,jdbcType=INTEGER}
+      , #{time,jdbcType=VARCHAR} 
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hair.model.Message" >
+    insert into t_msg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="msg != null" >
+        msg,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="contect != null" >
+        contect,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null" >
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contect != null" >
+        #{contect,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hair.model.Message" >
+    update t_msg
+    <set >
+      <if test="status != null" >
+      status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null" >
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contect != null" >
+        contect = #{contect,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hair.model.Message" >
+    update t_msg
+    set 
+      status = #{status,jdbcType=VARCHAR},
+      msg = #{msg,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      contect = #{contect , jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

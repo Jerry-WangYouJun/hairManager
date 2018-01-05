@@ -12,16 +12,7 @@
 	<script type="text/javascript">
 		
 		function loginOut(){
-			$.ajax({
-				url : "${basePath}/user/loginOut",
-				type : 'post',
-				success:function(data){
-					window.location.href = "${basePath}/login.jsp" ;
-				},
-				error : function(transport) {
-					$.messager.alert('提示', "系统产生错误,请联系管理员!", "error");
-				}
-			});
+			window.location.href = "${basePath}/user/logout" ;
 		}
 		
 		
@@ -44,9 +35,9 @@
 						url:"${basePath}/jsp/user/product_list.jsp"
 					}
 				},{
-					text:"基本信息修改",
+					text:"用户留言管理",
 					attributes:{
-						url:"${basePath}/jsp/status_list"
+						url:"${basePath}/jsp/user/msg_list.jsp"
 					}
 				}]
 			},{

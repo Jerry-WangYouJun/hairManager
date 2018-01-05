@@ -29,6 +29,7 @@
       <input type="text" class="form-control required" name="userNo" placeholder="账号" class="required" autofocus="" />
       <input type="password" class="form-control required" name="pwd" placeholder="密码" class="required"/>
       <button id="smt" class="btn btn-lg btn-primary btn-block btn-pink" type="submit">登录</button>
+      <span style="color:red">${msg }</span>
     </form>
   </div>
 </body>

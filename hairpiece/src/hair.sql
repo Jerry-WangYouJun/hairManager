@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-01-04 17:29:45
+Date: 2018-01-05 16:06:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,6 +61,48 @@ INSERT INTO `t_image` VALUES ('15', 'D:\\image', 'sql注入.jpg', '1', null);
 INSERT INTO `t_image` VALUES ('16', 'D:\\image', '个税.png', '1', null);
 INSERT INTO `t_image` VALUES ('17', 'D:\\image', 'java学习路线图.png', '3', '5');
 INSERT INTO `t_image` VALUES ('18', 'D:\\image', '201801041020155_sql注入.jpg', '3', '6');
+
+-- ----------------------------
+-- Table structure for t_msg
+-- ----------------------------
+DROP TABLE IF EXISTS `t_msg`;
+CREATE TABLE `t_msg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `contect` int(11) NOT NULL COMMENT '用户主键',
+  `name` varchar(50) DEFAULT NULL COMMENT '留言/回复人 姓名',
+  `msg` varchar(500) DEFAULT NULL COMMENT '内容',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态  已读1、未读0',
+  `time` varchar(20) DEFAULT NULL COMMENT '提交时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_msg
+-- ----------------------------
+INSERT INTO `t_msg` VALUES ('1', '1', 'admin', 'aaaaa', '1', '1989-02-01');
+INSERT INTO `t_msg` VALUES ('2', '1', 'admin', '123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('3', '1', 'admin', '123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('4', '1', 'admin', '123123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('5', '1', 'admin', '123123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('6', '1', 'admin', '123123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('7', '1', 'admin', '123123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('8', '1', 'admin', '123123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('9', '1', 'admin', '123123', null, '2018-01-05 14:25');
+INSERT INTO `t_msg` VALUES ('10', '2', 'admin', '', null, '2018-01-05 14:26');
+INSERT INTO `t_msg` VALUES ('11', '1', 'admin', '123', null, '2018-01-05 15:11');
+INSERT INTO `t_msg` VALUES ('12', '1', 'admin', '111', null, '2018-01-05 15:12');
+INSERT INTO `t_msg` VALUES ('13', '2', 'admin', '123', null, '2018-01-05 15:20');
+INSERT INTO `t_msg` VALUES ('14', '2', 'admin', '123', null, '2018-01-05 15:21');
+INSERT INTO `t_msg` VALUES ('15', '2', 'admin', '123', null, '2018-01-05 15:21');
+INSERT INTO `t_msg` VALUES ('16', '2', 'admin', '123', null, '2018-01-05 15:25');
+INSERT INTO `t_msg` VALUES ('17', '2', 'admin', '123', null, '2018-01-05 15:25');
+INSERT INTO `t_msg` VALUES ('18', '2', 'admin', '123', null, '2018-01-05 15:25');
+INSERT INTO `t_msg` VALUES ('19', '2', 'admin', '', null, '2018-01-05 15:28');
+INSERT INTO `t_msg` VALUES ('20', '2', 'admin', '', null, '2018-01-05 15:28');
+INSERT INTO `t_msg` VALUES ('21', '2', 'admin', '123123', null, '2018-01-05 15:28');
+INSERT INTO `t_msg` VALUES ('22', '1', 'admin', '11111', null, '2018-01-05 15:28');
+INSERT INTO `t_msg` VALUES ('23', '2', 'admin', '1111', null, '2018-01-05 15:45');
+INSERT INTO `t_msg` VALUES ('24', '1', 'admin', '123', null, '2018-01-05 15:47');
 
 -- ----------------------------
 -- Table structure for t_product

@@ -32,18 +32,65 @@ public class UserController {
 	@Autowired
 	UserService service;
 
+	/**
+	 *  后台登陆 
+	 */
 	@RequestMapping("/checkUser")
 	public String checkUser(User user, HttpServletRequest request,
 			HttpSession session) {
 		user = service.checkUser(user);
 		if (user != null) {
-			session.setAttribute("user", user.getUserName());
-			session.setAttribute("roleid", user.getRoleId());
+			session.setAttribute("userbean", user.getUserName());
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("roleId",user.getRoleId());
 			return "index";
 		} else {
 			request.setAttribute("msg", "用户名或者密码错误");
 			return "login";
 		}
+	}
+	
+	/**
+	 * 后台登出
+	 */
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("userbean");
+		session.removeAttribute("userId");
+		session.removeAttribute("roleId");
+		return "login";
+	}
+	
+	/**
+	 *  网站登陆
+	 */
+	@RequestMapping("/signin")
+	public ModelAndView signin(ModelAndView model,HttpServletRequest request
+			, HttpSession session , User user) {
+		User bean  = service.checkUser(user);
+		if(bean != null && bean.getId() != null && bean.getId() > 0 ){
+			session.setAttribute("userbean", bean.getUserName());
+			session.setAttribute("userId",bean.getId());
+			session.setAttribute("roleId",bean.getRoleId());
+			model.setViewName("forward:/web/index");
+		}else{
+			request.setAttribute("msg", "用户名或者密码错误");
+			model.setViewName("signup");
+		}
+		return model;
+	}
+
+	/**
+	 * 网站登出
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/loginOut")
+	public String signout(HttpSession session) {
+		session.removeAttribute("userbean");
+		session.removeAttribute("userId");
+		session.removeAttribute("roleId");
+		return "forward:/web/index";
 	}
 
 	@RequestMapping(value = "/checkUnique")
@@ -83,19 +130,7 @@ public class UserController {
 	public String signup() {
 		return "signup";
 	}
-	
-	@RequestMapping("/signin")
-	public ModelAndView signin(ModelAndView model,HttpServletRequest request, HttpSession session) {
-		session.setAttribute("user", "test");
-		model.setViewName("forward:/web/index");
-		return model;
-	}
 
-	@RequestMapping("/loginOut")
-	public String logout(HttpSession session) {
-		session.removeAttribute("user");
-		return "forward:/web/index";
-	}
 
 	@RequestMapping("/instVip")
 	public String insertCustomer(User user, HttpServletRequest request) {

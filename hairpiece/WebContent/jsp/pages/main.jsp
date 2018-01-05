@@ -15,83 +15,115 @@
 </head>
 <body>
 <div id="top_wrap">
-	<div id="header">
-		<div class="logo fLeft"></div>
-		<div class="tel fright">
-		<c:if test="${  empty  user}">
-			<p><img src="${basePath}/jsp/pages/images/msg.png">
-				 <a href="${basePath}/user/register">register</a>  /
-				 <a href="${basePath}/user/signup">sign in</a>
-			</p>
-		</c:if>
-		<c:if test="${ not empty user }">
-			<p><img src="${basePath}/jsp/pages/images/msg.png">Welcome: ${user }</p>
-			<p><img src="${basePath}/jsp/pages/images/msg.png">
-				<a href="${basePath}/user/loginOut">sign out</a>
-			</p>
-			
-			<p><img src="${basePath}/jsp/pages/images/msg.png">
-				<a href="#" onclick="msg()">message</a>
-				<input type="text" id="tx" /><button value="留言" id="bt" >留言</button>  
-        			<div id="ly"></div>  
-			</p>
-		</c:if>
+		<div id="header">
+			<div class="logo fLeft"></div>
+			<div class="tel fright">
+				<c:if test="${  empty  userbean}">
+					<p>
+						<img src="${basePath}/jsp/pages/images/msg.png"> <a
+							href="${basePath}/user/register">register</a> / <a
+							href="${basePath}/user/signup">sign in</a>
+					</p>
+				</c:if>
+				<c:if test="${ not empty userbean }">
+					<p>
+						<img src="${basePath}/jsp/pages/images/msg.png">Welcome:
+						${userbean }
+					</p>
+					<p>
+						<img src="${basePath}/jsp/pages/images/msg.png"> <a
+							href="${basePath}/user/loginOut">sign out</a>
+					</p>
+
+					<p>
+						<img src="${basePath}/jsp/pages/images/msg.png"> <a href="#"
+							onclick="msg()">message</a>
+					</p>
+
+				</c:if>
+			</div>
+			<div id="top_space">
+				<ul>
+					<li><a class="current_navigation" href="${basePath}/web/index"
+						style=""><img src="${basePath}/jsp/pages/images/121.png">HOME</a></li>
+					<li><a class="li_1" href="${basePath}/web/main?type=Wigs"
+						target="_self">Wigs</a>
+						<dl class="li_3_content">
+							<c:forEach items="${Wigs}" var="wig">
+								<dd>
+									<a class="li_3_content_a"
+										href="${basePath}/web/main?subType=${wig}" target="_self">${wig}</a>
+								</dd>
+							</c:forEach>
+						</dl></li>
+					<li><a class="li_1"
+						href="${basePath}/web/main?type=Hair extensions" target="_self">Hair
+							extensions</a>
+						<dl class="li_3_content">
+							<c:forEach items="${extensions}" var="extension">
+								<dd>
+									<a class="li_3_content_a"
+										href="${basePath}/web/main?subType=${extension}"
+										target="_self">${extension}</a>
+								</dd>
+							</c:forEach>
+						</dl></li>
+					<li><a class="li_1"
+						href="${basePath}/web/main?type=Hair pieces" target="_self">Hair
+							pieces</a>
+						<dl class="li_3_content">
+							<c:forEach items="${pieces}" var="piece">
+								<dd>
+									<a class="li_3_content_a"
+										href="${basePath}/web/main?subType=${piece}" target="_self">${piece}</a>
+								</dd>
+							</c:forEach>
+						</dl></li>
+					<li><a class="li_1" href="Information.html" target="_self">Information</a>
+						<dl class="li_3_content">
+							<dd>
+								<a class="li_3_content_a"
+									href="${basePath}/jsp/pages/about_us.html" target="_self">About
+									Us</a>
+							</dd>
+							<dd>
+								<a class="li_3_content_a"
+									href="${basePath}/jsp/pages/Wholesale.html" target="_self">Wholesale</a>
+							</dd>
+							<dd>
+								<a class="li_3_content_a"
+									href="${basePath}/jsp/pages/Order101.html" target="_self">Order
+									101</a>
+							</dd>
+							<dd>
+								<a class="li_3_content_a"
+									href="${basePath}/jsp/pages/Acceptable.html" target="_self">Acceptable
+									Payment </a>
+							</dd>
+							<dd>
+								<a class="li_3_content_a"
+									href="${basePath}/jsp/pages/Shipping.html" target="_self">Shipping&Delivery</a>
+							</dd>
+							<dd>
+								<a class="li_3_content_a"
+									href="${basePath}/jsp/pages/Contact_us.html" target="_self">Contact
+									Us</a>
+							</dd>
+						</dl></li>
+					<li style="clear: both;"></li>
+				</ul>
+			</div>
+			<div style="clear: both;"></div>
 		</div>
-		<div id="top_space">
-			<ul>
-				<li><a class="current_navigation" href="${basePath}/web/index" style=""><img src="${basePath}/jsp/pages/images/121.png">HOME</a></li>
-				<li><a class="li_1" href="${basePath}/web/main?type=Wigs" target="_self">Wigs</a>
-					<dl class="li_3_content">
-						<c:forEach items="${Wigs}" var = "wig">
-							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${wig}" target="_self">${wig}</a></dd>
-						</c:forEach>
-					</dl>
-				</li>
-				<li><a class="li_1" href="${basePath}/web/main?type=Hair extensions" target="_self">Hair extensions</a>
-					<dl class="li_3_content">
-						<c:forEach items="${extensions}" var = "extension">
-							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${extension}" target="_self">${extension}</a></dd>
-						</c:forEach>
-					</dl>
-				</li>
-				<li><a class="li_1" href="${basePath}/web/main?type=Hair pieces" target="_self">Hair pieces</a>
-					<dl class="li_3_content">
-						<c:forEach items="${pieces}" var = "piece">
-							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${piece}" target="_self">${piece}</a></dd>
-						</c:forEach>
-					</dl>
-				</li>
-				<li><a class="li_1" href="${basePath}/web/main?type=Eyelashs" target="_self">Eyelashs</a>
-					<dl class="li_3_content">
-						<c:forEach items="${Eyelashs}" var = "Eyelash">
-							<dd><a class="li_3_content_a" href="${basePath}/web/main?subType=${Eyelash}" target="_self">${Eyelash}</a></dd>
-						</c:forEach>
-					</dl>
-				</li>
-				<li><a class="li_1" href="Information.html" target="_self">Information</a>
-					<dl class="li_3_content">
-						<dd><a class="li_3_content_a" href="${basePath}/jsp/pages/about_us.html" target="_self">About Us</a></dd>
-						<dd><a class="li_3_content_a" href="${basePath}/jsp/pages/Wholesale.html" target="_self">Wholesale</a></dd>
-						<dd><a class="li_3_content_a" href="${basePath}/jsp/pages/Order101.html" target="_self">Order 101</a></dd>
-						<dd><a class="li_3_content_a" href="${basePath}/jsp/pages/Acceptable.html" target="_self">Acceptable Payment </a></dd>
-						<dd><a class="li_3_content_a" href="${basePath}/jsp/pages/Shipping.html" target="_self">Shipping&Delivery</a></dd>
-						<dd><a class="li_3_content_a" href="${basePath}/jsp/pages/Contact_us.html" target="_self">Contact Us</a></dd>
-					</dl>
-				</li>
-				<li style="clear: both;"></li>
-			</ul>
-		</div>
-		<div style="clear:both;"></div>
 	</div>
-</div>
 <div id="content" >
 	<div id="content" class="autoHeight" style="margin:30px 0;">
 		<div id="content_body_main">
 			<div class="content_body_main_l">
 				<ul>
-					<li class="on"><a>Wigs</a></li>
-					<li><a>Hair extensions</a></li>
-					<li><a>Hair pieces</a></li>
+					<li class="on"><a href="${basePath}/web/main?type=Wigs">Wigs</a></li>
+					<li><a href="${basePath}/web/main?type=Hair extensions">Hair extensions</a></li>
+					<li><a href="${basePath}/web/main?type=Hair pieces" >Hair pieces</a></li>
 				</ul>
 			</div>
 			<div class="content_body_main_r">
@@ -114,19 +146,20 @@
 				  </ul>
 				<div class="clear"></div>
 			</div>
-            <div class="page_ct">
-<div class="page_turner"><a title="第1页" class="c">1</a>
-	<a title="第2页" href="?channel-1.html=&page=2">2</a>
-	<a title="第3页" href="?channel-1.html=&page=3">3</a>
-	<a title="第4页" href="?channel-1.html=&page=4">4</a>
-	<a title="第5页" href="?channel-1.html=&page=5">5</a>
-	<a title="第6页" href="?channel-1.html=&page=6">6</a>
-	<a title="第7页" href="?channel-1.html=&page=7">7</a>
-	<a title="第8页" href="?channel-1.html=&page=8">8</a>
-	<a title="末页" href="?channel-1.html=&page=8">...8</a>
-	<a title="last" href="javascript:void(0)"><<</a><a title="next" href="?channel-1.html=&page=2">>></a>
-	<span>18iteam/page&nbsp;total<label id="total">130</label>iteam</span></div>
-</div>
+          <!--   <div class="page_ct">
+				<div class="page_turner"><a title="第1页" class="c">1</a>
+					<a title="第2页" href="?channel-1.html=&page=2">2</a>
+					<a title="第3页" href="?channel-1.html=&page=3">3</a>
+					<a title="第4页" href="?channel-1.html=&page=4">4</a>
+					<a title="第5页" href="?channel-1.html=&page=5">5</a>
+					<a title="第6页" href="?channel-1.html=&page=6">6</a>
+					<a title="第7页" href="?channel-1.html=&page=7">7</a>
+					<a title="第8页" href="?channel-1.html=&page=8">8</a>
+					<a title="末页" href="?channel-1.html=&page=8">...8</a>
+					<a title="last" href="javascript:void(0)"><<</a><a title="next" href="?channel-1.html=&page=2">>></a>
+					<span>18iteam/page&nbsp;total<label id="total">130</label>iteam</span>
+				</div>
+			</div> -->
 
 			<div class="clear"></div>
 		</div>
