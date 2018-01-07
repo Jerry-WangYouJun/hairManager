@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.hair.common.Dialect;
+import com.hair.model.Cart;
 import com.hair.model.Pagination;
 import com.hair.model.Product;
 
@@ -39,6 +40,7 @@ public class ProductDao {
 					pro.setType(rs.getString("type"));
 					pro.setUnit(rs.getDouble("unit"));
 					pro.setRemark(rs.getString("remark"));
+					pro.setHotsale(rs.getString("hotsale"));
 				 return null ;
 			}
 		});
@@ -67,6 +69,36 @@ public class ProductDao {
 					pro.setType(rs.getString("type"));
 					pro.setUnit(rs.getDouble("unit"));
 					pro.setRemark(rs.getString("remark"));
+					pro.setHotsale(rs.getString("hotsale"));
+					list.add(pro);
+				 return null ;
+			}
+		});
+		return list;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<Product> queryListForCart(Cart cart) {
+		String sql = "select *  from t_product  where  1=1  and id in"
+				+ " (select productid from t_cart where userid = " + cart.getUserid()+" )" ;
+         final  List<Product> list =   new ArrayList<>();
+         jdbcTemplate.query(sql, new RowMapper() {
+			public Object mapRow(ResultSet rs, int arg1) throws SQLException {
+					Product  pro = new Product(); 
+					pro.setId(rs.getInt("id"));
+					pro.setProName(rs.getString("proName"));
+					pro.setGrade(rs.getString("grade"));
+					pro.setHairColor(rs.getString("hairColor"));
+					pro.setHairLen(rs.getDouble("hairLen"));
+					pro.setHairType(rs.getString("hairType"));
+					pro.setItems(rs.getDouble("items"));
+					pro.setPermed(rs.getString("permed"));
+					pro.setSubType(rs.getString("subType"));
+					pro.setTexture(rs.getString("texture"));
+					pro.setType(rs.getString("type"));
+					pro.setUnit(rs.getDouble("unit"));
+					pro.setRemark(rs.getString("remark"));
+					pro.setHotsale(rs.getString("hotsale"));
 					list.add(pro);
 				 return null ;
 			}

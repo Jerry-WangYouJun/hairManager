@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hair.mapping.CartMapper" >
+  <resultMap id="BaseResultMap" type="com.hair.model.Cart" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+     <result column="productid" property="productid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, userid, productid ,status
+    
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cart
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="selectCartByWhere" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cart
+    where 1=1
+       <if test="userid != null and userid != ''" >
+        and userid = #{userid}
+      </if>
+     
+  </select>
+  
+    <select id="selectCartCountByWhere" resultType="java.lang.Long" parameterType="java.util.HashMap" >
+    select 
+    	count(*) 
+    from t_cart
+    where 1=1
+       <if test="userid != null and userid != ''" >
+        and userid like #{userid}
+      </if>
+  </select> 
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_cart
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hair.model.Cart" >
+    insert into t_cart (ID,  status, userid , productid )
+    values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+       #{userid,jdbcType=INTEGER} , #{productid ,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hair.model.Cart" >
+    insert into t_cart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="productid != null" >
+        productid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hair.model.Cart" >
+    update t_cart
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        productid = #{productid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hair.model.Cart" >
+    update t_cart
+    set 
+      status = #{status,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      productid = #{productid , jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

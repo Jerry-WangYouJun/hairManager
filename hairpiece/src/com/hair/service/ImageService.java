@@ -57,9 +57,7 @@ public class ImageService {
 		dao.deleteByPrimaryKey(id);
 	}
 	
-	public List<Image> selectDicByWhere(String type){
-		Map params = new HashMap<>();
-		params.put("code" , "%" + type + "%" );
-		return dao.selectImageByWhere(params);
+	public List<Image> selectDicByWhere(Image image){
+		return dao.selectImageByWhere(image);
 	}
 }

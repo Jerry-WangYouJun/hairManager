@@ -31,6 +31,12 @@
       <if test="iname != null and iname != ''" >
         and iname like #{iname}
       </if>
+      <if test="type != null and type > 0" >
+        and type like #{type}
+      </if>
+      <if test="contect != null and contect != ''" >
+        and contect like #{contect}
+      </if>
      
   </select>
   

@@ -76,6 +76,8 @@ textarea {
 		  if("${pro.remark}" != ""){
 			   $("#remark").val("${pro.remark}")
 		  }
+			  $("#permed").val("${pro.permed}")
+			  $("#hotsale").val("${pro.hotsale}")
 	})
 	
 	
@@ -161,6 +163,15 @@ textarea {
 				<td style="padding: 20px"><input name="items" value="${pro.items }" ></td>
 				<td>hairLen：</td>
 				<td style="padding: 20px"><input name="hairLen" value="${pro.hairLen }" ></td>
+			</tr>
+			<tr>
+				<td>hairColor：</td>
+				<td style="padding: 20px"><input name="hairColor" value="${pro.hairColor }" ></td>
+				<td>hotsale：</td>
+				<td style="padding: 20px"><select name="hotsale" id="hotsale" >
+						<option value="1">YES</option>
+						<option value="2">NO</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>hairColor：</td>

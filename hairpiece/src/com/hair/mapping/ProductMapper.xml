@@ -15,9 +15,11 @@
     <result column="hairLen" property="hairLen" jdbcType="DOUBLE" />
     <result column="hairColor" property="hairColor" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+     <result column="hotsale" property="hotsale" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID,proName, subType, type, hairType, grade, permed, texture, unit,  items,hairLen , hairColor ,remark 
+    ID,proName, subType, type, hairType, grade, permed,
+     texture, unit,  items,hairLen , hairColor ,remark ,hotsale
     
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -49,6 +51,9 @@
       <if test="proName != null and proName != ''" >
         and  proName like  #{proName}
       </if>
+      <if test="hotsale != null and hotsale != ''" >
+        and  hotsale like  #{hotsale}
+      </if>
   </select>
   
     <select id="selectProductCountByWhere" resultType="java.lang.Long" parameterType="com.hair.model.Product" >
@@ -65,6 +70,9 @@
       <if test="proName != null and proName != ''" >
         and  proName like  #{proName}
       </if>
+       <if test="hotsale != null and hotsale != ''" >
+        and  hotsale like  #{hotsale}
+      </if>
   </select> 
   
   
@@ -79,12 +87,12 @@
     insert into t_product (ID, proName, texture, 
       unit, hairType, 
       remark, permed, items, 
-      subType, type , grade , hairLen , hairColor)
+      subType, type , grade , hairLen , hairColor , hotsale)
     values (#{id,jdbcType=VARCHAR},#{proName,jdbcType=VARCHAR},  #{texture,jdbcType=VARCHAR}, 
        #{unit,jdbcType=VARCHAR}, #{hairType,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{permed,jdbcType=VARCHAR}, #{items,jdbcType=VARCHAR}, 
       #{subType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR} , #{grade ,jdbcType=VARCHAR} , 
-      #{hairLen,jdbcType=DOUBLE} , #{hairColor ,jdbcType=DOUBLE} 
+      #{hairLen,jdbcType=DOUBLE} , #{hairColor ,jdbcType=DOUBLE} ,#{hotsale,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hair.model.Product" >
@@ -123,11 +131,14 @@
       <if test="grade != null" >
         grade,
       </if>
-      <if test="type != null" >
+      <if test="hairLen != null" >
         hairLen,
       </if>
-      <if test="grade != null" >
+      <if test="hairColor != null" >
         hairColor,
+      </if>
+      <if test="hotsale != null" >
+        hotsale,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -170,6 +181,9 @@
       <if test="hairColor != null and hairColor>=0" >
         #{hairColor,jdbcType=DOUBLE},
       </if>
+      <if test="hotsale != null" >
+        #{hotsale,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.hair.model.Product" >
@@ -206,10 +220,13 @@
         grade = #{grade,jdbcType=VARCHAR},
       </if>
       <if test="hairLen != null and hairLen>=0" >
-        type = #{hairLen,jdbcType=DOUBLE},
+        hairLen = #{hairLen,jdbcType=DOUBLE},
       </if>
       <if test="hairColor != null and hairColor>=0" >
-        grade = #{hairColor,jdbcType=DOUBLE},
+        hairColor = #{hairColor,jdbcType=DOUBLE},
+      </if>
+      <if test="hotsale != null" >
+        hotsale = #{hotsale,jdbcType=VARCHAR},
       </if>
     </set>
     where ID = #{id,jdbcType=VARCHAR}
@@ -228,7 +245,8 @@
       type = #{type,jdbcType=VARCHAR},
       grade = #{grade , jdbcType=VARCHAR},
        hairLen = #{hairLen,jdbcType=DOUBLE},
-      hairColor = #{hairColor , jdbcType=DOUBLE}
+      hairColor = #{hairColor , jdbcType=DOUBLE}, 
+      hotsale = #{hotsale , jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -1,18 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <jsp:include page="/common/common.jsp"></jsp:include>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="${basePath}/jsp/pages/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="${basePath}/jsp/pages/css/xiangce.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="${basePath}/jsp/pages/js/common.js"></script>
+	<script src="${basePath}/jsp/pages/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+	<script src="${basePath}/jsp/pages/js/xiangce.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="${basePath}/jsp/pages/css/css.css" type="text/css" />
+	<script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
+	<link rel="stylesheet" href="${basePath }/bootstrap/css/bootstrap.min.css">
+	<script src="${basePath }/bootstrap/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<link href="${basePath}/jsp/pages/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${basePath}/jsp/pages/js/common.js"></script>
-<link rel="stylesheet" href="${basePath}/jsp/pages/css/css.css" type="text/css" />
-<script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
-<link rel="stylesheet" href="${basePath }/bootstrap/css/bootstrap.min.css">
-<script src="${basePath }/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function msg() {
 		var path = "${basePath}/msg/msgInit?role=2";
@@ -21,7 +25,7 @@
 	}
 	$(function(){
 		$('#dlg-frame').dialog( {
-			title : '用户管理',
+			title : 'message board',
 			width :  300,
 			height : 500,
 			top: 100,
@@ -31,6 +35,32 @@
 			modal : true
 		});
 	});
+	function addCart(id) {
+		var del = confirm("confirm？");
+		if (!del) {
+			return false;
+		}
+		if (id > 0) {
+			var url = "${basePath}/cart/insert?productid" + id;
+			$.ajax({
+				url : url,
+				type : 'post',
+				dataType : 'json',
+				success : function(data) {
+					if (data.success) {
+						$.messager.alert('提示', data.msg);
+						doSearch();
+					} else {
+						$.messager.alert('提示', data.msg, "error");
+					}
+
+				},
+				error : function(transport) {
+					$.messager.alert('提示', "系统产生错误,请联系管理员!", "error");
+				}
+			});
+		}
+	}
 </script>
 <style type="text/css">
 #test{
@@ -51,6 +81,7 @@
 </style>
 </head>
 <body>
+
 <div id="top_wrap">
 		<div id="header">
 			<div class="logo fLeft"></div>
@@ -150,74 +181,42 @@
 			<div style="clear: both;"></div>
 		</div>
 	</div>
-<div id="content" >
-	<div id="content" class="autoHeight" style="margin:30px 0;">
-		<div id="content_body_main">
-			<div class="content_body_main_l">
-				<ul>
-					<li class="on"><a href="${basePath}/web/main?type=Wigs">Wigs</a></li>
-					<li><a href="${basePath}/web/main?type=Hair extensions">Hair extensions</a></li>
-					<li><a href="${basePath}/web/main?type=Hair pieces" >Hair pieces</a></li>
-				</ul>
-			</div>
-			<div class="content_body_main_r">
-				<ul class="picture_list">
-					<!--循环开始-->
-					<c:forEach items="${productList }" var = "pro">
-						<li>
-							<div class="picture_list_img_wrap">
-								<a href="${basePath}/web/detail?id=${pro.id}" target="_self">
-									<img src="/upload/${pro.imageList[0].iname }" />
-								</a>
-							</div>
-							<p>
-								<a style="" href="${basePath}/web/query?proName=${pro.proName}" target="_self" title="${pro.proName}">${pro.proName }
-								</a>
-							</p>
-						</li>
-					</c:forEach>
-					<!--循环结束-->
-				  </ul>
-				<div class="clear"></div>
-			</div>
-          <!--   <div class="page_ct">
-				<div class="page_turner"><a title="第1页" class="c">1</a>
-					<a title="第2页" href="?channel-1.html=&page=2">2</a>
-					<a title="第3页" href="?channel-1.html=&page=3">3</a>
-					<a title="第4页" href="?channel-1.html=&page=4">4</a>
-					<a title="第5页" href="?channel-1.html=&page=5">5</a>
-					<a title="第6页" href="?channel-1.html=&page=6">6</a>
-					<a title="第7页" href="?channel-1.html=&page=7">7</a>
-					<a title="第8页" href="?channel-1.html=&page=8">8</a>
-					<a title="末页" href="?channel-1.html=&page=8">...8</a>
-					<a title="last" href="javascript:void(0)"><<</a><a title="next" href="?channel-1.html=&page=2">>></a>
-					<span>18iteam/page&nbsp;total<label id="total">130</label>iteam</span>
-				</div>
-			</div> -->
 
-			<div class="clear"></div>
+
+	<div id="content"  class="autoHeight">
+		<div id="content_body">
+			<div class="article_title">
+				<h2 style="color:#000">Contact Us</h2>
+			</div>
+			<div class="article_body"><p>
+	<img style="width:334px;height:341px;" alt="" src="images/content_us.jpg" width="330" height="398" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p>
+	<span style="color:#000000;font-size:14px;">Address</span><span style="color:#000000;font-size:14px;">:2nd floor,Building 1,NO. 6,Gaochang Road,Qingdao,China</span><br />
+<span style="color:#000000;font-size:14px;">Telphone</span><span style="color:#000000;font-size:14px;">:+86-532-67703178</span><br />
+<span style="color:#000000;font-size:14px;">Zip code</span><span style="color:#000000;font-size:14px;">:266101&nbsp;</span><br />
+<span style="color:#000000;font-size:14px;">Email</span><span style="color:#000000;font-size:14px;">: sales@dreamlacewig.com</span> 
+</p> </div>
 		</div>
 	</div>
-
-	<div id="bottom_wrap">
-		<div id="bottom">
-			<div style="width:1000px;height:100px;" class="fLeft">
-
-				<p>
-					<span class="bottom_a"><a  href="/?channel-36.html">About Us</a></span>
-					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-37.html">Wholesale</a></span>
-					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-38.html">Order 101</a></span>
-					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-39.html">Acceptable Payment</a></span>
-					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-40.html">Shipping&Delivery </a></span>
-					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;        <span class="bottom_a"><a  href="/?channel-41.html">Contact Us</a></span>
-					<br /><br />
-					<font style=" font-size:14px; "> Copyright © 2007 DREAM LACE WIGS All Right Reserved<br /><br />
-						Phone:0086-532-67703178        Email:sales@dreamlacewig.com</font></p><br />
-			</div>
-
+<div id="bottom_wrap">
+	<div id="bottom">
+		<div style="width:1000px;height:100px;" class="fLeft">
+			<p>
+				<span class="bottom_a"><a  href="/?channel-36.html">About Us</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-37.html">Wholesale</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-38.html">Order 101</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-39.html">Acceptable Payment</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-40.html">Shipping&Delivery </a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-41.html">Contact Us</a></span>
+				<br/><br/>
+				<font style=" font-size:14px; "> Copyright © 2007 DREAM LACE WIGS All Right Reserved<br/><br/>
+					Phone:0086-532-67703178        Email:sales@dreamlacewig.com</font></p><br />
 		</div>
-</div>
- 
+	</div>
 </div>
  <div id="dlg-frame">
 			<iframe width="99%" height="98%" name="frameContent" id="frameContent"

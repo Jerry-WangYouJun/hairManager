@@ -50,6 +50,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    			return "";
 			    		}
 			    }},
+			    {field:'hotsale',title:'是否热卖',align:'center',formatter:function(value,rowData,rowIndex){
+			    		if(value == "1"){
+			    			return "YES";
+			    		}else{
+			    			return "NO";
+			    		}
+			    }},
 					{field : 'grade',title : 'grade',halign:'center'},
 					{field:'texture',title:'texture',align:'center'},
 					{field:'unit',title:'单位',align:'center',formatter:function(value,rowData,rowIndex){

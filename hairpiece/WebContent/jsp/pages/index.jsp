@@ -13,7 +13,17 @@
 <link rel="stylesheet" href="${basePath}/jsp/pages/css/css.css"
 	type="text/css" />
 <script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
+<link rel="stylesheet" href="${basePath }/bootstrap/css/bootstrap.min.css">
+	<script src="${basePath }/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+	function cart() {
+		if("${userbean}" == "" ){
+			  alert("please sign in ");
+			  return false ;
+		}
+		window.location.href = "${basePath}/web/cartInit";
+	}
+	
 	function msg() {
 		var path = "${basePath}/msg/msgInit?role=2";
 		document.getElementById('frameContent').src = path;
@@ -56,24 +66,23 @@
 			<div class="tel fright">
 				<c:if test="${  empty  userbean}">
 					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png"> <a
-							href="${basePath}/user/register">register</a> / <a
+					<span class="glyphicon glyphicon-user" style="color:white;font-size:20px;"></span>
+						<a href="${basePath}/user/register">register</a> / <a
 							href="${basePath}/user/signup">sign in</a>
 					</p>
 				</c:if>
 				<c:if test="${ not empty userbean }">
-					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png">Welcome:
-						${userbean }
+					<p style="color:white">
+						<span class="glyphicon glyphicon-user" style="font-size:20px;"></span>
+						Welcome:&nbsp;${userbean }
 					</p>
 					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png"> <a
-							href="${basePath}/user/loginOut">sign out</a>
-					</p>
-
+						 <span class="glyphicon glyphicon-log-out" style="color:white;font-size:20px;"></span><a
+							href="${basePath}/user/loginOut">&nbsp;sign out</a>
+					</p><br/>
 					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png"> <a href="#"
-							onclick="msg()">message</a>
+						<span class="glyphicon glyphicon-text-background" style="color:white;font-size:20px;"></span>
+					 <a href="#" onclick="msg()">message board</a>
 					</p>
 
 				</c:if>
@@ -104,7 +113,7 @@
 								</dd>
 							</c:forEach>
 						</dl></li>
-					<li><a class="li_1" href="main.html" target="_self">Eyelashs</a>
+					<li><a class="li_1" href="${basePath}/web/main?type=Eyelashs" target="_self">Eyelashs</a>
 						<dl class="li_3_content">
 							<c:forEach items="${Eyelashs}" var="Eyelash">
 								<dd>
@@ -113,34 +122,34 @@
 								</dd>
 							</c:forEach>
 						</dl></li>
-					<li><a class="li_1" href="Information.html" target="_self">Information</a>
+					<li><a class="li_1" href="${basePath}/web/information" target="_self">Information</a>
 						<dl class="li_3_content">
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/about_us.html" target="_self">About
+									href="${basePath}/web/about_us" target="_self">About
 									Us</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Wholesale.html" target="_self">Wholesale</a>
+									href="${basePath}/web/acceptable" target="_self">Wholesale</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Order101.html" target="_self">Order
+									href="${basePath}/web/contact" target="_self">Order
 									101</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Acceptable.html" target="_self">Acceptable
+									href="${basePath}/web/order" target="_self">Acceptable
 									Payment </a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Shipping.html" target="_self">Shipping&Delivery</a>
+									href="${basePath}/web/shipping" target="_self">Shipping&Delivery</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Contact_us.html" target="_self">Contact
+									href="${basePath}/web/Wholesale" target="_self">Contact
 									Us</a>
 							</dd>
 						</dl></li>
@@ -208,10 +217,10 @@
 		<div id="content_body">
 			<ul class="picture_list">
 				<!--循环开始-->
-				<c:forEach items="${productList }" var="pro">
+				<c:forEach items="${hotsaleList }" var="pro">
 					<li>
 						<div class="picture_list_img_wrap">
-							<a href="${basePath}/web/query?subType=${pro.subType}"
+							<a href="${basePath}/web/detail?id=${pro.id}"
 								target="_self"> <img
 								src="${basePath}/jsp/pages/images/hear.jpg"
 								title="${pro.proName }" alt="${pro.proName }" />

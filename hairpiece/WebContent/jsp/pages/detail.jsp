@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <jsp:include page="/common/common.jsp"></jsp:include>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<link href="css/xiangce.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="js/common.js"></script>
-	<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-	<script src="js/xiangce.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="css/css.css" type="text/css" />
-	<script type=text/javascript src="js/public.js"></script>
+	<link href="${basePath}/jsp/pages/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="${basePath}/jsp/pages/css/xiangce.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="${basePath}/jsp/pages/js/common.js"></script>
+	<script src="${basePath}/jsp/pages/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+	<script src="${basePath}/jsp/pages/js/xiangce.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="${basePath}/jsp/pages/css/css.css" type="text/css" />
+	<script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
+	<link rel="stylesheet" href="${basePath }/bootstrap/css/bootstrap.min.css">
+	<script src="${basePath }/bootstrap/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 	function msg() {
@@ -21,7 +25,7 @@
 	}
 	$(function(){
 		$('#dlg-frame').dialog( {
-			title : '用户管理',
+			title : 'message board',
 			width :  300,
 			height : 500,
 			top: 100,
@@ -31,6 +35,32 @@
 			modal : true
 		});
 	});
+	function addCart(id) {
+		var del = confirm("confirm？");
+		if (!del) {
+			return false;
+		}
+		if (id > 0) {
+			var url = "${basePath}/cart/insert?productid" + id;
+			$.ajax({
+				url : url,
+				type : 'post',
+				dataType : 'json',
+				success : function(data) {
+					if (data.success) {
+						$.messager.alert('提示', data.msg);
+						doSearch();
+					} else {
+						$.messager.alert('提示', data.msg, "error");
+					}
+
+				},
+				error : function(transport) {
+					$.messager.alert('提示', "系统产生错误,请联系管理员!", "error");
+				}
+			});
+		}
+	}
 </script>
 <style type="text/css">
 #test{
@@ -58,24 +88,23 @@
 			<div class="tel fright">
 				<c:if test="${  empty  userbean}">
 					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png"> <a
-							href="${basePath}/user/register">register</a> / <a
+					<span class="glyphicon glyphicon-user" style="color:white;font-size:20px;"></span>
+						<a href="${basePath}/user/register">register</a> / <a
 							href="${basePath}/user/signup">sign in</a>
 					</p>
 				</c:if>
 				<c:if test="${ not empty userbean }">
-					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png">Welcome:
-						${userbean }
+					<p style="color:white">
+						<span class="glyphicon glyphicon-user" style="font-size:20px;"></span>
+						Welcome:&nbsp;${userbean }
 					</p>
 					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png"> <a
-							href="${basePath}/user/loginOut">sign out</a>
-					</p>
-
+						 <span class="glyphicon glyphicon-log-out" style="color:white;font-size:20px;"></span><a
+							href="${basePath}/user/loginOut">&nbsp;sign out</a>
+					</p><br/>
 					<p>
-						<img src="${basePath}/jsp/pages/images/msg.png"> <a href="#"
-							onclick="msg()">message</a>
+						<span class="glyphicon glyphicon-text-background" style="color:white;font-size:20px;"></span>
+					 <a href="#" onclick="msg()">message board</a>
 					</p>
 
 				</c:if>
@@ -106,7 +135,7 @@
 								</dd>
 							</c:forEach>
 						</dl></li>
-					<li><a class="li_1" href="main.html" target="_self">Eyelashs</a>
+					<li><a class="li_1" href="${basePath}/web/main?type=Eyelashs" target="_self">Eyelashs</a>
 						<dl class="li_3_content">
 							<c:forEach items="${Eyelashs}" var="Eyelash">
 								<dd>
@@ -115,34 +144,34 @@
 								</dd>
 							</c:forEach>
 						</dl></li>
-					<li><a class="li_1" href="Information.html" target="_self">Information</a>
+					<li><a class="li_1" href="${basePath}/web/information" target="_self">Information</a>
 						<dl class="li_3_content">
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/about_us.html" target="_self">About
+									href="${basePath}/web/about_us" target="_self">About
 									Us</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Wholesale.html" target="_self">Wholesale</a>
+									href="${basePath}/web/acceptable" target="_self">Wholesale</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Order101.html" target="_self">Order
+									href="${basePath}/web/contact" target="_self">Order
 									101</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Acceptable.html" target="_self">Acceptable
+									href="${basePath}/web/order" target="_self">Acceptable
 									Payment </a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Shipping.html" target="_self">Shipping&Delivery</a>
+									href="${basePath}/web/shipping" target="_self">Shipping&Delivery</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/jsp/pages/Contact_us.html" target="_self">Contact
+									href="${basePath}/web/Wholesale" target="_self">Contact
 									Us</a>
 							</dd>
 						</dl></li>
@@ -183,55 +212,62 @@
 					</div>
 					<!--图片轮播-->
 					<div class="detail_context_pic_bot">
-						<div class="detail_picbot_left"> <a href="javascript:void(0)" id="preArrow_B"><img src="images/left1.jpg" alt="上一个" /></a> </div>
+						<div class="detail_picbot_left"> <a href="javascript:void(0)" id="preArrow_B"><img src="${basePath }/jsp/pages/images/left1.jpg" alt="上一个" /></a> </div>
 						<div class="detail_picbot_mid">
 							<ul>
-								<li> <a href='javascript:void(0);'> <img src='images/meifa (1).jpg' width='90px'  title='' alt='' bigimg='images/meifa (1).jpg' /> </a> </li>
-								<li> <a href='javascript:void(0);'> <img src='images/meifa (2).jpg' width='90px'  title='' alt='' bigimg='images/meifa (2).jpg' /> </a> </li>
-								<li> <a href='javascript:void(0);'> <img src='images/meifa (3).jpg' width='90px'  title='' alt='' bigimg='images/meifa (3).jpg' /> </a> </li>
-								<li> <a href='javascript:void(0);'> <img src='images/meifa (4).jpg' width='90px'  title='' alt='' bigimg='images/meifa (4).jpg' /> </a> </li>
-								<li> <a href='javascript:void(0);'> <img src='images/meifa (5).jpg' width='90px'  title='' alt='' bigimg='images/meifa (5).jpg' /> </a> </li>
-								<li> <a href='javascript:void(0);'> <img src='images/meifa (6).jpg' width='90px'  title='' alt='' bigimg='images/meifa (6).jpg' /> </a> </li>
+								<c:forEach items="${imageList }" var="image">
+								       <li>${fn:substring(image.iname, 16, 99)} <a href='javascript:void(0);'> <img src='/upload/${image.iname}' width='90px'  title=''
+								        alt='' bigimg='/upload/${image.iname}' /> </a> </li>
+								</c:forEach>
+								
 							</ul>
 						</div>
-						<div class="detail_picbot_right"> <a href="javascript:void(0)" id="nextArrow_B"><img src="images/right1.jpg" alt="下一个" /></a> </div>
+						<div class="detail_picbot_right"> <a href="javascript:void(0)" id="nextArrow_B"><img src="${basePath }/jsp/pages/images/right1.jpg" alt="下一个" /></a> </div>
 					</div>
 				</div>
             </div> 
 			<div id="right">
-						<h1 id="info_name" style="">DE-001</h1>
+						<h1 id="info_name" style="">${product.proName }</h1>
 						<div id="info_intro"></div>
 						
-						<div id="info_content"><p>
-	<span style="color:#666666;font-size:13px;">Length:8mm-1<span style="font-size:13px;">4</span>mm</span>
+						<div id="info_content">
+<p class="p_top">
+	<span style="color:#666666;font-size:13px;">Human Hair Type: ${product.hairType }</span>
+</p>
+<p class="p_top">
+	<span style="color:#666666;"><span style="font-size:13px;">Can Be Permed: 
+	<c:choose>
+		<c:when test="${product.permed eq '1' }">YES</c:when>
+		<c:when test="${product.permed eq '2' }">NO</c:when>
+	</c:choose></span></span>
+</p>
+<p class="p_top">
+	<span style="color:#666666;"><span style="font-size:13px;">Material Grade:${product.grade }</span></span>
+</p>
+<p class="p_top">
+	<span style="color:#666666;"><span style="font-size:13px;">Texture:${product.texture }</span></span>
+</p>
+<p class="p_top">
+	<span style="color:#666666;"><span style="font-size:13px;">Unit Weight:${product.unit }g/pc</span></span>
+</p>
+</p>
+<p class="p_top">
+	<span style="color:#666666;"><span style="font-size:13px;">Items per Package:${product.items }pc/s et</span></span>
 </p>
 <p>
-	<span style="color:#666666;font-size:13px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">---------------------------------------</span></span></span></span></span></span></span></span><br />
-</span> 
+	<span style="color:#666666;font-size:13px;">Length:${product.hairLen }mm</span>
 </p>
-<p class="p_top">
-	<span style="color:#666666;font-size:13px;">Thickness:0.1mm,0.15mm,0.20mm,0.25m</span>
+<p>
+	<span  style="color:#666666;font-size:13px;">Hair Colors:${product.hairColor }</span>
 </p>
-<p class="p_top">
-	<span style="color:#666666;font-size:13px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">---------------------------------------</span></span></span></span></span></span></span></span><br />
-</span> 
+<p>
+	<a style="color:blue" href="#" onclick="addCart(${product.id })"><span  class="glyphicon glyphicon-shopping-cart" >Add</span></a>
 </p>
-<p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Specification: All eyelashes are 100% Handmade</span></span>
-</p>
-<p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">---------------------------------------</span></span></span></span></span></span></span></span><br />
-</span></span> 
-</p>
-<p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Material:100% Real bird's feathe</span></span>
-</p>
-<p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;"><span style="color:#663333;font-size:16px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">----------------------------------------------</span></span><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:13px;">---------------------------------------</span></span></span></span></span></span></span></span><br />
-</span></span> 
-</p></div>
+
+
+</div>
 		<br/><br/><br/><br/>
-                       <img src="images/detail.png" width="316" height="67" />
+                       <img src="${basePath }/jsp/pages/images/detail.png" width="316" height="67" />
               <div id="info_comment">Looking into becoming our wholesalers and distributors, <br />
               please email to <a href="mailto:sales@dreamlacewig.com"   style="text-decoration:underline; color:#000">sales@dreamlacewig.com</a>.<br />
               A company representative will contact you by email or phone within 24</div>

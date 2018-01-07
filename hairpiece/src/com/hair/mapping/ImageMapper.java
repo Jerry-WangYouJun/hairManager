@@ -20,7 +20,7 @@ public interface ImageMapper {
     
     public Image selectByImageNoAndPwd(Image user);
 
-	public List<Image> selectImageByWhere(Map params);
+	public List<Image> selectImageByWhere(Image image);
 
 	public Long selectImageCountByWhere(Map params);
 }

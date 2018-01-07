@@ -1,5 +1,7 @@
 package com.hair.model;
 
+import java.util.List;
+
 public class Product {
 	  private  Integer id ; 
 	  private String proName;
@@ -14,6 +16,8 @@ public class Product {
 	  private Double hairLen;
 	  private String hairColor ;
 	  private String remark;
+	  private String hotsale;
+	  private List<Image> imageList;
 	public Integer getId() {
 		return id;
 	}
@@ -91,5 +95,17 @@ public class Product {
 	}
 	public void setProName(String proName) {
 		this.proName = proName;
+	}
+	public String getHotsale() {
+		return hotsale;
+	}
+	public void setHotsale(String hotsale) {
+		this.hotsale = hotsale;
+	}
+	public List<Image> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<Image> imageList) {
+		this.imageList = imageList;
 	}
 }
