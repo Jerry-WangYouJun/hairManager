@@ -38,7 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				singleSelect: true,
 				columns:[[
 					{field:'id', align : 'center',halign:'center',checkbox : true}, 
-					{field:'iname',title:'图片名称',align:'center'},
+					{field:'iname',title:'图片名称',align:'center' , formatter:function(value,rowData,rowIndex){
+						  return value.substring(16);
+					}},
 					{field:'ipath',title:'路径',align:'center'},
 					{field:'img',title:'图片',align:'center' ,formatter:showImg},
 				]],
@@ -96,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 });
     	//图片展示  
     	function showImg(value, row, index){  
-    	        return '<img style="width:50px;length:50px" border="1" src="http://localhost:8888/upload/' + row.iname +'"/>';  
+    	        return '<img style="width:50px;length:50px" border="1" src="/upload/' + row.iname +'"/>';  
     	} 
 	    	function doSearch(){
 	    		var pageNo = $(".pagination-num").val(); 
@@ -145,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var id;
 				var checkTotal = 0;
 				$("input[type=checkbox]").each(function() {
-					if (this.checked) {
+					if (this.checked && $(this).val() != "on" ) {
 						id = $(this).val();
 						checkTotal++;
 					}
