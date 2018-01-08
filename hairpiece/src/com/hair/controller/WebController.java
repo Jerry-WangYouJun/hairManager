@@ -167,6 +167,8 @@ public class WebController {
 	@RequestMapping("/acceptable")
 	public ModelAndView acceptable(ModelAndView model,
 			HttpServletRequest request) {
+		Infomation info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
 		model.setViewName("forward:/jsp/pages/acceptable.jsp");
 		return model;
 	}
@@ -174,6 +176,8 @@ public class WebController {
 	@RequestMapping("/contact")
 	public ModelAndView contact(ModelAndView model,
 			HttpServletRequest request) {
+		Infomation info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
 		model.setViewName("forward:/jsp/pages/contact.jsp");
 		return model;
 	}
@@ -181,6 +185,8 @@ public class WebController {
 	@RequestMapping("/order")
 	public ModelAndView order(ModelAndView model,
 			HttpServletRequest request) {
+		Infomation info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
 		model.setViewName("forward:/jsp/pages/order.jsp");
 		return model;
 	}
@@ -188,6 +194,8 @@ public class WebController {
 	@RequestMapping("/shipping")
 	public ModelAndView shipping(ModelAndView model,
 			HttpServletRequest request) {
+		Infomation info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
 		model.setViewName("forward:/jsp/pages/shipping.jsp");
 		return model;
 	}
@@ -195,6 +203,8 @@ public class WebController {
 	@RequestMapping("/Wholesale")
 	public ModelAndView Wholesale(ModelAndView model,
 			HttpServletRequest request) {
+		Infomation info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
 		model.setViewName("forward:/jsp/pages/Wholesale.jsp");
 		return model;
 	}

@@ -188,69 +188,7 @@
 			<div class="article_title">
 				<h2 style="color:#000">Acceptable Payment </h2>
 			</div>
-			<div class="article_body"><div class="about">
-	<p class="table_head">
-		<span style="color:#000000;font-size:14px;">1)Paypal</span> 
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;">Paypal email：</span><a href="mailto:sales@remyqueen.com"><span style="color:#000000;font-size:14px;">sales@dreamlacewig.com</span></a><br />
-<span style="color:#000000;font-size:14px;">There is an extra 4% paypal fee if you choose to pay by paypal.</span> 
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;">&nbsp;</span> 
-	</p>
-	<p class="table_head">
-		<span style="color:#000000;font-size:14px;">2)Western Union</span> 
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;">Our Western union&nbsp;&nbsp; Information:</span><br />
-<span style="color:#000000;font-size:14px;">First Name：JINFENG</span><br />
-<span style="color:#000000;font-size:14px;">Last Name：LIU</span><br />
-<span style="color:#000000;font-size:14px;">City：QINGDAO</span><br />
-<span style="color:#000000;font-size:14px;">State：SHANDONG</span><br />
-<span style="color:#000000;font-size:14px;">Country：CHINA</span><br />
-<span style="color:#000000;font-size:14px;">Tel：0086-532-67703178</span> 
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;">&nbsp;</span> 
-	</p>
-	<p class="table_head">
-		<span style="color:#000000;font-size:14px;">3) MoneyGram</span> 
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;">Moneygram Information:</span><br />
-<span style="color:#000000;font-size:14px;">First Name：JUNYAN</span><br />
-<span style="color:#000000;font-size:14px;">Last Name：LI</span><br />
-<span style="color:#000000;font-size:14px;">City：Qingdao</span><br />
-<span style="color:#000000;font-size:14px;">State：Shandong</span><br />
-<span style="color:#000000;font-size:14px;">Country：CHINA</span><br />
-<span style="color:#000000;font-size:14px;">Tel：0086-532-67703178</span> 
-	</p>
-	<p>
-		&nbsp;
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;">4)Bank Wires (TT)　</span> 
-	</p>
-	<p>
-		<span style="color:#000000;font-size:14px;"> </span> 
-	</p>
-	<div>
-		<span style="font-size:14px;color:#000000;">BANK&nbsp;OF&nbsp;CHINA&nbsp;&nbsp;JUANCHENG&nbsp;&nbsp;&nbsp;SUB-BRANCH&nbsp;(SWIFT</span><br />
-<span style="font-size:14px;color:#000000;"> NO:BKCHCNBJ500)</span><br />
-<span style="font-size:14px;color:#000000;"> BANK’S&nbsp;ADDRESS:N09&nbsp;RENMIN&nbsp;ROAD&nbsp;SHANDONG/JUANCHENG</span><br />
-<span style="font-size:14px;color:#000000;"> BENEFICIARY’S&nbsp;NAME:&nbsp;Heze&nbsp;Yuxing&nbsp;Hair&nbsp;Products&nbsp;Co.,Ltd</span><br />
-<span style="font-size:14px;color:#000000;"> BENEFICIARY’S&nbsp;A/C&nbsp;NO:220826915934</span><br />
-<br />
-<span style="font-size:14px;color:#000000;"> BENEFICIARY’S&nbsp;ADDRESS:&nbsp;（2nd&nbsp;Human&nbsp;Hair&nbsp;Industrial&nbsp;Park）Changcheng&nbsp;Street&nbsp;South,Fenghuanglu&nbsp;Beiduan&nbsp;Road&nbsp;East&nbsp;Juancheng,Heze,Shandong&nbsp;Province</span><br />
-<span style="font-size:14px;color:#000000;"> Postal&nbsp;code:274600</span><br />
-<span style="font-size:14px;color:#000000;"> Office&nbsp;phone:0530-2958222</span><br />
-	</div>
-<span style="color:#000000;font-size:14px;"></span> 
-	<p>
-		<br />
-	</p>
-</div> </div>
+			 <div >${fn:replace(info.acceptable,vEnter,"<br>")}</div>
 		</div>
 	</div>
 <div id="bottom_wrap">

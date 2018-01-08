@@ -187,31 +187,7 @@
 			<div class="article_title">
 				<h2 style="color:#000">Shipping&Delivery</h2>
 			</div>
-			<div class="article_body"><p class="text">
-	<span style="color:#333333;font-size:14px;">Dream lace wig Logistics department ship hair products worldwide every day.&nbsp;Large orders are usually shipped by sea in containers, and  the small orders are sent by UPS, FEDEX or DHL. It will take 2 days to deliver to USA/Canada, and  3 days to deliver to Europe for small orders. &nbsp;&nbsp;</span> 
-</p>
-<p class="text">
-	<span style="color:#333333;font-size:14px;">All Stock Products can be sent out on the day you pay. For custom orders, the production time is as follows:</span><br />
-<span style="color:#333333;font-size:14px;">Normally: 4 weeks to produce</span> 
-</p>
-<p class="text">
-	<span style="color:#333333;font-size:14px;">Rush: 2 weeks to produce with a rush cost of $20 per wig.&nbsp;</span> 
-</p>
-<p class="text">
-	<span style="color:#333333;font-size:14px;">&nbsp;</span><span style="color:#333333;font-size:14px;">Here is the shipping cost reference by UPS Express</span> 
-</p>
-<p class="text">
-	<img alt="" src="images/table01.png" />
-</p>
-<p>
-	<br />
-</p>
-<p class="table_head">
-	<span style="color:#333333;font-size:14px;">Here is the shipping cost reference by&nbsp;DHL Express</span> 
-</p>
-<p>
-	<img alt="" src="images/table02.png" />
-</p> </div>
+			 <div >${fn:replace(info.shipping,vEnter,"<br>")}</div>
 		</div>
 	</div>
 <div id="bottom_wrap">

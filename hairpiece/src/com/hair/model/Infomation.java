@@ -55,7 +55,11 @@ public class Infomation {
 	}
 
 	public void setWholesale(String wholesale) {
-		this.wholesale = wholesale;
+		try {
+			this.wholesale = new String(wholesale.getBytes("ISO-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getOrder() {
@@ -63,7 +67,11 @@ public class Infomation {
 	}
 
 	public void setOrder(String order) {
-		this.order = order;
+		try {
+			this.order = new String(order.getBytes("ISO-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getAcceptable() {
@@ -71,7 +79,11 @@ public class Infomation {
 	}
 
 	public void setAcceptable(String acceptable) {
-		this.acceptable = acceptable;
+		try {
+			this.acceptable = new String(acceptable.getBytes("ISO-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getContact() {
@@ -79,7 +91,11 @@ public class Infomation {
 	}
 
 	public void setContact(String contact) {
-		this.contact = contact;
+		try {
+			this.contact = new String(contact.getBytes("ISO-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getPaypal_email() {

@@ -187,70 +187,7 @@
 			<div class="article_title">
 				<h2 style="color:#000">Order 101</h2>
 			</div>
-			<div class="article_body"><ul style="background-color:#ffffff;text-indent:0px;color:#ffffff;" class="article_list aa">
-	<li>
-		<h2>
-			<ul class="article_list aa" style="background-color:#FFFFFF;color:#FFFFFF;">
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-46.html" target="_blank">How to measure your head</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-47.html" target="_blank">How to know hair length</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-48.html" target="_blank">Repair policy</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-49.html" target="_blank">Return policy</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-50.html" target="_blank">Lace color chart</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-51.html" target="_blank">Color ring</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-52.html" target="_blank">Density chart</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-53.html" target="_blank">Popular textures</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-54.html" target="_blank">Cap size</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-55.html" target="_blank">Cap designs</a></span>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<span style="font-family:NSimSun;color:#000000;"><a href="http://www.dreamlacewig.com/?channel-56.html" target="_blank">lace wigs order form</a></span>
-					</h2>
-				</li>
-			</ul>
-<br />
-		</h2>
-	</li>
-</ul> </div>
+			 <div >${fn:replace(info.order,vEnter,"<br>")}</div>
 		</div>
 	</div>
 <div id="bottom_wrap">

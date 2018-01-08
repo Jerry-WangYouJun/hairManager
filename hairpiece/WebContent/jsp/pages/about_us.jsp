@@ -61,6 +61,13 @@
 			});
 		}
 	}
+	
+	$(function(){
+	    $("p.re-br").each(function() {
+	        var temp =  $(this).text().replace(/\n|\r\n/g,'<br/>');
+	        $(this).html(temp);
+	    });
+	});
 </script>
 <style type="text/css">
 #test{
@@ -81,7 +88,6 @@
 </style>
 </head>
 <body>
-
 <div id="top_wrap">
 		<div id="header">
 			<div class="logo fLeft"></div>
@@ -188,7 +194,8 @@
         <div class="article_title">
             <h2 style="color:#000">About Us</h2>
         </div>
-        ${info.about_us }
+        <div >${fn:replace(info.about_us,vEnter,"<br>")}</div>
+        
     </div>
 </div>
 <div id="bottom_wrap">

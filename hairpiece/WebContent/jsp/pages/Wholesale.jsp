@@ -188,44 +188,7 @@
 			<div class="article_title">
 				<h2 style="color:#000">Wholesale</h2>
 			</div>
-			<div class="article_body"><p>
-	<img alt="" src="http://lihuiqiang1212.idc.505b.com/_uploadfile/image/20130907/20130907141870007000.jpg" /> 
-</p>
-<p>
-	&nbsp;
-</p>
-<p>
-	<span style="font-family:Verdana;color:#666666;font-size:13px;"><span style="color:#000000;font-size:14px;">Welcome to join the supply chain of Dream lace wig Group! </span><br />
-</span> 
-</p>
-<p>
-	<span style="font-family:Verdana;color:#666666;font-size:13px;"><span style="color:#000000;font-size:14px;">If you are looking into becoming a wholesaler， Dream lace wig is one of your best choices! As a reputable wholesale supplier, we can provide you with all the unique services you need. </span><br />
-</span> 
-</p>
-<p>
-	<span style="font-family:Verdana;color:#000000;font-size:14px;">We supply our hair products at true wholesale costs and   sell our product as represented</span> 
-</p>
-<p>
-	<span style="font-family:Verdana;color:#000000;font-size:14px;">We offer timely shipments that you can rely on </span> 
-</p>
-<p>
-	<span style="font-family:Verdana;color:#000000;font-size:14px;">We keep the largest amount of stock lace wigs and   weft hair in China for immediate shipping.&nbsp;</span> 
-</p>
-<p>
-	<span style="font-family:Verdana;color:#000000;font-size:14px;">All our sales representative have more than 5 years working experiences on hair line and   are very professional to answer your questions and   give constructive advices. </span> 
-</p>
-<p>
-	<span style="font-family:Verdana;color:#000000;font-size:14px;">Simply send email to </span><a href="mailto:sales@remyqueen.com"><span style="font-family:Verdana;color:#003399;font-size:14px;"><strong>sales@dreamlacewig.com</strong></span></a><span style="font-family:Verdana;color:#000000;font-size:14px;"> with your inquiry. A company representative will contact you by email or phone within 24 hours.</span> 
-</p>
-<p>
-	<span style="background-color:#ffffff;color:#333333;font-size:14px;"></span><span>&nbsp;</span> 
-</p>
-<p>
-	<br />
-</p>
-<p>
-	&nbsp;
-</p> </div>
+			 <div >${fn:replace(info.wholesale,vEnter,"<br>")}</div>
 		</div>
 	</div>
 <div id="bottom_wrap">

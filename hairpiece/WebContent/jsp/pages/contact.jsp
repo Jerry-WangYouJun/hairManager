@@ -188,18 +188,7 @@
 			<div class="article_title">
 				<h2 style="color:#000">Contact Us</h2>
 			</div>
-			<div class="article_body"><p>
-	<img style="width:334px;height:341px;" alt="" src="images/content_us.jpg" width="330" height="398" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-<p>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-<p>
-	<span style="color:#000000;font-size:14px;">Address</span><span style="color:#000000;font-size:14px;">:2nd floor,Building 1,NO. 6,Gaochang Road,Qingdao,China</span><br />
-<span style="color:#000000;font-size:14px;">Telphone</span><span style="color:#000000;font-size:14px;">:+86-532-67703178</span><br />
-<span style="color:#000000;font-size:14px;">Zip code</span><span style="color:#000000;font-size:14px;">:266101&nbsp;</span><br />
-<span style="color:#000000;font-size:14px;">Email</span><span style="color:#000000;font-size:14px;">: sales@dreamlacewig.com</span> 
-</p> </div>
+			 <div >${fn:replace(info.contact,vEnter,"<br>")}</div>
 		</div>
 	</div>
 <div id="bottom_wrap">
