@@ -122,16 +122,16 @@
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/acceptable" target="_self">Wholesale</a>
+									href="${basePath}/web/Wholesale" target="_self">Wholesale</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/contact" target="_self">Order
+									href="${basePath}/web/order" target="_self">Order
 									101</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/order" target="_self">Acceptable
+									href="${basePath}/web/acceptable" target="_self">Acceptable
 									Payment </a>
 							</dd>
 							<dd>
@@ -140,7 +140,7 @@
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/Wholesale" target="_self">Contact
+									href="${basePath}/web/contact" target="_self">Contact
 									Us</a>
 							</dd>
 						</dl></li>

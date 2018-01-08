@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hair.mapping.InfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hair.model.Infomation" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="about_us" property="about_us" jdbcType="VARCHAR" />
+    <result column="wholesale" property="wholesale" jdbcType="VARCHAR" />
+    <result column="order" property="order" jdbcType="VARCHAR" />
+    <result column="acceptable" property="acceptable" jdbcType="VARCHAR" />
+    <result column="shipping" property="shipping" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, about_us ,wholesale,`order`,acceptable,shipping,contact
+    
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <update id="updateByPrimaryKey" parameterType="com.hair.model.Infomation" >
+    update t_info
+    <set >
+      <if test="about_us != null and about_us !=''" >
+        about_us = #{about_us,jdbcType=VARCHAR},
+      </if>
+      <if test="wholesale != null and wholesale != ''" >
+        wholesale = #{wholesale,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null  and order != ''" >
+        `order` = #{order,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptable != null and acceptable != ''" >
+        acceptable = #{acceptable,jdbcType=VARCHAR},
+      </if>
+      <if test="shipping != null and shipping != ''" >
+        shipping = #{shipping,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null and contact != ''" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      
+    </set>
+    where ID = 1
+  </update>
+</mapper>

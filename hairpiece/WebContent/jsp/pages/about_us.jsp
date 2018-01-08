@@ -153,16 +153,16 @@
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/acceptable" target="_self">Wholesale</a>
+									href="${basePath}/web/Wholesale" target="_self">Wholesale</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/contact" target="_self">Order
+									href="${basePath}/web/order" target="_self">Order
 									101</a>
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/order" target="_self">Acceptable
+									href="${basePath}/web/acceptable" target="_self">Acceptable
 									Payment </a>
 							</dd>
 							<dd>
@@ -171,7 +171,7 @@
 							</dd>
 							<dd>
 								<a class="li_3_content_a"
-									href="${basePath}/web/Wholesale" target="_self">Contact
+									href="${basePath}/web/contact" target="_self">Contact
 									Us</a>
 							</dd>
 						</dl></li>
@@ -188,59 +188,7 @@
         <div class="article_title">
             <h2 style="color:#000">About Us</h2>
         </div>
-        <div class="article_body"><p>
-            &nbsp;<img src="images/about_us.jpg" alt=""/>
-        </p>
-            <p>
-                &nbsp;
-            </p>
-            <p>
-                <span style="font-family:Verdana;color:#996633;font-size:24px;">ABOUT DREAM</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                    style="font-family:Comic Sans MS;font-size:18px;"> <br/>
-</span>
-            </p>
-            <p>
-                <strong><span style="font-family:Courier New;font-size:18px;"><span style="color:#666666;">Your reliable supplier in China</span></span><span
-                        style="font-family:Courier New;color:#666666;">!</span></strong>
-            </p>
-            <p>
-                <strong><span style="font-family:Courier New;color:#666666;"><span
-                        style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:16px;">------------------------------------------------------------------------------------------------</span></span> </span></strong>
-            </p>
-            <p>
-                <strong><span style="color:#666666;font-size:13px;"><span style="color:#666666;font-size:16px;"></span></span><span
-                        style="color:#666666;font-size:13px;">Dream Lace Wigs Co., Ltd is a large manufacturer of hair products in China. &nbsp;Dream is our Brand.We offer top quality Full lace wigs,Front lace wigs(Lace front wigs), frontals, toupees, synthetic lace wigs, hair Extensions, Feather hair,etc. We process 40 advanced designers, technicians and     1000 skilled workers to design, produce and     sell large amount of hair systems to all over the world. We keep long-term business relationship with more than 150 wholesalers and     distributors from the USA, Canada, Euro, and     Africa, and     have been helping many clients enter into the field very successfully!</span>
-                </strong>
-            </p>
-            <p>
-                <strong><span style="color:#666666;font-size:16px;">------------------------------------------------------------------------------------------------</span>
-                </strong>
-            </p>
-            <p>
-                <strong><span style="color:#666666;font-size:16px;"></span><span style="color:#666666;font-size:13px;">You may find the lowest price here. Also you will get high quality products and     excellent service here! Please do not hesitate to contact us !</span>
-                </strong>
-            </p>
-            <p>
-                <strong>&nbsp;</strong>
-            </p>
-            <p>
-                <strong>&nbsp;</strong>
-            </p>
-            <p>
-                <strong>&nbsp;</strong>
-            </p>
-            <p>
-                <strong>&nbsp;</strong>
-            </p>
-            <p>
-                <strong>&nbsp;</strong>
-            </p>
-            <p>
-                <strong>&nbsp;</strong>
-            </p>
-            <p>
-                &nbsp;
-            </p></div>
+        ${info.about_us }
     </div>
 </div>
 <div id="bottom_wrap">

@@ -39,6 +39,11 @@
 					attributes:{
 						url:"${basePath}/jsp/user/msg_list.jsp"
 					}
+				},{
+					text:"公司基本信息",
+					attributes:{
+						url:"${basePath}/web/info"
+					}
 				}]
 			},{
 				text:"图片信息管理",	
@@ -53,32 +58,9 @@
 						url:"${basePath}/jsp/image/proimage_list.jsp"
 					}
 				},{
-					text:"机场酒店",
+					text:"企业信息图片",
 					attributes:{
 						url:"${basePath}/init/hotel_list"
-					}
-				}]
-			},{
-				text:"系统设置",	
-				children:[{
-					text:"票价管理",
-					attributes:{
-						url:"${basePath}/init/price_list"
-					}
-				},{
-					text:"航空公司信息",
-					attributes:{
-						url:"${basePath}/init/company_list"
-					}
-				},{
-					text:"机场信息",
-					attributes:{
-						url:"${basePath}/init/airport_list"
-					}
-				},{
-					text:"管理员设置",
-					attributes:{
-						url:"${basePath}/init/user_list"
 					}
 				}]
 			}];

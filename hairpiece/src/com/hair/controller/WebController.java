@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hair.mapping.InfoMapper;
 import com.hair.model.Cart;
 import com.hair.model.Dictionary;
 import com.hair.model.Image;
+import com.hair.model.Infomation;
 import com.hair.model.Product;
 import com.hair.service.CartService;
 import com.hair.service.DictionaryService;
@@ -35,6 +37,9 @@ public class WebController {
 	
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	InfoMapper infoDao;
 
 	@RequestMapping("/main")
 	public ModelAndView getMain(ModelAndView model, HttpServletRequest request,
@@ -153,6 +158,8 @@ public class WebController {
 	@RequestMapping("/about_us")
 	public ModelAndView about_us(ModelAndView model,
 			HttpServletRequest request) {
+		Infomation info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
 		model.setViewName("forward:/jsp/pages/about_us.jsp");
 		return model;
 	}
@@ -196,6 +203,23 @@ public class WebController {
 	public ModelAndView information(ModelAndView model,
 			HttpServletRequest request) {
 		model.setViewName("forward:/jsp/pages/information.jsp");
+		return model;
+	}
+	
+	@RequestMapping("/info")
+	public ModelAndView info(ModelAndView model,
+			HttpServletRequest request , Infomation info) {
+		info = infoDao.selectByPrimaryKey(1);
+		model.addObject("info", info);
+		model.setViewName("information");
+		return model;
+	}
+	
+	@RequestMapping("/insertInfo")
+	public ModelAndView insertInfo(ModelAndView model,
+			HttpServletRequest request , Infomation info) {
+		infoDao.updateByPrimaryKey(info);
+		model.setViewName("forward:/web/info");
 		return model;
 	}
 }
