@@ -10,3 +10,8 @@
 <script type="text/javascript" src="${basePath}/js/jquery-easyui-1.4/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${basePath}/js/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="${basePath}/js/common.js"></script>
+<% 
+    request.setAttribute("vEnter", "\n");   
+    //奇怪的是这一行我用 <c:set var="vEnter" value="\n" scope="request"/>
+    //都没用,估计是set标签里对value值处理了一下,没jstl的源码,不清楚JSTL是怎么处理的. 
+%> 
