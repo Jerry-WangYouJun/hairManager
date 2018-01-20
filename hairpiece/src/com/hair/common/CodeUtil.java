@@ -78,13 +78,11 @@ public class CodeUtil {
 //        		path = System.getProperty("user.dir").substring(0, splitIndex);
         		path="/Users/wangyoujun/Desktop/smd/WebContent/image";
         	}else{
-        		path="D:\\image";
+        		path="C:\\soft\\images";
         	}
         	InputStream stream = file.getInputStream();
-        	String name = DateUtils.getDate14() + "_" + new String(file.getOriginalFilename().getBytes("ISO-8859-1"),"UTF-8");
-        	image.setIname(name);
         	image.setIpath(path);
-	        FileOutputStream fs=new FileOutputStream( path + "/"+ name);
+	        FileOutputStream fs=new FileOutputStream( path + "/"+ image.getIname());
 	        byte[] buffer =new byte[1024*1024];
 	        int bytesum = 0;
 	        int byteread = 0; 

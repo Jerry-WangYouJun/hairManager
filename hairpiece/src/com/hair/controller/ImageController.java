@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
+import com.hair.common.DateUtils;
 import com.hair.model.Grid;
 import com.hair.model.Image;
 import com.hair.model.Pagination;
@@ -61,8 +63,21 @@ public class ImageController {
 	public void instVipAjax(Image image, HttpServletRequest request , HttpServletResponse response ,
 			@RequestParam("file") MultipartFile[] files) {
 		PrintWriter out;
+		JSONObject json = new JSONObject();
+		response.setCharacterEncoding("UTF-8");
 		try {
 			for(MultipartFile file:files){
+				String name = DateUtils.getDate14() + "_" + new String(file.getOriginalFilename().getBytes("ISO-8859-1"),"UTF-8");
+				if(StringUtils.isNotEmpty(name) && name.length() > 50){
+					out = response.getWriter();
+					json.put("success", false);
+					json.put("msg", "文件名过长，请修改后再上传");
+					out.println(json);
+					out.flush();
+					out.close();
+					return;
+				}
+				image.setIname(name);
 				CodeUtil.SaveFileFromInputStream(file ,image);
 				image.setType(image.getType());
 				if(image.getId() != null) {
@@ -71,9 +86,7 @@ public class ImageController {
 					service.insert(image);
 				}
 			}
-			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
-			JSONObject json = new JSONObject();
 			json.put("success", true);
 			json.put("msg", "操作成功");
 			out.println(json);

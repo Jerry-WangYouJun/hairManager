@@ -57,11 +57,6 @@
 					attributes:{
 						url:"${basePath}/jsp/image/proimage_list.jsp"
 					}
-				},{
-					text:"企业信息图片",
-					attributes:{
-						url:"${basePath}/init/hotel_list"
-					}
 				}]
 			}];
 			
