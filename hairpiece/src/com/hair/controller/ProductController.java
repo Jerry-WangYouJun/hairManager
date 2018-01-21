@@ -79,6 +79,7 @@ public class ProductController {
 			,@RequestParam("upfile") MultipartFile[] files) {
 		PrintWriter out;
 		try {
+			pro.getUtf();
 			if(pro.getId() != null) {
 				service.updateProduct(pro);
 			}else {

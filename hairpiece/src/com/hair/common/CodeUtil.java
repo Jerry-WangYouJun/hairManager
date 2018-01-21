@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hair.model.Image;
@@ -95,4 +97,15 @@ public class CodeUtil {
 	        fs.close();
 	        stream.close();  
 		}  
+		
+		public static String utfStr(String str) {
+			try {
+				if(StringUtils.isNotEmpty(str)) {
+					str = new String (str.getBytes("ISO-8859-1"),"utf-8");
+				  }
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			return str ;
+		}
 }

@@ -23,7 +23,6 @@ textarea {
 				url : "${basePath}/pro/instVipAjax",
 				type : 'post',
 				dataType : 'json',
-				//contentType :'multipart/form-data',
 				success : function(data) {
 					parent.$.messager.alert('提示', data.msg);
 					if (data.success == true) {

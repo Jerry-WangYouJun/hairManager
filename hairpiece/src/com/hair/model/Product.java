@@ -2,6 +2,8 @@ package com.hair.model;
 
 import java.util.List;
 
+import com.hair.common.CodeUtil;
+
 public class Product {
 	  private  Integer id ; 
 	  private String proName;
@@ -18,6 +20,18 @@ public class Product {
 	  private String remark;
 	  private String hotsale;
 	  private List<Image> imageList;
+	
+	  public void getUtf() {
+		  proName= CodeUtil.utfStr(proName);
+		  type =CodeUtil.utfStr(type);
+		  subType = CodeUtil.utfStr(subType);
+		  hairType =CodeUtil.utfStr(hairType);
+		  grade = CodeUtil.utfStr(grade);
+		  texture= CodeUtil.utfStr(texture);
+		  hairColor = CodeUtil.utfStr(hairColor);
+		  remark =CodeUtil.utfStr(remark);
+	  }
+	  
 	public Integer getId() {
 		return id;
 	}
