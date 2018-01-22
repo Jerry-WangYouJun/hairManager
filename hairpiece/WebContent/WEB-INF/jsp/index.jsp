@@ -126,7 +126,7 @@
 	<div region="center" class="easyui-tabs" fit="true" border="false" id="tabs">
 		<div title="首页" >
 			<div align="center"  style="padding-top: 100px;"><font color="red" size="10">
-					台管理系统</font>
+					后台管理系统</font>
 		    </div>		
 		</div>
 	</div>
