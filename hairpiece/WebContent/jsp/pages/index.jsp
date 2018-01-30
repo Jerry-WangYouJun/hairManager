@@ -179,10 +179,10 @@
 					<c:forEach items="${carouselList }" var = "carousel"  varStatus="sta">
 						<c:choose>
 							 <c:when test="${sta.index eq 0 }">
-									 <img src="http://localhost:8888/upload/${carousel.iname}" alt="${carousel.iname }" >
+									 <img src="/upload/${carousel.iname}" alt="${carousel.iname }" >
 							 </c:when>
 							 <c:otherwise>
-							  		<img src="http://localhost:8888/upload/${carousel.iname}" alt="${carousel.iname }" style="DISPLAY: none" >
+							  		<img src="/upload/${carousel.iname}" alt="${carousel.iname }" style="DISPLAY: none" >
 							 </c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -209,7 +209,7 @@
 		<div class="three">
 			<ul>
 			<c:forEach items="${carouselList }" var = "carousel">
-				 <li><img src="http://localhost:8888/upload/${carousel.iname}" style="width:300px;height: 180px;">
+				 <li><img src="/upload/${carousel.iname}" style="width:300px;height: 180px;">
 					<p>产品介绍</p></li>
 			</c:forEach>
 			</ul>

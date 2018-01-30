@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	//图片展示  
     	function showImg(value, row, index){  
-    	        return '<img style="width:50px;length:50px" border="1" src="http://localhost:8888/upload/' + row.iname +'"/>';  
+    	        return '<img style="width:50px;length:50px" border="1" src="/upload/' + row.iname +'"/>';  
     	} 
     	<%-- //图片添加路径  
     	function imgFormatter(value,row,index){  
