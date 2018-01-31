@@ -194,7 +194,7 @@
 </p>
 <strong> 
 <p>
-	<span style="font-size:13px;color:#666666;">Dream Lace Wigs Co., Ltd is a large manufacturer of hair products in China. Dream is our Brand We offer top quality Full lace wigs,Front lace wig<span style="background-color:#999999;"></span>s(Lace front wigs), frontals, toupees, synthetic lace wigs, hair Extensions, Feather hair,etc.<span class="Apple-converted-space">&nbsp;<a href="/?channel-36.html" target="_blank">MORE.....</a></span></span><a href="/?channel-36.html" target="_blank"> </a> 
+	<span style="font-size:13px;color:#666666;">Dream Lace Wigs Co., Ltd is a large manufacturer of hair products in China. Dream is our Brand We offer top quality Full lace wigs,Front lace wig<span style="background-color:#999999;"></span>s(Lace front wigs), frontals, toupees, synthetic lace wigs, hair Extensions, Feather hair,etc.<span class="Apple-converted-space">&nbsp;<a href="${basePath}/web/about_us" target="_blank">MORE.....</a></span></span><a href="${basePath}/web/about_us" target="_blank"> </a> 
 </p>
 <p>
 	&nbsp;
@@ -203,13 +203,13 @@
 	<span style="font-size:16px;color:#996633;"><strong>WHOLESALE</strong></span> 
 </p>
 <p>
-	<span style="color:#666666;">If you are looking into becoming a wholesaler， Dream lace wig is one of your best choices! As a reputable wholesale supplier, we can provide you with all the unique services you need.</span><span style="color:#996633;background-color:#ffffff;"></span>&nbsp;<a href="/?channel-37.html" target="_blank">MORE...</a> 
+	<span style="color:#666666;">If you are looking into becoming a wholesaler， Dream lace wig is one of your best choices! As a reputable wholesale supplier, we can provide you with all the unique services you need.</span><span style="color:#996633;background-color:#ffffff;"></span>&nbsp;<a href="${basePath}/web/Wholesale" target="_blank">MORE...</a> 
 </p>
 <p>
 	<span style="font-size:16px;color:#996633;"><strong>Acceptable Payment</strong></span> 
 </p>
 <p>
-	<span style="font-size:13px;color:#666666;">(1)Paypal Paypal email：sales@dreamlacewig.com&nbsp;&nbsp; (2)Western union&nbsp; (3) Money Gram&nbsp;&nbsp; (4)Bank Wires (TT)</span>&nbsp; <a href="/?channel-39.html" target="_blank">MORE...</a> 
+	<span style="font-size:13px;color:#666666;">(1)Paypal Paypal email：sales@dreamlacewig.com&nbsp;&nbsp; (2)Western union&nbsp; (3) Money Gram&nbsp;&nbsp; (4)Bank Wires (TT)</span>&nbsp; <a href="${basePath}/web/acceptable" target="_blank">MORE...</a> 
 </p>
 <p>
 	&nbsp;
@@ -248,27 +248,27 @@
 						<ul class="article_list aa">
 							<!--循环开始-->
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-528.html" target="_blank" title=" How to measure your head"> How to measure your head</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-528.html" target="_blank" title=" How to measure your head"> How to measure your head</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-527.html" target="_blank" title="How to know hair length">How to know hair length</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-527.html" target="_blank" title="How to know hair length">How to know hair length</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-526.html" target="_blank" title="Repair policy">Repair policy</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-526.html" target="_blank" title="Repair policy">Repair policy</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-525.html" target="_blank" title="Return policy">Return policy</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-525.html" target="_blank" title="Return policy">Return policy</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-524.html" target="_blank" title=" Lace color chart"> Lace color chart</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-524.html" target="_blank" title=" Lace color chart"> Lace color chart</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-523.html" target="_blank" title="Color ring">Color ring</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-523.html" target="_blank" title="Color ring">Color ring</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-522.html" target="_blank" title="Density chart">Density chart</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-522.html" target="_blank" title="Density chart">Density chart</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-521.html" target="_blank" title=" Popular textures"> Popular textures</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-521.html" target="_blank" title=" Popular textures"> Popular textures</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-520.html" target="_blank" title="Cap size">Cap size</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-520.html" target="_blank" title="Cap size">Cap size</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-519.html" target="_blank" title="Cap designs">Cap designs</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-519.html" target="_blank" title="Cap designs">Cap designs</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
-							<li><h2><!--[<a href="/?channel-38.html" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-518.html" target="_blank" title="lace wigs order form">lace wigs order form</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
+							<li><h2><!--[<a href="${basePath}/web/order" target="_blank">Order 101</a>] --><!--<a style="" href="/?info-518.html" target="_blank" title="lace wigs order form">lace wigs order form</a>--><!--<span style="float:right; ">2013-09-16--></span></h2></li>
 							
 							<!--循环结束-->
 						</ul>
@@ -283,12 +283,12 @@
 	<div id="bottom">
 		<div style="width:1000px;height:100px;" class="fLeft">
 			<p>
-				<span class="bottom_a"><a  href="/?channel-36.html">About Us</a></span>
-				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-37.html">Wholesale</a></span>
-				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-38.html">Order 101</a></span>
-				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-39.html">Acceptable Payment</a></span>
-				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-40.html">Shipping&Delivery </a></span>
-				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="/?channel-41.html">Contact Us</a></span>
+				<span class="bottom_a"><a  href="${basePath}/web/about_us">About Us</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="${basePath}/web/Wholesale">Wholesale</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="${basePath}/web/order">Order 101</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="${basePath}/web/acceptable">Acceptable Payment</a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="${basePath}/web/shipping">Shipping&Delivery </a></span>
+				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <span class="bottom_a"><a  href="${basePath}/web/contact">Contact Us</a></span>
 				<br/><br/>
 				<font style=" font-size:14px; "> Copyright © 2007 DREAM LACE WIGS All Right Reserved<br/><br/>
 					Phone:0086-532-67703178        Email:sales@dreamlacewig.com</font></p><br />

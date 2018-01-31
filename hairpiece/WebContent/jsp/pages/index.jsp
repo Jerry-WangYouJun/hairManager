@@ -218,11 +218,12 @@
 			<ul class="picture_list">
 				<!--循环开始-->
 				<c:forEach items="${hotsaleList }" var="pro">
+				
 					<li>
-						<div class="picture_list_img_wrap">
+						<div class="picture_list_img_wrap">1111111
 							<a href="${basePath}/web/detail?id=${pro.id}"
 								target="_self"> <img
-								src="${basePath}/jsp/pages/images/hear.jpg"
+								src="/upload/${pro.imageList[0].iname}"
 								title="${pro.proName }" alt="${pro.proName }" />
 							</a>
 						</div>
@@ -240,17 +241,17 @@
 			<div id="bottom">
 				<div style="width: 1000px; height: 100px;" class="fLeft">
 					<p>
-						<span class="bottom_a"><a href="/?channel-36.html">About
+						<span class="bottom_a"><a href="${basePath}/web/about_us">About
 								Us</a></span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <span class="bottom_a"><a
 							href="/?channel-37.html">Wholesale</a></span>
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <span class="bottom_a"><a
-							href="/?channel-38.html">Order 101</a></span>
+							href="${basePath}/web/order">Order 101</a></span>
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <span class="bottom_a"><a
-							href="/?channel-39.html">Acceptable Payment</a></span>
+							href="${basePath}/web/acceptable">Acceptable Payment</a></span>
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <span class="bottom_a"><a
-							href="/?channel-40.html">Shipping&Delivery </a></span>
+							href="${basePath}/web/shipping">Shipping&Delivery </a></span>
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <span class="bottom_a"><a
-							href="/?channel-41.html">Contact Us</a></span> <br />
+							href="${basePath}/web/contact">Contact Us</a></span> <br />
 						<br /> <font style="font-size: 14px;"> Copyright © 2007
 							DREAM LACE WIGS All Right Reserved<br />
 						<br /> Phone:0086-532-67703178 Email:sales@dreamlacewig.com
