@@ -179,7 +179,7 @@
 					<c:forEach items="${carouselList }" var = "carousel"  varStatus="sta">
 						<c:choose>
 							 <c:when test="${sta.index eq 0 }">
-									 <img src="/upload/${carousel.iname}" alt="${carousel.iname }" >
+									 <img src="/upload/${carousel.iname}" alt="${carousel.iname }"  >
 							 </c:when>
 							 <c:otherwise>
 							  		<img src="/upload/${carousel.iname}" alt="${carousel.iname }" style="DISPLAY: none" >
@@ -220,7 +220,7 @@
 				<c:forEach items="${hotsaleList }" var="pro">
 				
 					<li>
-						<div class="picture_list_img_wrap">1111111
+						<div class="picture_list_img_wrap">
 							<a href="${basePath}/web/detail?id=${pro.id}"
 								target="_self"> <img
 								src="/upload/${pro.imageList[0].iname}"

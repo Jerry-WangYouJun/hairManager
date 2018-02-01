@@ -16,11 +16,18 @@
     <result column="hairColor" property="hairColor" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
      <result column="hotsale" property="hotsale" jdbcType="VARCHAR" />
+           
+    <collection property="imageList" column="contect" ofType="com.hair.model.Image">  
+         <id column="image_id" property="id" jdbcType="INTEGER" />
+	     <result column="ipath" property="ipath" jdbcType="VARCHAR" />
+	     <result column="iname" property="iname" jdbcType="VARCHAR" />
+	     <result column="itype" property="type" jdbcType="INTEGER" />
+	     <result column="contect" property="contect" jdbcType="VARCHAR" />
+    </collection>  
   </resultMap>
   <sql id="Base_Column_List" >
     ID,proName, subType, type, hairType, grade, permed,
      texture, unit,  items,hairLen , hairColor ,remark ,hotsale
-    
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -39,8 +46,10 @@
   
   <select id="selectProductByWhere" resultMap="BaseResultMap" parameterType="com.hair.model.Product" >
     select 
-    <include refid="Base_Column_List" />
-    from t_product
+   	 p.ID  ,proName, subType, p.type, hairType, grade, permed,
+     texture, unit,  items,hairLen , hairColor ,remark ,hotsale ,
+      i.id image_id ,ipath ,iname ,i.type itype , contect
+    from t_product  p  left join t_image i on p.id = i.contect
     where 1=1
        <if test="type != null and type != ''" >
         and type like #{type}
