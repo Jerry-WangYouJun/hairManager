@@ -14,8 +14,8 @@ public class Product {
 	  private String grade ;
 	  private String texture ;
 	  private Double unit;
-	  private Double items;
-	  private Double hairLen;
+	  private String items;
+	  private String hairLen;
 	  private String hairColor ;
 	  private String remark;
 	  private String hotsale;
@@ -80,16 +80,16 @@ public class Product {
 	public void setUnit(Double unit) {
 		this.unit = unit;
 	}
-	public Double getItems() {
+	public String getItems() {
 		return items;
 	}
-	public void setItems(Double items) {
+	public void setItems(String items) {
 		this.items = items;
 	}
-	public Double getHairLen() {
+	public String getHairLen() {
 		return hairLen;
 	}
-	public void setHairLen(Double hairLen) {
+	public void setHairLen(String hairLen) {
 		this.hairLen = hairLen;
 	}
 	public String getHairColor() {
