@@ -11,8 +11,8 @@
      <result column="grade" property="grade" jdbcType="VARCHAR" />
     <result column="texture" property="texture" jdbcType="VARCHAR" />
     <result column="unit" property="unit" jdbcType="DOUBLE" />
-    <result column="items" property="items" jdbcType="DOUBLE" />
-    <result column="hairLen" property="hairLen" jdbcType="DOUBLE" />
+    <result column="items" property="items" jdbcType="VARCHAR" />
+    <result column="hairLen" property="hairLen" jdbcType="VARCHAR" />
     <result column="hairColor" property="hairColor" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
      <result column="hotsale" property="hotsale" jdbcType="VARCHAR" />
@@ -52,7 +52,7 @@
     from t_product  p  left join t_image i on p.id = i.contect
     where 1=1
        <if test="type != null and type != ''" >
-        and type like #{type}
+        and p.type like #{type}
       </if>
       <if test="subType != null and subType != ''" >
         and subType like #{subType}
@@ -101,7 +101,7 @@
        #{unit,jdbcType=VARCHAR}, #{hairType,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{permed,jdbcType=VARCHAR}, #{items,jdbcType=VARCHAR}, 
       #{subType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR} , #{grade ,jdbcType=VARCHAR} , 
-      #{hairLen,jdbcType=DOUBLE} , #{hairColor ,jdbcType=DOUBLE} ,#{hotsale,jdbcType=VARCHAR}
+      #{hairLen,jdbcType=VARCHAR} , #{hairColor ,jdbcType=VARCHAR} ,#{hotsale,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hair.model.Product" >
@@ -185,10 +185,10 @@
         #{grade,jdbcType=VARCHAR},
       </if>
       <if test="hairLen != null and hairLen>=0" >
-        #{hairLen,jdbcType=DOUBLE},
+        #{hairLen,jdbcType=VARCHAR},
       </if>
       <if test="hairColor != null and hairColor>=0" >
-        #{hairColor,jdbcType=DOUBLE},
+        #{hairColor,jdbcType=VARCHAR},
       </if>
       <if test="hotsale != null" >
         #{hotsale,jdbcType=VARCHAR},
@@ -229,10 +229,10 @@
         grade = #{grade,jdbcType=VARCHAR},
       </if>
       <if test="hairLen != null and hairLen>=0" >
-        hairLen = #{hairLen,jdbcType=DOUBLE},
+        hairLen = #{hairLen,jdbcType=VARCHAR},
       </if>
       <if test="hairColor != null and hairColor>=0" >
-        hairColor = #{hairColor,jdbcType=DOUBLE},
+        hairColor = #{hairColor,jdbcType=VARCHAR},
       </if>
       <if test="hotsale != null" >
         hotsale = #{hotsale,jdbcType=VARCHAR},
@@ -253,8 +253,8 @@
       subType = #{subType,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       grade = #{grade , jdbcType=VARCHAR},
-       hairLen = #{hairLen,jdbcType=DOUBLE},
-      hairColor = #{hairColor , jdbcType=DOUBLE}, 
+       hairLen = #{hairLen,jdbcType=VARCHAR},
+      hairColor = #{hairColor , jdbcType=VARCHAR}, 
       hotsale = #{hotsale , jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>

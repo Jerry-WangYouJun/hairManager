@@ -23,8 +23,11 @@ public class MessageDao {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Message> queryList(Message message, Pagination page) {
-		String sql = "select  min(time ) time  , contect , name , msg  , id "
-				+ " from t_msg  where  1=1  " + whereSql(message) + " group by contect";
+		String sql = " select  m.* from  t_msg m  join"
+				+ " ( select   contect con , min(time)  time2  from t_msg "
+				+ " where  1=1   group by contect ) a "
+				+ "on m.time = a.time2   where  1=1  " + whereSql(message) 
+				+ " order by m.time desc";
 		String finalSql = Dialect.getLimitString(sql, page.getPageNo(), page.getPageSize(), "MYSQL");
          final  List<Message> list =   new ArrayList<>();
          jdbcTemplate.query(finalSql, new RowMapper() {
@@ -44,8 +47,10 @@ public class MessageDao {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public int queryTotal(Message message) {
-		String sql = "select count(*) total from ( select id  from t_msg  where  1=1  "
-	+  whereSql(message) + " group by contect ) a  " ;
+		String sql = "select count(*) total from ( select  m.* from  t_msg m "
+				+ " join ( select   contect con , min(time)  time2  from t_msg"
+				+ "  where  1=1   group by contect ) a on  m.time = a.time2  where 1=1  "
+				+  whereSql(message) + " ) b" ;
          final  Integer[] arr =  {0};
          jdbcTemplate.query(sql, new RowMapper() {
 			public Object mapRow(ResultSet rs, int arg1) throws SQLException {

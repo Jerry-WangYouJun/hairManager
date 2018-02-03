@@ -145,11 +145,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}
 
 	    	function deleteUser() {
+	    		var id = getChecked();
+	    		if( id == 1 ){
+	    			$.messager.alert('提示', 'admin账户不能删除', "error");
+	    			return false ;
+	    		}
 	    		var del = confirm("确认删除？");
 	    		if (!del) {
 	    			return false;
 	    		}
-	    		var id = getChecked();
 	    		if (id > 0) {
 	    			var url = "${basePath}/user/user_delete/" + id;
 	    			$.ajax({

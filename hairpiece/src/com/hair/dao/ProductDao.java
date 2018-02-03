@@ -31,9 +31,9 @@ public class ProductDao {
 					pro.setProName(rs.getString("proName"));
 					pro.setGrade(rs.getString("grade"));
 					pro.setHairColor(rs.getString("hariColor"));
-					pro.setHairLen(rs.getDouble("hairLen"));
+					pro.setHairLen(rs.getString("hairLen"));
 					pro.setHairType(rs.getString("hairType"));
-					pro.setItems(rs.getDouble("items"));
+					pro.setItems(rs.getString("items"));
 					pro.setPermed(rs.getString("permed"));
 					pro.setSubType(rs.getString("subType"));
 					pro.setTexture(rs.getString("texture"));
@@ -60,9 +60,9 @@ public class ProductDao {
 					pro.setProName(rs.getString("proName"));
 					pro.setGrade(rs.getString("grade"));
 					pro.setHairColor(rs.getString("hairColor"));
-					pro.setHairLen(rs.getDouble("hairLen"));
+					pro.setHairLen(rs.getString("hairLen"));
 					pro.setHairType(rs.getString("hairType"));
-					pro.setItems(rs.getDouble("items"));
+					pro.setItems(rs.getString("items"));
 					pro.setPermed(rs.getString("permed"));
 					pro.setSubType(rs.getString("subType"));
 					pro.setTexture(rs.getString("texture"));
@@ -89,9 +89,9 @@ public class ProductDao {
 					pro.setProName(rs.getString("proName"));
 					pro.setGrade(rs.getString("grade"));
 					pro.setHairColor(rs.getString("hairColor"));
-					pro.setHairLen(rs.getDouble("hairLen"));
+					pro.setHairLen(rs.getString("hairLen"));
 					pro.setHairType(rs.getString("hairType"));
-					pro.setItems(rs.getDouble("items"));
+					pro.setItems(rs.getString("items"));
 					pro.setPermed(rs.getString("permed"));
 					pro.setSubType(rs.getString("subType"));
 					pro.setTexture(rs.getString("texture"));

@@ -235,30 +235,43 @@
 	<span style="color:#666666;font-size:13px;">Human Hair Type: ${product.hairType }</span>
 </p>
 <p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Can Be Permed: 
-	<c:choose>
-		<c:when test="${product.permed eq '1' }">YES</c:when>
-		<c:when test="${product.permed eq '2' }">NO</c:when>
-	</c:choose></span></span>
+	<c:if test="${not empty product.permed}">
+		<span style="color:#666666;"><span style="font-size:13px;">Can Be Permed: 
+		<c:choose>
+			<c:when test="${product.permed eq '1' }">YES</c:when>
+			<c:when test="${product.permed eq '2' }">NO</c:when>
+		</c:choose></span></span>
+	</c:if>
 </p>
 <p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Material Grade:${product.grade }</span></span>
+	<c:if test="${not empty product.grade }">
+		<span style="color:#666666;"><span style="font-size:13px;">Material Grade:${product.grade }</span></span>
+	</c:if>
 </p>
 <p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Texture:${product.texture }</span></span>
+	<c:if test="not empty ${product.texture }">
+		<span style="color:#666666;"><span style="font-size:13px;">Texture:${product.texture }</span></span>
+	</c:if>
 </p>
 <p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Unit Weight:${product.unit }g/pc</span></span>
-</p>
+	<c:if test="not empty ${product.unit }">
+		<span style="color:#666666;"><span style="font-size:13px;">Unit Weight:${product.unit }g/pc</span></span>
+	</c:if>
 </p>
 <p class="p_top">
-	<span style="color:#666666;"><span style="font-size:13px;">Items per Package:${product.items }pc/s et</span></span>
+	<c:if test="not empty ${product.items }">
+		<span style="color:#666666;"><span style="font-size:13px;">Items per Package:${product.items }</span></span>
+	</c:if>
 </p>
 <p>
-	<span style="color:#666666;font-size:13px;">Length:${product.hairLen }mm</span>
+	<c:if test="not empty ${product.hairLen }">
+		<span style="color:#666666;"><span style="font-size:13px;">Length:${product.hairLen }</span></span>
+	</c:if>
 </p>
 <p>
-	<span  style="color:#666666;font-size:13px;">Hair Colors:${product.hairColor }</span>
+	<c:if test="not empty ${product.hairColor }">
+		<span style="color:#666666;"><span style="font-size:13px;">Hair Colors:${product.hairColor }</span></span>
+	</c:if>
 </p>
 <p>
 	<a style="color:blue" href="#" onclick="addCart(${product.id })"><span  class="glyphicon glyphicon-shopping-cart" >Add</span></a>
@@ -267,7 +280,7 @@
 
 </div>
 		<br/><br/><br/><br/>
-                       <img src="${basePath }/jsp/pages/images/detail.png" width="316" height="67" />
+            <img src="${basePath }/jsp/pages/images/detail.png" width="316" height="67" />
               <div id="info_comment">Looking into becoming our wholesalers and distributors, <br />
               please email to <a href="mailto:sales@dreamlacewig.com"   style="text-decoration:underline; color:#000">sales@dreamlacewig.com</a>.<br />
               A company representative will contact you by email or phone within 24</div>

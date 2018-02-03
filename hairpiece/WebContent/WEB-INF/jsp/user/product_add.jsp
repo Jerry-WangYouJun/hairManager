@@ -75,6 +75,7 @@ textarea {
 		  if("${pro.remark}" != ""){
 			   $("#remark").val("${pro.remark}")
 		  }
+		  alert("${pro.hotsale}");
 			  $("#permed").val("${pro.permed}")
 			  $("#hotsale").val("${pro.hotsale}")
 	})
@@ -173,8 +174,6 @@ textarea {
 				</select></td>
 			</tr>
 			<tr>
-				<td>hairColor：</td>
-				<td style="padding: 20px"><input name="hairColor" value="${pro.hairColor }" ></td>
 				<td>备注：</td>
 				<td style="padding: 20px"><textarea name="remark" id="remark"  rows="4"></textarea></td>
 			</tr>
