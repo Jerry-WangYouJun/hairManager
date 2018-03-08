@@ -75,7 +75,6 @@ textarea {
 		  if("${pro.remark}" != ""){
 			   $("#remark").val("${pro.remark}")
 		  }
-		  alert("${pro.hotsale}");
 			  $("#permed").val("${pro.permed}")
 			  $("#hotsale").val("${pro.hotsale}")
 	})
