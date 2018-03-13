@@ -89,6 +89,9 @@ textarea {
 		  if("${dic.remark}" != ""){
 			   $("#remark").val("${dic.remark}")
 		  }
+		  if("${dic.code}" != ""){
+			   $("#code").val("${dic.code}")
+		 }
 	})
 </script>
 </head>
@@ -99,8 +102,15 @@ textarea {
 		<table width="100%">
 			<tr>
 				<td>字典代码：</td>
-				<td style="padding: 20px"><input name="code" id="code" value="${dic.code }"
-					 ></td>
+				 <td style="padding: 20px">
+				  <select name = "code" id="code" >
+					  <option >-请选择-</option>
+				      <option value="Wigs">Wigs</option>
+				      <option value="Hair extensions">Hair extensions</option>
+				      <option value="Hair pieces">Hair pieces</option>
+				      <option value="Eyelashs">Eyelashs</option>
+				  </select>
+			     </td>
 				<td>字典名称：</td>
 				<td style="padding: 20px"><input name="name" id= "name" value="${dic.name }"
 					></td>
