@@ -50,13 +50,14 @@ public class ProductDao {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Product> queryList(Product pro, Pagination page) {
-		String sql = "select *  from t_product  where  1=1  " + whereSql(pro);
+		String sql = "select  p.* , d.*  from t_product  p ,  t_dictionary d "
+				+ " where  p.dic_id = d.id   " + whereSql(pro);
 		String finalSql = Dialect.getLimitString(sql, page.getPageNo(), page.getPageSize(), "MYSQL");
          final  List<Product> list =   new ArrayList<>();
          jdbcTemplate.query(finalSql, new RowMapper() {
 			public Object mapRow(ResultSet rs, int arg1) throws SQLException {
 					Product  pro = new Product(); 
-					pro.setId(rs.getInt("id"));
+					pro.setId(rs.getInt("p.id"));
 					pro.setProName(rs.getString("proName"));
 					pro.setGrade(rs.getString("grade"));
 					pro.setHairColor(rs.getString("hairColor"));
@@ -64,9 +65,9 @@ public class ProductDao {
 					pro.setHairType(rs.getString("hairType"));
 					pro.setItems(rs.getString("items"));
 					pro.setPermed(rs.getString("permed"));
-					pro.setSubType(rs.getString("subType"));
+					pro.setSubType(rs.getString("d.name"));
 					pro.setTexture(rs.getString("texture"));
-					pro.setType(rs.getString("type"));
+					pro.setType(rs.getString("d.code"));
 					pro.setUnit(rs.getDouble("unit"));
 					pro.setRemark(rs.getString("remark"));
 					pro.setHotsale(rs.getString("hotsale"));
@@ -122,7 +123,7 @@ public class ProductDao {
 	public String whereSql(Product pro){
 		String sql = "";
 		if(pro.getId()!=null && StringUtils.isNotEmpty(pro.getId()+"")){
-			sql += " and   id =  '" + pro.getId() + "' ";
+			sql += " and   p.id =  '" + pro.getId() + "' ";
 		}
 		return sql;
 	}

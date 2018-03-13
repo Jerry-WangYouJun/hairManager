@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.hair.model.Product" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="proName" property="proName" jdbcType="VARCHAR" />
+    <result column="dic_id" property="dicId" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="subType" property="subType" jdbcType="VARCHAR" />
      <result column="hairType" property="hairType" jdbcType="VARCHAR" />
@@ -16,6 +17,13 @@
     <result column="hairColor" property="hairColor" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
      <result column="hotsale" property="hotsale" jdbcType="VARCHAR" />
+      <result column="column1" property="column1" jdbcType="VARCHAR" />
+      <result column="column2" property="column2" jdbcType="VARCHAR" />
+      <result column="column3" property="column3" jdbcType="VARCHAR" />
+      <result column="column4" property="column4" jdbcType="VARCHAR" />
+      <result column="column5" property="column5" jdbcType="VARCHAR" />
+      <result column="column6" property="column6" jdbcType="VARCHAR" />
+      
            
     <collection property="imageList" column="contect" ofType="com.hair.model.Image">  
          <id column="image_id" property="id" jdbcType="INTEGER" />
@@ -26,8 +34,9 @@
     </collection>  
   </resultMap>
   <sql id="Base_Column_List" >
-    ID,proName, subType, type, hairType, grade, permed,
-     texture, unit,  items,hairLen , hairColor ,remark ,hotsale
+    ID,proName,dic_id, subType, type, hairType, grade, permed,
+     texture, unit,  items,hairLen , hairColor ,remark ,hotsale , 
+     column1,column2,column3,column4,column5,column6
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -46,16 +55,20 @@
   
   <select id="selectProductByWhere" resultMap="BaseResultMap" parameterType="com.hair.model.Product" >
     select 
-   	 p.ID  ,proName, subType, p.type, hairType, grade, permed,
-     texture, unit,  items,hairLen , hairColor ,remark ,hotsale ,
+   	 p.ID ,proName,d.name subType, d.code type, hairType, grade, permed,
+     texture, unit,  items,hairLen , hairColor , p.remark ,hotsale ,
       i.id image_id ,ipath ,iname ,i.type itype , contect
-    from t_product  p  left join t_image i on p.id = i.contect
-    where 1=1
+      from t_product  p  join  t_dictionary d  on  p.dic_id = d.id 
+     left join t_image i on p.id = i.contect
+    where  1=1
+	     <if test="dicId != null and dicId != 0" >
+	        and p.dicId = #{dicId}
+	      </if>
        <if test="type != null and type != ''" >
-        and p.type like #{type}
+        and d.code like #{type}
       </if>
       <if test="subType != null and subType != ''" >
-        and subType like #{subType}
+        and d.name like #{subType}
       </if>
       <if test="proName != null and proName != ''" >
         and  proName like  #{proName}
@@ -93,11 +106,11 @@
   	 <selectKey keyProperty='id' resultType='int' order='AFTER'  >  
         select LAST_INSERT_ID();  
     </selectKey>  
-    insert into t_product (ID, proName, texture, 
+    insert into t_product (ID, dic_id, proName, texture, 
       unit, hairType, 
       remark, permed, items, 
       subType, type , grade , hairLen , hairColor , hotsale)
-    values (#{id,jdbcType=VARCHAR},#{proName,jdbcType=VARCHAR},  #{texture,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{dicId, jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR},  #{texture,jdbcType=VARCHAR}, 
        #{unit,jdbcType=VARCHAR}, #{hairType,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{permed,jdbcType=VARCHAR}, #{items,jdbcType=VARCHAR}, 
       #{subType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR} , #{grade ,jdbcType=VARCHAR} , 
@@ -244,8 +257,7 @@
     update t_product
     set 
       proName = #{proName,jdbcType=VARCHAR},
-      texture = #{texture,jdbcType=VARCHAR},
-      unit = #{unit,jdbcType=VARCHAR},
+      dic_id = #{dicId , jdbcType = INTEGER},
       hairType = #{hairType,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       permed = #{permed,jdbcType=VARCHAR},

@@ -89,14 +89,13 @@ textarea {
                 contentType: "application/json",  
                 traditional: true,  
                 success: function (data) {  
-                	  console.info(data.list);
                         var jsonObj =data.list;  
                         var optionstring = "";  
                         for (var j = 0; j < jsonObj.length; j++) {
-                        	if("${pro.subType}" != "" && "${pro.subType}" ==  jsonObj[j].name){
-                        		optionstring += "<option selected='selected' value=\"" + jsonObj[j].name + "\" >" + jsonObj[j].name  + "</option>";  
+                        	if("${pro.dicId}" != "" && "${pro.dicId}" ==  jsonObj[j].id){
+                        		optionstring += "<option selected='selected' value=\"" + jsonObj[j].id + "\" >" + jsonObj[j].name  + "</option>";  
                	  			}else{
-                           	   optionstring += "<option value=\"" + jsonObj[j].name + "\" >" + jsonObj[j].name  + "</option>";  
+                           	   optionstring += "<option value=\"" + jsonObj[j].id + "\" >" + jsonObj[j].name  + "</option>";  
                	  			}
                         }  
                         $("#subType").html("<option value='请选择'>请选择...</option> "+optionstring);  
@@ -137,7 +136,7 @@ textarea {
 			     </td>
 				<td>小类：</td>
 				<td style="padding: 20px">
-							<select name = "subType" id="subType" >
+							<select name = "dicId" id="subType" >
 									<option >-请选择-</option>
 							</select>
 				</td>
