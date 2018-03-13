@@ -160,7 +160,7 @@ textarea {
 			<tr>
 				<td>items：</td>
 				<td style="padding: 20px"><input name="items" value="${pro.items }" ></td>
-				<td>hairLen：</td>
+				<td>density：</td>
 				<td style="padding: 20px"><input name="hairLen" value="${pro.hairLen }" ></td>
 			</tr>
 			<tr>
