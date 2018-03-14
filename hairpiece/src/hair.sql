@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : utf-8
 
- Date: 03/13/2018 22:10:24 PM
+ Date: 03/14/2018 09:09:02 AM
 */
 
 SET NAMES utf8;
@@ -107,7 +107,7 @@ CREATE TABLE `t_msg` (
 DROP TABLE IF EXISTS `t_product`;
 CREATE TABLE `t_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `proName` varchar(50) NOT NULL,
+  `proName` varchar(500) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
   `dic_id` int(11) NOT NULL COMMENT '字典类型ID',
   `subType` varchar(150) DEFAULT NULL,
