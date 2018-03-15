@@ -118,13 +118,13 @@ public class WebController {
 
 		for (Dictionary dictionary : dicList) {
 			switch (dictionary.getCode()) {
-			case "Wigs":
+			case "Human Hair Wigs":
 				wigsList.add(dictionary.getName());
 				break;
-			case "Hair extensions":
+			case "Hair Extensions":
 				extensList.add(dictionary.getName());
 				break;
-			case "Hair pieces":
+			case "Hair Wefts":
 				pieceList.add(dictionary.getName());
 				break;
 			case "Eyelashs":

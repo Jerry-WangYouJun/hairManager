@@ -153,27 +153,27 @@
 	</c:if>
 </p>
 <p class="p_top">
-	<c:if test="not empty ${product.texture }">
+	<c:if test="${not empty product.texture }">
 		<span style="color:#666666;"><span style="font-size:13px;">Texture:${product.texture }</span></span>
 	</c:if>
 </p>
 <p class="p_top">
-	<c:if test="not empty ${product.unit }">
+	<c:if test="${not empty product.unit }">
 		<span style="color:#666666;"><span style="font-size:13px;">Unit Weight:${product.unit }g/pc</span></span>
 	</c:if>
 </p>
 <p class="p_top">
-	<c:if test="not empty ${product.items }">
+	<c:if test="${not empty product.items }">
 		<span style="color:#666666;"><span style="font-size:13px;">Items per Package:${product.items }</span></span>
 	</c:if>
 </p>
 <p>
-	<c:if test="not empty ${product.hairLen }">
+	<c:if test="${not empty product.hairLen }">
 		<span style="color:#666666;"><span style="font-size:13px;">Length:${product.hairLen }</span></span>
 	</c:if>
 </p>
 <p>
-	<c:if test="not empty ${product.hairColor }">
+	<c:if test="${not empty product.hairColor }">
 		<span style="color:#666666;"><span style="font-size:13px;">Hair Colors:${product.hairColor }</span></span>
 	</c:if>
 </p>

@@ -32,8 +32,8 @@
 		<ul>
 			<li><a class="current_navigation" href="${basePath}/web/index"
 				style=""><img src="${basePath}/jsp/pages/images/121.png">HOME</a></li>
-			<li><a class="li_1" href="${basePath}/web/main?type=Wigs"
-				target="_self">Wigs</a>
+			<li><a class="li_1" href="${basePath}/web/main?type=Human Hair Wigs"
+				target="_self">Human Hair Wigs</a>
 				<dl class="li_3_content">
 					<c:forEach items="${Wigs}" var="wig">
 						<dd>
@@ -42,8 +42,8 @@
 						</dd>
 					</c:forEach>
 				</dl></li>
-				<li><a class="li_1" href="${basePath}/web/main?type=Wigs"
-				target="_self">Hair Pieces</a>
+				<li><a class="li_1" href="${basePath}/web/main?type=Hair Wefts"
+				target="_self">Hair Wefts</a>
 				<dl class="li_3_content">
 					<c:forEach items="${pieceList}" var="piece">
 						<dd>
@@ -53,8 +53,8 @@
 					</c:forEach>
 				</dl></li>
 			<li><a class="li_1"
-				href="${basePath}/web/main?type=Hair extensions" target="_self">Hair
-					extensions</a>
+				href="${basePath}/web/main?type=Hair Extensions" target="_self">Hair
+					Extensions</a>
 				<dl class="li_3_content">
 					<c:forEach items="${extensions}" var="extension">
 						<dd>

@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +26,8 @@ import com.hair.model.Grid;
 import com.hair.model.Image;
 import com.hair.model.Pagination;
 import com.hair.service.ImageService;
+
+import net.sf.json.JSONObject;
 
 @RequestMapping("/image")
 @Controller
@@ -96,6 +96,7 @@ public class ImageController {
 			e.printStackTrace();
 		}
 	}
+	
 	@RequestMapping("/image_query")
 	public void queryTest(HttpServletResponse response,
 			HttpServletRequest request, HttpSession session , Image image) {
@@ -161,4 +162,6 @@ public class ImageController {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

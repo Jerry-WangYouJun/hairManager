@@ -40,9 +40,12 @@
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
-    from t_product
-    where ID = #{id,jdbcType=VARCHAR}
+   	 p.ID ,proName,d.name subType, d.code type, hairType, grade, permed,
+     texture, unit,  items,hairLen , hairColor , p.remark ,hotsale ,
+      i.id image_id ,ipath ,iname ,i.type itype , contect
+      from t_product  p  join  t_dictionary d  on  p.dic_id = d.id 
+     left join t_image i on p.id = i.contect
+    where  p.ID = #{id,jdbcType=VARCHAR}
   </select>
   
   <select id="selectByProductNoAndPwd" resultMap="BaseResultMap" parameterType="com.hair.model.Product" >

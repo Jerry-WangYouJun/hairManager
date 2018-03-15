@@ -60,8 +60,9 @@
 			<div class="content_body_main_l">
 				<ul>
 					<li class="on"><a href="${basePath}/web/main?type=Wigs">Wigs</a></li>
-					<li><a href="${basePath}/web/main?type=Hair extensions">Hair extensions</a></li>
-					<li><a href="${basePath}/web/main?type=Hair pieces" >Hair pieces</a></li>
+					<li><a href="${basePath}/web/main?type=Hair Extensions">Hair Extensions</a></li>
+					<li><a href="${basePath}/web/main?type=Hair Wefts" >Hair Wefts</a></li>
+					<li><a href="${basePath}/web/main?type=Eyelashs" >Eyelashs</a></li>
 				</ul>
 			</div>
 			<div class="content_body_main_r">

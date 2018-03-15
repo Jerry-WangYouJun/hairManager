@@ -105,9 +105,9 @@ textarea {
 				 <td style="padding: 20px">
 				  <select name = "code" id="code" >
 					  <option >-请选择-</option>
-				      <option value="Wigs">Wigs</option>
-				      <option value="Hair extensions">Hair extensions</option>
-				      <option value="Hair pieces">Hair pieces</option>
+				      <option value="Human Hair Wigs">Human Hair Wigs</option>
+				      <option value="Hair Extensions">Hair Extensions</option>
+				      <option value="Hair Wefts">Hair Wefts</option>
 				      <option value="Eyelashs">Eyelashs</option>
 				  </select>
 			     </td>
