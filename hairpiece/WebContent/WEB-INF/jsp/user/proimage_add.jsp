@@ -48,10 +48,10 @@ function doServlet() {
 				<td>产品类型</td>
 				<td style="padding: 20px"> 
 					  <select name = "contect">
-							<option >Human Hair Wigs</option>
-					        <option >Hair Extensions</option>
-					        <option >Hair Wefts</option>
-							<option >Eyelashs</option>
+						  <option >Human Hair Wigs</option>
+					      <option >Hair Extensions</option>
+					      <option >Hair Wefts</option>
+					      <option >Eyelashs</option>
 					</select>
 				</td>
 			</tr>

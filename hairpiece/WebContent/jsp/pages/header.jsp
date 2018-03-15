@@ -42,10 +42,10 @@
 						</dd>
 					</c:forEach>
 				</dl></li>
-				<li><a class="li_1" href="${basePath}/web/main?type=Hair Wefts"
+			<li><a class="li_1" href="${basePath}/web/main?type=Hair Wefts"
 				target="_self">Hair Wefts</a>
 				<dl class="li_3_content">
-					<c:forEach items="${pieceList}" var="piece">
+					<c:forEach items="${pieces}" var="piece">
 						<dd>
 							<a class="li_3_content_a"
 								href="${basePath}/web/main?subType=${piece}" target="_self">${piece}</a>
@@ -53,7 +53,7 @@
 					</c:forEach>
 				</dl></li>
 			<li><a class="li_1"
-				href="${basePath}/web/main?type=Hair Extensions" target="_self">Hair
+				href="${basePath}/web/main?type=Hair extensions" target="_self">Hair
 					Extensions</a>
 				<dl class="li_3_content">
 					<c:forEach items="${extensions}" var="extension">

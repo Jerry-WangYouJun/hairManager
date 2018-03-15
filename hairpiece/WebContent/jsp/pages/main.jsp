@@ -59,7 +59,7 @@
 		<div id="content_body_main">
 			<div class="content_body_main_l">
 				<ul>
-					<li class="on"><a href="${basePath}/web/main?type=Wigs">Wigs</a></li>
+					<li class="on"><a href="${basePath}/web/main?type=Human Hair Wigs">Human Hair Wigs</a></li>
 					<li><a href="${basePath}/web/main?type=Hair Extensions">Hair Extensions</a></li>
 					<li><a href="${basePath}/web/main?type=Hair Wefts" >Hair Wefts</a></li>
 					<li><a href="${basePath}/web/main?type=Eyelashs" >Eyelashs</a></li>

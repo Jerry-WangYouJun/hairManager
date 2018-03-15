@@ -60,12 +60,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    }},
 					{field : 'grade',title : 'grade',halign:'center'},
 					{field:'texture',title:'texture',align:'center'},
-					{field:'unit',title:'单位',align:'center',formatter:function(value,rowData,rowIndex){
-			    			return value + 'g/pc';
-			    	}},
-					{field:'items',title:'items',align:'center',formatter:function(value,rowData,rowIndex){
-			    			return value + 'pc/s et';
-			    	}},
+					{field:'unit',title:'单位',align:'center'},
+					{field:'items',title:'items',align:'center'},
 			    	{field:'hairLen',title:'长度',align:'center'},
 		    		{field:'hairColor',title:'颜色',align:'center'},
 					{field:'remark',title:'备注',align:'center'}

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
 import com.hair.common.ContextString;
+import com.hair.common.DateUtils;
 import com.hair.model.Dictionary;
 import com.hair.model.Grid;
 import com.hair.model.Image;
@@ -87,6 +88,8 @@ public class ProductController {
 			}
 			for(MultipartFile file:files){
 				Image image = new Image();
+				String name = DateUtils.getDate14() + "_" + new String(file.getOriginalFilename().getBytes("ISO-8859-1"),"UTF-8");
+				image.setIname(name);
 				image.setType(ContextString.IMAGE_TYPE_PRODUCTDETAIL);
 				image.setContect(pro.getId() + "");
 				CodeUtil.SaveFileFromInputStream(file ,image);

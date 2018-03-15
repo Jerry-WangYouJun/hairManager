@@ -19,6 +19,11 @@ textarea {
 </style>
 <script type="text/javascript">
 	function doServlet() { 
+		var subType = $("#subType").val();
+		if (subType == "-请选择-") {
+			parent.$.messager.alert('提示', "请选择具体的产品类型");
+			return false;
+		}
 			$("#proForm").ajaxSubmit({
 				url : "${basePath}/pro/instVipAjax",
 				type : 'post',
@@ -89,17 +94,16 @@ textarea {
                 contentType: "application/json",  
                 traditional: true,  
                 success: function (data) {  
-                	  console.info(data.list);
                         var jsonObj =data.list;  
                         var optionstring = "";  
                         for (var j = 0; j < jsonObj.length; j++) {
                         	if("${pro.subType}" != "" && "${pro.subType}" ==  jsonObj[j].name){
-                        		optionstring += "<option selected='selected' value=\"" + jsonObj[j].name + "\" >" + jsonObj[j].name  + "</option>";  
+                        		optionstring += "<option selected='selected' value=\"" + jsonObj[j].id + "\" >" + jsonObj[j].name  + "</option>";  
                	  			}else{
-                           	   optionstring += "<option value=\"" + jsonObj[j].name + "\" >" + jsonObj[j].name  + "</option>";  
+                           	   optionstring += "<option value=\"" + jsonObj[j].id + "\" >" + jsonObj[j].name  + "</option>";  
                	  			}
                         }  
-                        $("#subType").html("<option value='请选择'>请选择...</option> "+optionstring);  
+                        $("#subType").html("<option value=''>请选择...</option> "+optionstring);  
                 },  
                 error: function (msg) {  
                     alert("出错了！");  
@@ -129,15 +133,15 @@ textarea {
 				<td style="padding: 20px">
 					  <select name = "type" id="type" onchange="addItems(this.value)">
 						  <option >-请选择-</option>
-					      <option value="Wigs">Wigs</option>
-					      <option value="Hair extensions">Hair extensions</option>
-					      <option value="Hair pieces">Hair pieces</option>
+					      <option value="Human Hair Wigs">Human Hair Wigs</option>
+					      <option value="Hair Extensions">Hair Extensions</option>
+					      <option value="Hair Wefts">Hair Wefts</option>
 					      <option value="Eyelashs">Eyelashs</option>
 					  </select>
 			     </td>
 				<td>小类：</td>
 				<td style="padding: 20px">
-							<select name = "subType" id="subType" >
+							<select name = "dicId" id="subType" >
 									<option >-请选择-</option>
 							</select>
 				</td>
@@ -160,7 +164,7 @@ textarea {
 			<tr>
 				<td>items：</td>
 				<td style="padding: 20px"><input name="items" value="${pro.items }" ></td>
-				<td>hairLen：</td>
+				<td>hair length：</td>
 				<td style="padding: 20px"><input name="hairLen" value="${pro.hairLen }" ></td>
 			</tr>
 			<tr>
