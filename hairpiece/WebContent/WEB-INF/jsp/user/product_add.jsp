@@ -177,6 +177,24 @@ textarea {
 				</select></td>
 			</tr>
 			<tr>
+				<td>备用字段1：</td>
+				<td style="padding: 20px"><input name="column1" value="${pro.column1 }" ></td>
+				<td>备用字段2：</td>
+				<td style="padding: 20px"><input name="column2" value="${pro.column2 }" ></td>
+			</tr>
+			<tr>
+				<td>备用字段3：</td>
+				<td style="padding: 20px"><input name="column3" value="${pro.column3 }" ></td>
+				<td>备用字段4：</td>
+				<td style="padding: 20px"><input name="column4" value="${pro.column4 }" ></td>
+			</tr>
+			<tr>
+				<td>备用字段5：</td>
+				<td style="padding: 20px"><input name="column5" value="${pro.column5 }" ></td>
+				<td>备用字段6：</td>
+				<td style="padding: 20px"><input name="column6" value="${pro.column6 }" ></td>
+			</tr>
+			<tr>
 				<td>备注：</td>
 				<td style="padding: 20px"><textarea name="remark" id="remark"  rows="4"></textarea></td>
 			</tr>

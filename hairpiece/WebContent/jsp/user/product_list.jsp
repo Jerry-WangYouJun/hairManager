@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				singleSelect: true,
 				columns:[[
 					{field:'id', align : 'center',halign:'center',checkbox : true}, 
-					{field:'proName',title:'产品名',align:'center'},
+					{field:'proName',title:'产品名',align:'center', width:10},
 					{field:'type',title:'大类',align:'center'},
 					{field:'subType',title:'子类',align:'center'},
 					{field:'permed',title:'是否可烫',align:'center',formatter:function(value,rowData,rowIndex){

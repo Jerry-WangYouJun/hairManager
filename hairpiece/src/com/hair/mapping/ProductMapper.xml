@@ -109,15 +109,18 @@
   	 <selectKey keyProperty='id' resultType='int' order='AFTER'  >  
         select LAST_INSERT_ID();  
     </selectKey>  
-    insert into t_product (ID, dic_id, proName, texture, 
+    insert into t_product ( dic_id, proName, texture, 
       unit, hairType, 
       remark, permed, items, 
-      subType, type , grade , hairLen , hairColor , hotsale)
-    values (#{id,jdbcType=VARCHAR}, #{dicId, jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR},  #{texture,jdbcType=VARCHAR}, 
+      subType, type , grade , hairLen , hairColor , hotsale,
+      column1,column2,column3,column4,column5,column6)
+    values ( #{dicId, jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR},  #{texture,jdbcType=VARCHAR}, 
        #{unit,jdbcType=VARCHAR}, #{hairType,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{permed,jdbcType=VARCHAR}, #{items,jdbcType=VARCHAR}, 
       #{subType,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR} , #{grade ,jdbcType=VARCHAR} , 
-      #{hairLen,jdbcType=VARCHAR} , #{hairColor ,jdbcType=VARCHAR} ,#{hotsale,jdbcType=VARCHAR}
+      #{hairLen,jdbcType=VARCHAR} , #{hairColor ,jdbcType=VARCHAR} ,#{hotsale,jdbcType=VARCHAR},
+#{column1,jdbcType=VARCHAR},#{column2,jdbcType=VARCHAR},#{column3,jdbcType=VARCHAR},
+      #{column4,jdbcType=VARCHAR},#{column5,jdbcType=VARCHAR},#{column6,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hair.model.Product" >
@@ -270,7 +273,13 @@
       grade = #{grade , jdbcType=VARCHAR},
        hairLen = #{hairLen,jdbcType=VARCHAR},
       hairColor = #{hairColor , jdbcType=VARCHAR}, 
-      hotsale = #{hotsale , jdbcType=VARCHAR}
+      hotsale = #{hotsale , jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR},
+      column5 = #{column5,jdbcType=VARCHAR},
+      column6 = #{column6,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
