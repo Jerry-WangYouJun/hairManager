@@ -37,9 +37,10 @@ function doServlet() {
 <body>
 	 <form  id ="imgForm" action="${basePath }/pro/instVipAjax" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="type" value="1">
+		<input type="hidden" name="contect" value="${image.contect}">
 		<table  id = "tb">
 			<tr>
-				<th >上传图片</th>
+				<th >上传图片  ${image.contect}</th>
 				<td>
 					<input type="file" name="file"/>
 				</td>

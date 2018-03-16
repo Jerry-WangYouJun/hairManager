@@ -7,91 +7,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>产品信息管理</title>
+    <title>图片管理</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
    <jsp:include page="/common/common.jsp"></jsp:include>
-   <style type="text/css">
-.datagrid-cell {
-	padding: 6px 4px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-</style>
   </head>
   <body id="mainpanel" >
- 	<div id="tb" region="north" title="查询条件区" class="easyui-panel"  iconCls="icon-search"  style="padding:5px; height:60px; width: 80%;margin-bottom: 3px "  >
-		<span>类型:</span>
-		<input id="search-type" name="type"/>
-		<a  href="javascript:void(0)"
-			class="easyui-linkbutton" plain="true" iconCls="icon-search"
-			onclick="doSearch()">查询</a> 
-	</div>
- 	<div id="main_layout" data-options="region:'center',border:false,showHeader:false" style="width:80%;height:70%;">
+ 	<div id="main_layout" data-options="region:'center',border:false,showHeader:false" style="width:100%;height:100%;">
  		<table id="data_table" class="easyui-datagrid" fit="true" ></table>
- 	</div>
-	<div data-options="region:'south',border:false,showHeader:false" style="width:900px;height:20%;">
- 		 &nbsp;
  	</div>
     <script type="text/javascript">
     	$(function(){
 			$('#data_table').datagrid({
-				url:'${basePath}/pro/pro_query',
-				rownumbers : true,
+				url:'${basePath}/image/image_query?contect=${picId}',
 				pagination: true,
 				fitColumns: true,
 				singleSelect: true,
-				nowrap : false,
 				columns:[[
 					{field:'id', align : 'center',halign:'center',checkbox : true}, 
-					{field:'proName',title:'产品名',align:'center'},
-					{field:'type',title:'大类',align:'center'},
-					{field:'subType',title:'子类',align:'center'},
-					{field:'permed',title:'是否可烫',align:'center',formatter:function(value,rowData,rowIndex){
-			    		if(value == "1"){
-			    			return "YES";
-			    		}else if(value == "2"){
-			    			return "NO";
-			    		}else{
-			    			return "";
-			    		}
-			    }},
-			    {field:'hotsale',title:'是否热卖',align:'center',formatter:function(value,rowData,rowIndex){
-			    		if(value == "1"){
-			    			return "YES";
-			    		}else{
-			    			return "NO";
-			    		}
-			    }},
-					{field : 'grade',title : 'grade',halign:'center'},
-					{field:'texture',title:'texture',align:'center'},
-					{field:'unit',title:'单位',align:'center'},
-					{field:'items',title:'items',align:'center'},
-			    	{field:'hairLen',title:'长度',align:'center'},
-		    		{field:'hairColor',title:'颜色',align:'center'},
-					{field:'remark',title:'备注',align:'center'}
+					{field:'iname',title:'图片名称',align:'center' , formatter:function(value,rowData,rowIndex){
+						  return value.substring(16);
+					}},
+					{field:'ipath',title:'路径',align:'center'},
+					{field:'img',title:'图片',align:'center' ,formatter:showImg},
 				]],
 				toolbar: [
 				{
 					text:'添加',
 					iconCls: 'icon-add',
-					handler: function(){addProduct();}
-				},'-',{
-					text:'修改',
-					iconCls: 'icon-edit',
-					handler: function(){updateProduct();}
+					handler: function(){addUser();}
 				},'-',{
 					text:'删除',
 					iconCls: 'icon-remove',
-					handler: function(){deleteProduct();}
-				},'-',{
-					text:'图片管理',
-					iconCls: 'icon-large-picture',
-					handler: function(){picManager();}
+					handler: function(){deleteUser();}
 				}]
 			});
 	    	$('#data_table').datagrid('getPager').pagination({  
@@ -111,8 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	
 	    	$('#dlg-frame').dialog( {
 				title : '用户管理',
-				width :  900,
-				height : 500,
+				width :  400,
+				height : 300,
 				top:50,
 				left:100,
 				closed : true,
@@ -135,47 +86,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				} ]
 			});
 	 });
-    	
+    	//图片展示  
+    	function showImg(value, row, index){  
+    	        return '<img style="width:50px;length:50px" border="1" src="/upload/' + row.iname +'"/>';  
+    	} 
 	    	function doSearch(){
 	    		var pageNo = $(".pagination-num").val(); 
 			var pageSize = $(".pagination-page-list").val();
-	    		var subType = $("#search-type").val();
+	    		var imageName = $("#search-imageNo").val();
 		    $('#data_table').datagrid('reload',{
-		    		subType : subType,pageNo:pageNo,pageSize:pageSize
+		    		imageName : imageName,pageNo:pageNo,pageSize:pageSize
 			} );
 		 }
-	    	function addProduct() {
-	    		var path = "${basePath}/pro/addInit";
+	    	function addUser() {
+	    		var path = "${basePath}/image/addPro?contect=${picId}";
 	    		document.getElementById('frameContent').src = path;
 	    		$('#dlg-frame').dialog('open');
 	    	}
 
-	    	function updateProduct() {
-	    		var id = getChecked();
-	    		if (id > 0) {
-	    			var path = "${basePath}/pro/updateInit/" + id;
-	    			document.getElementById('frameContent').src = path;
-	    			$('#dlg-frame').dialog('open');
-	    		}
-	    	}
-	    	
-	    	function picManager(){
-	    		var id = getChecked();
-	    		if (id > 0) {
-	    			var path = "${basePath}/pro/pic/" + id;
-	    			document.getElementById('frameContent').src = path;
-	    			$('#dlg-frame').dialog('open');
-	    		}
-	    	}
-
-	    	function deleteProduct() {
+	    	function deleteUser() {
 	    		var del = confirm("确认删除？");
 	    		if (!del) {
 	    			return false;
 	    		}
 	    		var id = getChecked();
 	    		if (id > 0) {
-	    			var url = "${basePath}/pro/pro_delete/" + id;
+	    			var url = "${basePath}/image/image_delete/" + id;
 	    			$.ajax({
 	    				url : url,
 	    				type : 'delete',

@@ -76,7 +76,7 @@
 								</a>
 							</div>
 							<p>
-								<a style="" href="${basePath}/web/query?proName=${pro.proName}" target="_self" title="${pro.proName}">${pro.proName }
+								<a style="" href="${basePath}/web/detail?id=${pro.id}" target="_self" title="${pro.proName}">${pro.proName }
 								</a>
 							</p>
 						</li>

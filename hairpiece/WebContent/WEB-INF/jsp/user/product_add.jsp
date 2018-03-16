@@ -177,6 +177,9 @@ textarea {
 				</select></td>
 			</tr>
 			<tr>
+				<td colspan="4"><span style="color: red;">备用字段需要填入“**:**”的形式如 ： 密度:100 </span></td>
+			</tr>
+			<tr>
 				<td>备用字段1：</td>
 				<td style="padding: 20px"><input name="column1" value="${pro.column1 }" ></td>
 				<td>备用字段2：</td>

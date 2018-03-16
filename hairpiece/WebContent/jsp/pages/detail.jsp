@@ -120,7 +120,7 @@
 						<div class="detail_picbot_mid">
 							<ul>
 								<c:forEach items="${imageList }" var="image">
-								       <li>${fn:substring(image.iname, 16, 99)} <a href='javascript:void(0);'> <img src='/upload/${image.iname}' width='90px'  title=''
+								       <li>${fn:substring(image.iname, 16, 99)} <a href='javascript:void(0);'> <img src='/upload/${image.iname}' width='90px' height="90px" title=''
 								        alt='' bigimg='/upload/${image.iname}' /> </a> </li>
 								</c:forEach>
 								
@@ -175,6 +175,36 @@
 <p>
 	<c:if test="${not empty product.hairColor }">
 		<span style="color:#666666;"><span style="font-size:13px;">Hair Colors:${product.hairColor }</span></span>
+	</c:if>
+</p>
+<p>
+	<c:if test="${not empty product.column1 }">
+		<span style="color:#666666;"><span style="font-size:13px;">${product.column1 }</span></span>
+	</c:if>
+</p>
+<p>
+	<c:if test="${not empty product.column2 }">
+		<span style="color:#666666;"><span style="font-size:13px;">${product.column2 }</span></span>
+	</c:if>
+</p>
+<p>
+	<c:if test="${not empty product.column3 }">
+		<span style="color:#666666;"><span style="font-size:13px;">${product.column3 }</span></span>
+	</c:if>
+</p>
+<p>
+	<c:if test="${not empty product.column4 }">
+		<span style="color:#666666;"><span style="font-size:13px;">${product.column4 }</span></span>
+	</c:if>
+</p>
+<p>
+	<c:if test="${not empty product.column5 }">
+		<span style="color:#666666;"><span style="font-size:13px;">${product.column5 }</span></span>
+	</c:if>
+</p>
+<p>
+	<c:if test="${not empty product.column6 }">
+		<span style="color:#666666;"><span style="font-size:13px;">${product.column6 }</span></span>
 	</c:if>
 </p>
 <p>

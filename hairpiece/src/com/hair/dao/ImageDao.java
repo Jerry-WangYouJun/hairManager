@@ -77,6 +77,9 @@ public class ImageDao {
 		if(image.getType()!=null && StringUtils.isNotEmpty(image.getType()+"")){
 			sql += " and   type =  '" + image.getType() + "' ";
 		}
+		if(image.getContect()!=null && StringUtils.isNotEmpty(image.getContect())){
+			sql += " and   contect =  '" + image.getContect() + "' ";
+		}
 		return sql;
 	}
 }

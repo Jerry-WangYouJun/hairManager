@@ -149,6 +149,13 @@ public class ProductController {
 		 return mv ;
 	}
 	
+	@RequestMapping("/pic/{id}")
+	public ModelAndView  pic(@PathVariable("id")int id ) {
+		ModelAndView mv = new ModelAndView("user/image_list");
+		mv.addObject("picId" , id);
+		return mv ;
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/pro_delete/{id}",method=RequestMethod.DELETE)
 	public void deleteProduct(@PathVariable("id") int id , HttpServletResponse response){

@@ -39,7 +39,7 @@ img:hover{background: white;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opa
 .firsttop_right{float:left;width:250px;overflow:hidden;}
 .close2{height:17px;}
 .close2 a{background:url('../images/close.jpg') 0px 0px no-repeat;width:15px;height:15px;display:block;float:right;}
-.replay{height:24px;margin-top:20px;overflow:hidden;}
+.replay{height:64px;margin-top:20px;overflow:hidden;}
 .replay h2{float:left;font-size:16px;}
 .replay p{float:left;margin-left:15px;display:inline;line-height:24px;padding-right:25px;background:url('../images/replay.png') right no-repeat;}
 .replay p a{color:white;font-size:14px;}

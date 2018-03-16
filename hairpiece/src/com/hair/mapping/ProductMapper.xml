@@ -42,7 +42,8 @@
     select 
    	 p.ID ,proName,d.name subType, d.code type, hairType, grade, permed,
      texture, unit,  items,hairLen , hairColor , p.remark ,hotsale ,
-      i.id image_id ,ipath ,iname ,i.type itype , contect
+      i.id image_id ,ipath ,iname ,i.type itype , contect , 
+      column1,column2,column3,column4,column5,column6
       from t_product  p  join  t_dictionary d  on  p.dic_id = d.id 
      left join t_image i on p.id = i.contect
     where  p.ID = #{id,jdbcType=VARCHAR}

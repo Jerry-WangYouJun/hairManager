@@ -23,7 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hair.common.CodeUtil;
+import com.hair.common.ContextString;
 import com.hair.common.DateUtils;
+import com.hair.common.DeleteFileUtil;
 import com.hair.model.Grid;
 import com.hair.model.Image;
 import com.hair.model.Pagination;
@@ -79,7 +81,9 @@ public class ImageController {
 				}
 				image.setIname(name);
 				CodeUtil.SaveFileFromInputStream(file ,image);
-				image.setType(image.getType());
+				if(image.getContect() != null){
+					image.setType(ContextString.IMAGE_TYPE_PRODUCTDETAIL);
+				}
 				if(image.getId() != null) {
 					service.updateImage(image);
 				}else {
@@ -128,7 +132,22 @@ public class ImageController {
 		return "user/image_add";
 	}
 	
+	/**
+	 * 新增产品模块-图片新增功能
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/addPro")
+	public String addPro(Model model , Image image) {
+		model.addAttribute("image", image);
+		return "user/image_add";
+	}
 	
+	/**
+	 * 新增主页企业产品示意图页面
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/addProInit")
 	public String addProInit(Model model) {
 		model.addAttribute("image", new Image());
@@ -148,6 +167,8 @@ public class ImageController {
 	public void deleteImage(@PathVariable("id") int id , HttpServletResponse response){
 		PrintWriter out;
 		try {
+			Image image = service.selectByPrimaryKey(id);
+			DeleteFileUtil.deleteFile(image.getIpath() + "\\" + image.getIname());
 			service.deleteImageById(id);
 			response.setCharacterEncoding("UTF-8");
 			out = response.getWriter();
