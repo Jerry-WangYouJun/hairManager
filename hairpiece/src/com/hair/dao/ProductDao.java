@@ -38,7 +38,7 @@ public class ProductDao {
 					pro.setSubType(rs.getString("subType"));
 					pro.setTexture(rs.getString("texture"));
 					pro.setType(rs.getString("type"));
-					pro.setUnit(rs.getDouble("unit"));
+					pro.setUnit(rs.getString("unit"));
 					pro.setRemark(rs.getString("remark"));
 					pro.setHotsale(rs.getString("hotsale"));
 				 return null ;
@@ -68,7 +68,7 @@ public class ProductDao {
 					pro.setSubType(rs.getString("d.name"));
 					pro.setTexture(rs.getString("texture"));
 					pro.setType(rs.getString("d.code"));
-					pro.setUnit(rs.getDouble("unit"));
+					pro.setUnit(rs.getString("unit"));
 					pro.setRemark(rs.getString("remark"));
 					pro.setHotsale(rs.getString("hotsale"));
 					list.add(pro);
@@ -97,7 +97,7 @@ public class ProductDao {
 					pro.setSubType(rs.getString("subType"));
 					pro.setTexture(rs.getString("texture"));
 					pro.setType(rs.getString("type"));
-					pro.setUnit(rs.getDouble("unit"));
+					pro.setUnit(rs.getString("unit"));
 					pro.setRemark(rs.getString("remark"));
 					pro.setHotsale(rs.getString("hotsale"));
 					list.add(pro);

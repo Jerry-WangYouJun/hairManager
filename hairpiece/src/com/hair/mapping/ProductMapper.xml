@@ -11,7 +11,7 @@
     <result column="permed" property="permed" jdbcType="VARCHAR" />
      <result column="grade" property="grade" jdbcType="VARCHAR" />
     <result column="texture" property="texture" jdbcType="VARCHAR" />
-    <result column="unit" property="unit" jdbcType="DOUBLE" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
     <result column="items" property="items" jdbcType="VARCHAR" />
     <result column="hairLen" property="hairLen" jdbcType="VARCHAR" />
     <result column="hairColor" property="hairColor" jdbcType="VARCHAR" />
@@ -275,6 +275,7 @@
        hairLen = #{hairLen,jdbcType=VARCHAR},
       hairColor = #{hairColor , jdbcType=VARCHAR}, 
       hotsale = #{hotsale , jdbcType=VARCHAR},
+      unit = #{unit , jdbcType=VARCHAR},
       column1 = #{column1,jdbcType=VARCHAR},
       column2 = #{column2,jdbcType=VARCHAR},
       column3 = #{column3,jdbcType=VARCHAR},

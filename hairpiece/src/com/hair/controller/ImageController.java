@@ -81,7 +81,7 @@ public class ImageController {
 				}
 				image.setIname(name);
 				CodeUtil.SaveFileFromInputStream(file ,image);
-				if(image.getContect() != null){
+				if(image.getContect() != null &&  !ContextString.IMAGE_TYPE_PRODUCT.equals(image.getType()) ){
 					image.setType(ContextString.IMAGE_TYPE_PRODUCTDETAIL);
 				}
 				if(image.getId() != null) {

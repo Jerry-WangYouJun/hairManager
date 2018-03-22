@@ -14,7 +14,7 @@ public class Product {
 	  private String permed;
 	  private String grade ;
 	  private String texture ;
-	  private Double unit;
+	  private String unit;
 	  private String items;
 	  private String hairLen;
 	  private String hairColor ;
@@ -87,10 +87,10 @@ public class Product {
 	public void setTexture(String texture) {
 		this.texture = texture;
 	}
-	public Double getUnit() {
+	public String getUnit() {
 		return unit;
 	}
-	public void setUnit(Double unit) {
+	public void setUnit(String unit) {
 		this.unit = unit;
 	}
 	public String getItems() {

@@ -158,7 +158,7 @@ textarea {
 			<tr>
 				<td>texture：</td>
 				<td style="padding: 20px"><input name="texture" value="${pro.texture }" ></td>
-				<td>unit(g/pc)：</td>
+				<td>unit：</td>
 				<td style="padding: 20px"><input  name="unit" id="unit"  value="${pro.unit }" ></td>
 			</tr>
 			<tr>
