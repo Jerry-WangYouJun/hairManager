@@ -13,8 +13,8 @@ a:hover{color:#000 ;}
     height: 120px;
     margin-top:20px;
     background: url(../images/logo.jpg) no-repeat;
-    background-size:150px 120px;
-    margin-left:-300px;
+    background-size:100px 80px;
+    margin-left:-100px;
 }
 .tel{
     width:180px;

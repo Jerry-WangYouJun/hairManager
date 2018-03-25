@@ -43,7 +43,7 @@
 					</c:forEach>
 				</dl></li>
 			<li><a class="li_1" href="${basePath}/web/main?type=Hair Wefts"
-				target="_self">Hair Wefts</a>
+				target="_self">Hair Wefts&Closures</a>
 				<dl class="li_3_content">
 					<c:forEach items="${pieces}" var="piece">
 						<dd>

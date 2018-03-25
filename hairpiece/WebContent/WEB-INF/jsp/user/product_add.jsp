@@ -125,7 +125,7 @@ textarea {
 			<tr>
 				<td>product：</td>
 				<td style="padding: 20px"> <input name="proName" id="proName"  value="${pro.proName }" ></td>
-				<td>hairType：</td>
+				<td>Materisl：</td>
 				<td style="padding: 20px"> <input name="hairType" id="hairType"  value="${pro.hairType }" ></td>
 			</tr>
 			<tr>
@@ -135,7 +135,7 @@ textarea {
 						  <option >-请选择-</option>
 					      <option value="Human Hair Wigs">Human Hair Wigs</option>
 					      <option value="Hair Extensions">Hair Extensions</option>
-					      <option value="Hair Wefts">Hair Wefts</option>
+					      <option value="Hair Wefts&Closures">Hair Wefts&Closures</option>
 					      <option value="Eyelashs">Eyelashs</option>
 					  </select>
 			     </td>
@@ -165,7 +165,7 @@ textarea {
 				<td>items：</td>
 				<td style="padding: 20px"><input name="items" value="${pro.items }" ></td>
 				<td>hair length：</td>
-				<td style="padding: 20px"><input name="hairLen" value="${pro.hairLen }" ></td>
+				<td style="padding: 20px"><input name="hairLen" value='${pro.hairLen }' ></td>
 			</tr>
 			<tr>
 				<td>hairColor：</td>

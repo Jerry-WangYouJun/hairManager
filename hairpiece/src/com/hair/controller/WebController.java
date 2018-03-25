@@ -124,7 +124,7 @@ public class WebController {
 			case "Hair Extensions":
 				extensList.add(dictionary.getName());
 				break;
-			case "Hair Wefts":
+			case "Hair Wefts&Closures":
 				pieceList.add(dictionary.getName());
 				break;
 			case "Eyelashs":

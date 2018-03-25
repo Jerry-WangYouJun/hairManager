@@ -50,7 +50,7 @@ function doServlet() {
 					  <select name = "contect">
 						  <option >Human Hair Wigs</option>
 					      <option >Hair Extensions</option>
-					      <option >Hair Wefts</option>
+					      <option >Hair Wefts&Closures</option>
 					      <option >Eyelashs</option>
 					</select>
 				</td>

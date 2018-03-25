@@ -107,7 +107,7 @@ textarea {
 					  <option >-请选择-</option>
 				      <option value="Human Hair Wigs">Human Hair Wigs</option>
 				      <option value="Hair Extensions">Hair Extensions</option>
-				      <option value="Hair Wefts">Hair Wefts</option>
+				      <option value="Hair Wefts&Closures">Hair Wefts&Closures</option>
 				      <option value="Eyelashs">Eyelashs</option>
 				  </select>
 			     </td>

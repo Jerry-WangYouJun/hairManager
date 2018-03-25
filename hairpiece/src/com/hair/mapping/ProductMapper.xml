@@ -69,7 +69,7 @@
 	        and p.dicId = #{dicId}
 	      </if>
        <if test="type != null and type != ''" >
-        and d.code like #{type}
+        and d.code like  CONCAT('%','${type}','%')
       </if>
       <if test="subType != null and subType != ''" >
         and d.name like #{subType}
