@@ -136,7 +136,7 @@ public class UserController {
 	public String insertCustomer(User user, HttpServletRequest request) {
 		user.setRoleId("2");
 		service.insertCustomer(user);
-		return "login";
+		return "init";
 	}
 
 	

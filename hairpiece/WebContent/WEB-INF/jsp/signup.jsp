@@ -25,10 +25,10 @@
 <body>
     <div class="wrapper">
     <form id="signinForm" class="form-signin" action="${basePath}/user/signin">       
-      <h2 class="form-signin-heading">登 录</h2>
-      <input type="text" class="form-control required" name="userNo" placeholder="账号" class="required" autofocus="" />
-      <input type="password" class="form-control required" name="pwd" placeholder="密码" class="required"/>
-      <button id="smt" class="btn btn-lg btn-primary btn-block btn-pink" type="submit">登录</button>
+      <h2 class="form-signin-heading">Login</h2>
+      <input type="text" class="form-control required" name="userNo" placeholder="username" class="required" autofocus="" />
+      <input type="password" class="form-control required" name="pwd" placeholder="password" class="required"/>
+      <button id="smt" class="btn btn-lg btn-primary btn-block btn-pink" type="submit">sign in</button>
       <span style="color:red">${msg }</span>
     </form>
   </div>

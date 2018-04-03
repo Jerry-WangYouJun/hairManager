@@ -77,7 +77,7 @@ background: #FFF
  	 	  
  	 </table>
 	 <form  id ="imgForm" action="${basePath }/msg/insert" method="post" >
-		<input type="hidden" name="contect" value="${messageList[0].contect }">
+		<input type="hidden" name="contect" value="${contect }">
 		<table  id = "tb">
 			<tr>
 				<td>

@@ -41,12 +41,14 @@ public class MessageController {
 			, @RequestParam(value = "role",required=false)String role){
 		Message m = new Message();
 		if( "2".equals(role) ){
+			System.out.println(session.getAttribute("userId"));
 			 m.setContect((Integer)session.getAttribute("userId"));
 		}else{
 			m.setContect(msg.getContect());
 		}
 		List<Message> messageList = service.selectDicByWhere(m);
 		model.addAttribute("messageList", messageList);
+		model.addAttribute("contect" , m.getContect());
 		return "user/msg_add";
 	}
 	
