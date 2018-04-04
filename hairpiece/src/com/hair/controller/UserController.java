@@ -23,6 +23,7 @@ import com.hair.common.CodeUtil;
 import com.hair.model.Grid;
 import com.hair.model.Pagination;
 import com.hair.model.User;
+import com.hair.service.EmailSendService;
 import com.hair.service.UserService;
 
 @RequestMapping("/user")
@@ -31,7 +32,9 @@ public class UserController {
 
 	@Autowired
 	UserService service;
-
+	@Autowired
+	EmailSendService  emailService ;
+	
 	/**
 	 *  后台登陆 
 	 */
@@ -136,6 +139,11 @@ public class UserController {
 	public String insertCustomer(User user, HttpServletRequest request) {
 		user.setRoleId("2");
 		service.insertCustomer(user);
+		try {
+			emailService.sendMail();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return "init";
 	}
 
