@@ -8,14 +8,6 @@ a:hover{color:#000 ;}
 .fright{float:right}
 .clear{ clear:both}
 /*header*/
-.logo{
-    width:150px;
-    height: 120px;
-    margin-top:20px;
-    background: url(../images/logo.jpg) no-repeat;
-    background-size:100px 80px;
-    margin-left:-100px;
-}
 .tel{
     width:180px;
     height:75px;
@@ -31,6 +23,14 @@ a:hover{color:#000 ;}
 .autoHeight{overflow: hidden;}
 #top_wrap{margin:0 auto; background:#d53950;}
 #header{width:1024px; height:150px; margin:0 auto; font-size:14px;position: relative;}
+.logo {
+        width: 120px;
+        height: 100px;
+        margin-top:10px;
+        position: absolute;
+        left: 50%;
+        margin-left: -75px; /* 宽度的一半 */
+    }
 #header ul{clear: both;}
 #header ul li{float:left;line-height:29px; line-height:20px;width:170px;}
 #header ul li a{height:40px;display: block;line-height: 40px;}

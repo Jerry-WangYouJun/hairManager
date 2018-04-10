@@ -1,5 +1,7 @@
 <div id="header">
-	<div class="logo fLeft"></div>
+	<div class="fLeft">
+			<img src="${ basePath}/jsp/pages/images/logo.jpg"  class="logo">
+	</div>
 	<div class="tel fright">
 		<c:if test="${  empty  userbean}">
 			<p>

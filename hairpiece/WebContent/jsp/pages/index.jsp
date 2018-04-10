@@ -15,32 +15,7 @@
 <script type=text/javascript src="${basePath}/jsp/pages/js/public.js"></script>
 <link rel="stylesheet" href="${basePath }/bootstrap/css/bootstrap.min.css">
 	<script src="${basePath }/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	function cart() {
-		if("${userbean}" == "" ){
-			  alert("please sign in ");
-			  return false ;
-		}
-		window.location.href = "${basePath}/web/cartInit";
-	}
-	
-	function msg() {
-		var path = "${basePath}/msg/msgInit?role=2";
-		document.getElementById('frameContent').src = path;
-		$('#dlg-frame').dialog('open');
-	}
-	$(function(){
-		$('#dlg-frame').dialog( {
-			title : '用户管理',
-			width :  300,
-			height : 500,
-			top: 100,
-			right: 100,
-			closed : true,
-			cache : false,
-			modal : true
-		});
-	});
+<script type="text/javascript" src="${basePath}/jsp/pages/js/header.js">
 </script>
 <style type="text/css">
 #test{
