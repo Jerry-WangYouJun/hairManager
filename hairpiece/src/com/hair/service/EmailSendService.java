@@ -24,15 +24,15 @@ public class EmailSendService  {
 	// 发件人的 邮箱 和 密码（替换为自己的邮箱和密码）
     // PS: 某些邮箱服务器为了增加邮箱本身密码的安全性，给 SMTP 客户端设置了独立密码（有的邮箱称为“授权码”）, 
     //     对于开启了独立密码的邮箱, 这里的邮箱密码必需使用这个独立密码（授权码）。
-    public static String myEmailAccount = "wang_yjun@163.com";
-    public static String myEmailPassword = "wyj1989705sq";
+    public static String myEmailAccount = "missqwig@163.com";
+    public static String myEmailPassword = "missqwig06";
 
     // 发件人邮箱的 SMTP 服务器地址, 必须准确, 不同邮件服务器地址不同, 一般(只是一般, 绝非绝对)格式为: smtp.xxx.com
     // 网易163邮箱的 SMTP 服务器地址为: smtp.163.com qq smtp.qq.com
     public static String myEmailSMTPHost = "smtp.163.com";
 
     // 收件人邮箱（替换为自己知道的有效邮箱）
-    public static String receiveMailAccount =   "wang_yjun@163.com";
+    public static String receiveMailAccount =   "missqwig@163.com";
 
     public  void sendMail(User user) throws Exception {
         // 1. 创建参数配置, 用于连接邮件服务器的参数配置
@@ -104,7 +104,7 @@ public class EmailSendService  {
         message.setFrom(new InternetAddress(sendMail, "", "UTF-8"));
 
         // 3. To: 收件人（可以增加多个收件人、抄送、密送）
-        message.setRecipients(MimeMessage.RecipientType.CC, InternetAddress.parse(receiveMail) );
+        message.setRecipients(MimeMessage.RecipientType.CC, InternetAddress.parse("missqwig@163.com") );
         message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(receiveMail) );
         // 4. Subject: 邮件主题（标题有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改标题）
         message.setSubject("Missqwig", "UTF-8");
