@@ -3,8 +3,6 @@ package com.hair.service;
 import java.util.Date;
 import java.util.Properties;
 
-import javax.mail.MessagingException;
-import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -16,31 +14,33 @@ import com.hair.model.User;
 
 @Service
 public class EmailSendService  {
+	public static void main(String[] args) throws Exception {
+		EmailSendService e = new EmailSendService();
+		User u  = new User();
+		u.setEmail("284879129@qq.com");
+		e.sendMail(u);
+	}
 
 	// 发件人的 邮箱 和 密码（替换为自己的邮箱和密码）
     // PS: 某些邮箱服务器为了增加邮箱本身密码的安全性，给 SMTP 客户端设置了独立密码（有的邮箱称为“授权码”）, 
     //     对于开启了独立密码的邮箱, 这里的邮箱密码必需使用这个独立密码（授权码）。
-    public static String myEmailAccount = "missqwig@gmail.com";
-    public static String myEmailPassword = "women06xiangai";
+    public static String myEmailAccount = "wang_yjun@163.com";
+    public static String myEmailPassword = "wyj1989705sq";
 
     // 发件人邮箱的 SMTP 服务器地址, 必须准确, 不同邮件服务器地址不同, 一般(只是一般, 绝非绝对)格式为: smtp.xxx.com
-    // 网易163邮箱的 SMTP 服务器地址为: smtp.163.com
-    public static String myEmailSMTPHost = "smtp.qq.com";
+    // 网易163邮箱的 SMTP 服务器地址为: smtp.163.com qq smtp.qq.com
+    public static String myEmailSMTPHost = "smtp.163.com";
 
-    public  void sendMail(User user) throws Exception   {
+    // 收件人邮箱（替换为自己知道的有效邮箱）
+    public static String receiveMailAccount =   "wang_yjun@163.com";
+
+    public  void sendMail(User user) throws Exception {
         // 1. 创建参数配置, 用于连接邮件服务器的参数配置
         Properties props = new Properties();                    // 参数配置
-/*      props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
+        props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
         props.setProperty("mail.smtp.host", myEmailSMTPHost);   // 发件人的邮箱的 SMTP 服务器地址
-        props.setProperty("mail.smtp.auth", "true");            // 需要请求认证
-        /*final String smtpPort = "465";
-        props.setProperty("mail.smtp.port", smtpPort);*/
-        
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
+        props.setProperty("mail.smtp.auth", "true");            // 需要请求认证\
+        props.put("mail.debug", "true");  
         // PS: 某些邮箱服务器要求 SMTP 连接需要使用 SSL 安全认证 (为了提高安全性, 邮箱支持SSL连接, 也可以自己开启),
         //     如果无法连接邮件服务器, 仔细查看控制台打印的 log, 如果有有类似 “连接失败, 要求 SSL 安全连接” 等错误,
         //     打开下面 /* ... */ 之间的注释代码, 开启 SSL 安全连接。
@@ -48,9 +48,11 @@ public class EmailSendService  {
         // SMTP 服务器的端口 (非 SSL 连接的端口一般默认为 25, 可以不添加, 如果开启了 SSL 连接,
         //                  需要改为对应邮箱的 SMTP 服务器的端口, 具体可查看对应邮箱服务的帮助,
         //                  QQ邮箱的SMTP(SLL)端口为465或587, 其他邮箱自行去查看)*/
-        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.setProperty("mail.smtp.socketFactory.fallback", "false");
-        props.setProperty("mail.smtp.socketFactory.port", "587");
+//        final String smtpPort = "25";
+//        props.setProperty("mail.smtp.port", smtpPort);
+//        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+//        props.setProperty("mail.smtp.socketFactory.port", smtpPort);
         
 
         // 2. 根据配置创建会话对象, 用于和邮件服务器交互
@@ -102,15 +104,17 @@ public class EmailSendService  {
         message.setFrom(new InternetAddress(sendMail, "", "UTF-8"));
 
         // 3. To: 收件人（可以增加多个收件人、抄送、密送）
-        message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "dear customer", "UTF-8"));
+        message.setRecipients(MimeMessage.RecipientType.CC, InternetAddress.parse(receiveMail) );
+        message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(receiveMail) );
         // 4. Subject: 邮件主题（标题有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改标题）
-        message.setSubject("Mailbox activation", "UTF-8");
+        message.setSubject("Missqwig", "UTF-8");
 
         // 5. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
         message.setContent("Thank you for registering the network.  Please enjoy your online shopping "
         		+ "<a href='http://49.51.39.113'>Welcome to  missqwig.com"
         		+ " China's professional lace wig factory</a> ", 
         		"text/html;charset=UTF-8");
+
 
         // 6. 设置发件时间
         message.setSentDate(new Date());

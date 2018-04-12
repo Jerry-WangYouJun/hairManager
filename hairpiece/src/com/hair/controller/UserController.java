@@ -138,12 +138,12 @@ public class UserController {
 	@RequestMapping("/instVip")
 	public String insertCustomer(User user, HttpServletRequest request) {
 		user.setRoleId("2");
-		/*try {
+		try {
 			emailService.sendMail(user);
 		} catch (Exception e) {
 			request.setAttribute("msg",e.getMessage());
 			return "init";
-		}*/
+		}
 		service.insertCustomer(user);
 		return "init";
 	}
